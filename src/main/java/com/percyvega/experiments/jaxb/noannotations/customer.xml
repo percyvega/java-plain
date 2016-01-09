@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customer>
+    <firstName>Percy</firstName>
+    <lastName>Vega</lastName>
+    <addresses>
+        <address>
+            <street>123 Main St</street>
+            <city>Miami</city>
+            <state>FL</state>
+            <zipcode>33330</zipcode>
+        </address>
+        <address>
+            <street>6234 Luther St</street>
+            <city>Plantation</city>
+            <state>FL</state>
+            <zipcode>33324</zipcode>
+        </address>
+    </addresses>
+</customer>

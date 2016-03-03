@@ -2,9 +2,6 @@ package com.percyvega.experiments.exceptions;
 
 import java.util.Scanner;
 
-/**
- * Created by percy on 1/7/2016.
- */
 public class AgeScanner {
 
     public final static int DEFAULT_AGE = 35;
@@ -23,7 +20,7 @@ public class AgeScanner {
             ageEntry = scanner.next();
             age = Integer.parseInt(ageEntry);
 
-            if(age > 120 || age < -1)
+            if (age > 120 || age < -1)
                 throw new ImpossibleAgeException(age);
 
             System.out.println("No exceptions found. Age entered: " + age);

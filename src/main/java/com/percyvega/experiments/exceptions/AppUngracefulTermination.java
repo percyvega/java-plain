@@ -3,7 +3,9 @@ package com.percyvega.experiments.exceptions;
 import java.util.Scanner;
 
 /**
- * Created by percy on 1/7/2016.
+ * First time enter 55.
+ * Second time enter -2.
+ * Third time enter any letter.
  */
 public class AppUngracefulTermination {
 

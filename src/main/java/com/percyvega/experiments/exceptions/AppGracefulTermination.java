@@ -12,29 +12,26 @@ public class AppGracefulTermination {
     public static void main(String[] args) {
         System.out.println("Starting main()");
 
-        Scanner scanner = new Scanner(System.in);
-        AgeScanner ageScanner = new AgeScanner();
+        AgeReader ageReader = new AgeReaderThrowsException();
 
         int age = 0;
 
-        try {
+        try(Scanner scanner = new Scanner(System.in)) {
 
             while (age != -1) {
                 System.out.println("About to start reading age.");
-                age = ageScanner.readAge(scanner);
-                System.out.println("No unchecked exceptions were found. Finished reading age.");
+                age = ageReader.readAge(scanner);
+                System.out.println("No exceptions found.");
             }
 
-        } catch (RuntimeException e) {
+        } catch (ImpossibleAgeException e) {
 
-            System.err.println("Starting " + AppGracefulTermination.class.getSimpleName() + "'s catch{}");
-            System.err.println("An unchecked exception was caught!");
+            System.err.println("Starting catch{}");
             e.printStackTrace();
 
         } finally {
 
             System.out.println(AppGracefulTermination.class.getSimpleName() + "'s Finally");
-            scanner.close();
 
         }
 

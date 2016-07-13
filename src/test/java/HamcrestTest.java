@@ -54,17 +54,11 @@ public class HamcrestTest {
         assertThat(myDate, allOf(sameInstance(sameInstanceAsMyDate), not(sameInstance(anotherDate))));
     }
 
-    /* Arrays & Collections */
-    @Test
-    public void testHamcrestArraysAndCollections() {
-        // isIn
-        assertThat("5", isIn(myArray));
-        assertThat("5", isIn(myList));
-    }
-
     /* Arrays */
     @Test
     public void testHamcrestArrays() {
+        // isIn - also for collections
+        assertThat("5", isIn(myArray));
         // isOneOf
         assertThat("4", isOneOf(myArray));
         // hasItemInArray
@@ -82,6 +76,8 @@ public class HamcrestTest {
     /* Collections */
     @Test
     public void testHamcrestCollections() {
+        // isIn - also for arrays
+        assertThat("5", isIn(myList));
         // hasEntry
         assertThat(countryPopMill, hasEntry("China", 1367));
         assertThat(countryPopMill, hasKey("China"));
@@ -125,7 +121,7 @@ public class HamcrestTest {
         assertThat("Hello World!", is(equalToIgnoringCase("HELLO world!")));
         assertThat("Hello World!", is(not(isEmptyOrNullString())));
         assertThat("Hello World!", is(stringContainsInOrder(Arrays.asList("Hello ", "World", "!"))));
-        assertThat("Hello World!", is(equalToIgnoringWhiteSpace("HelloWorld       !")));
+        assertThat("Hello World!", is(equalToIgnoringWhiteSpace("    Hello   World!   ")));
         assertThat("Hello World!", is(containsString("World")));
         assertThat("Hello World!", is(startsWith("Hello")));
         assertThat("Hello World!", is(endsWith("World!")));

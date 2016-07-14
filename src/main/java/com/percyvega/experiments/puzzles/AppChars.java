@@ -9,14 +9,12 @@ public class AppChars {
 
     private static final Logger logger = LoggerFactory.getLogger(AppChars.class);
 
-    private static Random rnd = new Random();
-
-    public static void main(String[] args) {
+    private static void first() {
         int cap = 'P';
         logger.debug(String.valueOf(cap));
 
         StringBuffer word = new StringBuffer('P');
-        int randomInt = rnd.nextInt(2);
+        int randomInt = new Random().nextInt(2);
         logger.debug(String.valueOf(randomInt));
 
         logger.debug("word: " + word);
@@ -43,5 +41,22 @@ public class AppChars {
         word.append('i');
         word.append('n');
         logger.debug("word: " + word);
+    }
+
+    /**
+     * ASCII for ‘0’ is 48
+     * 48 x 1.1 is 52.8 which turns to 52 when cast to char
+     * 52 represents ‘4’ in ASCII
+     */
+    private static void second() {
+        char ch = '0';
+        ch *= 1.1;
+        logger.debug("" + ch);
+    }
+
+    public static void main(String[] args) {
+        first();
+        System.out.println();
+        second();
     }
 }

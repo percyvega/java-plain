@@ -6,11 +6,9 @@ package com.percyvega.experiments.collections;
 public class App {
 
     public static void main(String[] args) {
-        MyCollections myCollections = new MyCollections();
-
-        myCollections.useSets();
-        myCollections.useMaps();
-        myCollections.useLists();
+        MyCollections.useSets();
+        MyCollections.useMaps();
+        MyCollections.useLists();
     }
 
 }

@@ -5,47 +5,48 @@ import org.apache.log4j.Logger;
 
 public class Log4jTest {
 
-    private static final Logger logger = Logger.getLogger(Log4jTest.class);
+    private static final Logger LOGGER = Logger.getLogger(Log4jTest.class);
 
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
         Log4jTest console = new Log4jTest();
         console.execute();
     }
 
     public Log4jTest() {
-        logger.log(Level.ALL, "ALL level message.");
-        if (logger.isEnabledFor(Level.ALL)) {
-            logger.trace("ALL level enabled.");
+        LOGGER.log(Level.ALL, "ALL level message.");
+        if (LOGGER.isEnabledFor(Level.ALL)) {
+            LOGGER.log(Level.ALL, "ALL level is enabled.");
         }
-        logger.trace("TRACE level message.");
-        if (logger.isTraceEnabled()) {
-            logger.trace("TRACE level enabled.");
+        LOGGER.trace("TRACE level message.");
+        if (LOGGER.isTraceEnabled()) {
+            LOGGER.trace("TRACE level is enabled.");
         }
-        logger.debug("DEBUG level message.");
-        if (logger.isDebugEnabled()) {
-            logger.debug("DEBUG level enabled.");
+        LOGGER.debug("DEBUG level message.");
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("DEBUG level is enabled.");
         }
     }
 
     public void execute() {
-        logger.info("INFO level message.");
-        if (logger.isInfoEnabled()) {
-            logger.info("INFO level enabled.");
+        LOGGER.info("INFO level message.");
+        if (LOGGER.isInfoEnabled()) {
+            LOGGER.info("INFO level is enabled.");
         }
-        logger.warn("WARN level message.");
-        if (logger.isEnabledFor(Level.WARN)) {
-            logger.warn("WARN level enabled.");
+        LOGGER.warn("WARN level message.");
+        if (LOGGER.isEnabledFor(Level.WARN)) {
+            LOGGER.warn("WARN level is enabled.");
         }
-        logger.error("ERROR level message.");
-        if (logger.isEnabledFor(Level.ERROR)) {
-            logger.error("ERROR level enabled.");
+        LOGGER.error("ERROR level message.");
+        if (LOGGER.isEnabledFor(Level.ERROR)) {
+            LOGGER.error("ERROR level is enabled.");
         }
-        logger.fatal("FATAL level message.");
-        if (logger.isEnabledFor(Level.FATAL)) {
-            logger.fatal("FATAL level enabled.");
+        LOGGER.fatal("FATAL level message.");
+        if (LOGGER.isEnabledFor(Level.FATAL)) {
+            LOGGER.fatal("FATAL level is enabled.");
+        }
+        LOGGER.log(Level.OFF, "OFF level message.");
+        if (LOGGER.isEnabledFor(Level.OFF)) {
+            LOGGER.log(Level.OFF, "OFF level is enabled.");
         }
     }
 

@@ -15,9 +15,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for author complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="author">
  *   &lt;complexContent>
@@ -30,13 +30,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "author", propOrder = {
-    "firstName",
-    "lastName"
+        "firstName",
+        "lastName"
 })
 public class Author {
 
@@ -45,11 +43,9 @@ public class Author {
 
     /**
      * Gets the value of the firstName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getFirstName() {
         return firstName;
@@ -57,11 +53,9 @@ public class Author {
 
     /**
      * Sets the value of the firstName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setFirstName(String value) {
         this.firstName = value;
@@ -69,11 +63,9 @@ public class Author {
 
     /**
      * Gets the value of the lastName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getLastName() {
         return lastName;
@@ -81,11 +73,9 @@ public class Author {
 
     /**
      * Sets the value of the lastName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setLastName(String value) {
         this.lastName = value;

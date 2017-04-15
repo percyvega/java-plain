@@ -23,6 +23,7 @@ public class App {
     public static void main(String[] args) {
         logger.debug("RECORD_COUNT: " + RECORD_COUNT);
         logger.debug("SIZE_RANDOM_TEXT: " + SIZE_RANDOM_TEXT);
+
         System.out.println();
         useArray(true);
         System.out.println();

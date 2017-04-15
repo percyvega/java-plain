@@ -17,9 +17,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * <p>Java class for book complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="book">
  *   &lt;complexContent>
@@ -34,15 +34,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "book", propOrder = {
-    "author",
-    "pages",
-    "publicationDate",
-    "title"
+        "author",
+        "pages",
+        "publicationDate",
+        "title"
 })
 public class Book {
 
@@ -54,11 +52,9 @@ public class Book {
 
     /**
      * Gets the value of the author property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Author }
-     *     
+     *
+     * @return possible object is
+     * {@link Author }
      */
     public Author getAuthor() {
         return author;
@@ -66,11 +62,9 @@ public class Book {
 
     /**
      * Sets the value of the author property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Author }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Author }
      */
     public void setAuthor(Author value) {
         this.author = value;
@@ -78,7 +72,6 @@ public class Book {
 
     /**
      * Gets the value of the pages property.
-     * 
      */
     public int getPages() {
         return pages;
@@ -86,7 +79,6 @@ public class Book {
 
     /**
      * Sets the value of the pages property.
-     * 
      */
     public void setPages(int value) {
         this.pages = value;
@@ -94,11 +86,9 @@ public class Book {
 
     /**
      * Gets the value of the publicationDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @return possible object is
+     * {@link XMLGregorianCalendar }
      */
     public XMLGregorianCalendar getPublicationDate() {
         return publicationDate;
@@ -106,11 +96,9 @@ public class Book {
 
     /**
      * Sets the value of the publicationDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link XMLGregorianCalendar }
      */
     public void setPublicationDate(XMLGregorianCalendar value) {
         this.publicationDate = value;
@@ -118,11 +106,9 @@ public class Book {
 
     /**
      * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getTitle() {
         return title;
@@ -130,11 +116,9 @@ public class Book {
 
     /**
      * Sets the value of the title property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setTitle(String value) {
         this.title = value;

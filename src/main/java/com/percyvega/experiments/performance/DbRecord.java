@@ -114,4 +114,22 @@ public class DbRecord {
     public void setNote(String note) {
         this.note = note;
     }
+
+    @Override
+    public String toString() {
+        return "DbRecord{" +
+                "available=" + available +
+                ", address='" + address + '\'' +
+                ", addressLine2='" + addressLine2 + '\'' +
+                ", birthDate=" + birthDate +
+                ", businessName='" + businessName + '\'' +
+                ", city='" + city + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", savingsAmountInCents=" + savingsAmountInCents +
+                ", password='" + password + '\'' +
+//                ", note='" + note + '\'' +
+                '}';
+    }
 }

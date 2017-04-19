@@ -3,7 +3,7 @@ package com.percyvega.experiments.hashcode;
 /**
  * Created by percy on 4/16/2017.
  */
-public class App {
+public class AppHashcode {
 
     public static void main(String[] args) {
         Integer i1 = new Integer(10);

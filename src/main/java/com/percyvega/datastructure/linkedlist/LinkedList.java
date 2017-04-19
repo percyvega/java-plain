@@ -3,48 +3,52 @@ package com.percyvega.datastructure.linkedlist;
 /**
  * Created by percy on 4/16/2017.
  */
-public class LinkedList<T> {
+public class LinkedList<E> {
 
     private int size = 0;
-    private Item head;
-    private Item tail;
+    private Element head;
+    private Element tail;
 
     public int size() {
         return size;
     }
 
-    public void add(T element) {
-        Item<T> newItem = new Item<>(element);
+    public void add(E element) {
+        Element<E> newElement = new Element<>(element);
         if(size == 0) {
-            head = newItem;
-            tail = newItem;
+            head = newElement;
+            tail = newElement;
         } else {
-            tail.next = newItem;
-            tail = newItem;
+            tail.next = newElement;
+            tail = newElement;
         }
 
         size++;
     }
 
-    public T get(int index) {
+    public E get(int index) {
         if(index >= size || index < 0)
             throw new IndexOutOfBoundsException("Index is " + index + " and size is " + size);
 
-        Item<T> item = head;
+        Element<E> element = head;
         for (int i = 0; i < index; i++) {
-            item = item.next;
+            element = element.next;
         }
-        return item.element;
+        return element.value;
     }
-
 }
 
-class Item<T> {
-    Item<T> prev;
-    T element;
-    Item<T> next;
+class Element<E> {
+    Element<E> prev;
+    E value;
+    Element<E> next;
 
-    public Item(T element) {
-        this.element = element;
+    Element(E value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return value.toString();
     }
 }

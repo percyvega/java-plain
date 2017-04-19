@@ -1,7 +1,7 @@
 package com.percyvega.datastructure.linkedlist;
 
 
-public class App {
+public class AppLinkedList {
 
     public static void main(String[] args) {
         LinkedList<Integer> list1 = new LinkedList<>();
@@ -13,7 +13,7 @@ public class App {
         }
 
         for (int i = 0; i < list1.size(); i++) {
-            System.out.println(list1.get(i) + ", " + list2.get(i));
+            System.out.println("List 1 element: " + list1.get(i) + ".\t\tList 2 element: " + list2.get(i));
         }
     }
 

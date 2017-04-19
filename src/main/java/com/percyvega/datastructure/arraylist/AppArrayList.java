@@ -1,7 +1,7 @@
 package com.percyvega.datastructure.arraylist;
 
 
-public class App {
+public class AppArrayList {
 
     public static void main(String[] args) {
         ArrayList<Integer> arrayList1 = new ArrayList<>(2);

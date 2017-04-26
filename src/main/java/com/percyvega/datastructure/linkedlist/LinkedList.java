@@ -6,21 +6,22 @@ package com.percyvega.datastructure.linkedlist;
 public class LinkedList<E> {
 
     private int size = 0;
-    private Element head;
-    private Element tail;
+    private Node head;
+    private Node tail;
 
     public int size() {
         return size;
     }
 
-    public void add(E element) {
-        Element<E> newElement = new Element<>(element);
+    public void add(E value) {
+        Node<E> newNode = new Node<>(value);
         if(size == 0) {
-            head = newElement;
-            tail = newElement;
+            head = newNode;
+            tail = newNode;
         } else {
-            tail.next = newElement;
-            tail = newElement;
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
         }
 
         size++;
@@ -30,20 +31,54 @@ public class LinkedList<E> {
         if(index >= size || index < 0)
             throw new IndexOutOfBoundsException("Index is " + index + " and size is " + size);
 
-        Element<E> element = head;
+        Node<E> node = head;
         for (int i = 0; i < index; i++) {
-            element = element.next;
+            node = node.next;
         }
-        return element.value;
+        return node.value;
+    }
+
+    public E delete(int index) {
+        if(index >= size || index < 0)
+            throw new IndexOutOfBoundsException("Index is " + index + " and size is " + size);
+
+        Node<E> node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+
+        if(node == head)
+            head = node.next;
+        else
+            node.prev.next = node.next;
+
+        if(node == tail)
+            tail = node.prev;
+        else
+            node.next.prev = node.prev;
+
+        size--;
+
+        return node.value;
+    }
+
+    public Node getHead()
+    {
+        return head;
+    }
+
+    public Node getTail()
+    {
+        return tail;
     }
 }
 
-class Element<E> {
-    Element<E> prev;
+class Node<E> {
+    Node<E> prev;
     E value;
-    Element<E> next;
+    Node<E> next;
 
-    Element(E value) {
+    Node(E value) {
         this.value = value;
     }
 

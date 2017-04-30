@@ -1,11 +1,11 @@
 package com.percyvega.datastructure.linkedlist;
 
 
-public class AppLinkedList {
+public class AppDoublyLinkedList {
 
     public static void main(String[] args) {
-        LinkedList<Integer> list1 = new LinkedList<>();
-        LinkedList<String> list2 = new LinkedList<>();
+        DoublyLinkedList<Integer> list1 = new DoublyLinkedList<>();
+        DoublyLinkedList<String> list2 = new DoublyLinkedList<>();
 
         populateList(list1, list2);
 
@@ -42,7 +42,7 @@ public class AppLinkedList {
 
     }
 
-    private static void populateList(LinkedList<Integer> list1, LinkedList<String> list2)
+    private static void populateList(DoublyLinkedList<Integer> list1, DoublyLinkedList<String> list2)
     {
         for (int i = 0; i < 4; i++) {
             list1.add(i);
@@ -50,9 +50,9 @@ public class AppLinkedList {
         }
     }
 
-    private static void printNodes(LinkedList<Integer> listList)
+    private static void printNodes(DoublyLinkedList<Integer> listList)
     {
-        for(Node node = listList.getHead(); node != null; node = node.next)
+        for(DoublyLinkedListNode node = listList.getHead(); node != null; node = node.next)
             System.out.println("node: " + node.value);
     }
 

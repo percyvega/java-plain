@@ -1,7 +1,7 @@
 package com.percyvega.datastructure.hashtable;
 
 
-import com.percyvega.datastructure.linkedlist.LinkedList;
+import com.percyvega.datastructure.linkedlist.DoublyLinkedList;
 
 /**
  * Created by percy on 4/16/2017.
@@ -10,14 +10,14 @@ public class Hashtable<K, V> {
 
     public static int KEY_SET_SIZE = 200;
 
-    private LinkedList<KeyValue>[] hashCodes = new LinkedList[KEY_SET_SIZE];
+    private DoublyLinkedList<KeyValue>[] hashCodes = new DoublyLinkedList[KEY_SET_SIZE];
     private int size = 0;
 
     public void put(K key, V value) {
         int hashTableKey = getHashTableKey(key);
 
         if(hashCodes[hashTableKey] == null) {
-            hashCodes[hashTableKey] = new LinkedList<>();
+            hashCodes[hashTableKey] = new DoublyLinkedList<>();
             size++;
         }
 

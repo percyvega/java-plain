@@ -3,18 +3,18 @@ package com.percyvega.datastructure.linkedlist;
 /**
  * Created by percy on 4/16/2017.
  */
-public class LinkedList<E> {
+public class DoublyLinkedList<E> {
 
     private int size = 0;
-    private Node head;
-    private Node tail;
+    private DoublyLinkedListNode head;
+    private DoublyLinkedListNode tail;
 
     public int size() {
         return size;
     }
 
     public void add(E value) {
-        Node<E> newNode = new Node<>(value);
+        DoublyLinkedListNode<E> newNode = new DoublyLinkedListNode<>(value);
         if(size == 0) {
             head = newNode;
             tail = newNode;
@@ -31,7 +31,7 @@ public class LinkedList<E> {
         if(index >= size || index < 0)
             throw new IndexOutOfBoundsException("Index is " + index + " and size is " + size);
 
-        Node<E> node = head;
+        DoublyLinkedListNode<E> node = head;
         for (int i = 0; i < index; i++) {
             node = node.next;
         }
@@ -42,7 +42,7 @@ public class LinkedList<E> {
         if(index >= size || index < 0)
             throw new IndexOutOfBoundsException("Index is " + index + " and size is " + size);
 
-        Node<E> node = head;
+        DoublyLinkedListNode<E> node = head;
         for (int i = 0; i < index; i++) {
             node = node.next;
         }
@@ -62,23 +62,23 @@ public class LinkedList<E> {
         return node.value;
     }
 
-    public Node getHead()
+    public DoublyLinkedListNode getHead()
     {
         return head;
     }
 
-    public Node getTail()
+    public DoublyLinkedListNode getTail()
     {
         return tail;
     }
 }
 
-class Node<E> {
-    Node<E> prev;
+class DoublyLinkedListNode<E> {
+    DoublyLinkedListNode<E> prev;
     E value;
-    Node<E> next;
+    DoublyLinkedListNode<E> next;
 
-    Node(E value) {
+    DoublyLinkedListNode(E value) {
         this.value = value;
     }
 

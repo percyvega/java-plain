@@ -5,58 +5,59 @@ import org.junit.Test;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class RegEx {
 
     @Test
     public void testThese() {
-        printMatchingResults("abbccc", "c", 3);
-        printMatchingResults("abbccc", "[c]", 3);
+        printMatchingResults("abbc*cc", "c", 3);
+        printMatchingResults("abbc*cc", "[c]", 3);
 
-        printMatchingResults("abbccc", "c?", 7);
-        printMatchingResults("abbccc", "[c]?", 7);
-        printMatchingResults("abbccc", "[c?]", 3);
+        printMatchingResults("abbc*cc", "c?", 8);
+        printMatchingResults("abbc*cc", "[c]?", 8);
+        printMatchingResults("abbc*cc", "[c?]", 3);
 
-        printMatchingResults("abbccc", "c*", 5);
-        printMatchingResults("abbccc", "[c]*", 5);
-        printMatchingResults("abbccc", "[c*]", 3);
+        printMatchingResults("abbc*cc", "c*", 7);
+        printMatchingResults("abbc*cc", "[c]*", 7);
+        printMatchingResults("abbc*cc", "[c*]", 4);
 
-        printMatchingResults("abbccc", "c+", 1);
-        printMatchingResults("abbccc", "[c]+", 1);
-        printMatchingResults("abbccc", "[c+]", 3);
+        printMatchingResults("abbc*cc", "c+", 2);
+        printMatchingResults("abbc*cc", "[c]+", 2);
+        printMatchingResults("abbc*cc", "[c+]", 3);
 
-        printMatchingResults("abbccc", "bc", 1);
-        printMatchingResults("abbccc", "b[c]", 1);
-        printMatchingResults("abbccc", "b[c?]", 1);
-        printMatchingResults("abbccc", "b[c*]", 1);
-        printMatchingResults("abbccc", "b[c+]", 1);
+        printMatchingResults("abbc*cc", "bc", 1);
+        printMatchingResults("abbc*cc", "b[c]", 1);
+        printMatchingResults("abbc*cc", "b[c?]", 1);
+        printMatchingResults("abbc*cc", "b[c*]", 1);
+        printMatchingResults("abbc*cc", "b[c+]", 1);
 
-        printMatchingResults("abbccc", "bc", 1);
-        printMatchingResults("abbccc", "b[c]", 1);
-        printMatchingResults("abbccc", "[bc]", 5);
-        printMatchingResults("abbccc", "[b]c", 1);
+        printMatchingResults("abbc*cc", "bc", 1);
+        printMatchingResults("abbc*cc", "b[c]", 1);
+        printMatchingResults("abbc*cc", "[bc]", 5);
+        printMatchingResults("abbc*cc", "[b]c", 1);
 
-        printMatchingResults("abbccc", "bc?", 2);
-        printMatchingResults("abbccc", "b[c?]", 1);
-        printMatchingResults("abbccc", "[bc?]", 5);
-        printMatchingResults("abbccc", "[b]c?", 2);
+        printMatchingResults("abbc*cc", "bc?", 2);
+        printMatchingResults("abbc*cc", "b[c?]", 1);
+        printMatchingResults("abbc*cc", "[bc?]", 5);
+        printMatchingResults("abbc*cc", "[b]c?", 2);
 
-        printMatchingResults("abbccc", "bc*", 2);
-        printMatchingResults("abbccc", "b[c*]", 1);
-        printMatchingResults("abbccc", "[bc*]", 5);
-        printMatchingResults("abbccc", "[b]c*", 2);
+        printMatchingResults("abbc*cc", "bc*", 2);
+        printMatchingResults("abbc*cc", "b[c*]", 1);
+        printMatchingResults("abbc*cc", "[bc*]", 6);
+        printMatchingResults("abbc*cc", "[b]c*", 2);
 
-        printMatchingResults("abbccc", "bc+", 1);
-        printMatchingResults("abbccc", "b[c+]", 1);
-        printMatchingResults("abbccc", "[bc+]", 5);
-        printMatchingResults("abbccc", "[b]c+", 1);
+        printMatchingResults("abbc*cc", "bc+", 1);
+        printMatchingResults("abbc*cc", "b[c+]", 1);
+        printMatchingResults("abbc*cc", "[bc+]", 5);
+        printMatchingResults("abbc*cc", "[b]c+", 1);
 
         printMatchingResults("8-7 0-9", "0-9", 1);
         printMatchingResults("5 of them (2 hidden).", "0-9", 0);
 
         printMatchingResults("5 of them (2 hidden).", "[0-9]", 2);
 
+        printMatchingResults("5 of them (2 hidden).", "[4-52-5]", 2);
         printMatchingResults("5 of them (2 hidden).", "[4-5&&2-5]", 1);
         printMatchingResults("5 of them (2 hidden).", "[4-5&&[2-5]]", 1);
         printMatchingResults("5 of them (2 hidden).", "[4-5]&&[2-5]", 0);
@@ -94,7 +95,9 @@ public class RegEx {
         printMatchingResults("array[5][35]", "\\Q[35]\\E", 1);
         printMatchingResults("array[5][35]", "\\[35\\]", 1);
 
+        printMatchingResults("\t\n\r\f ", "\\s", 5);
         printMatchingResults("\t\n\r\f ", "[\\s]", 5);
+        printMatchingResults("\t\n\r\f ", "\\t", 1);
         printMatchingResults("\t\n\r\f ", "[\\t]", 1);
 
         printMatchingResults(" _abc_012_ABC_ ", "[\\w]", 13);
@@ -103,6 +106,30 @@ public class RegEx {
         printMatchingResults(" _abc_012_ABC_ ", "[\\S]", 13);
         printMatchingResults(" _abc_012_ABC_ ", "[\\d]", 3);
         printMatchingResults(" _abc_012_ABC_ ", "[\\D]", 12);
+
+        printMatchingResults("Pablito clavó un clavito", "ito", 2);
+        printMatchingResults("Pablito clavó un clavito", "(ito)", 2);
+        printMatchingResults("Pablito clavó un clavito", "[ito]", 6);
+        printMatchingResults("Pablito clavó un clavito", "(l|v)ito", 2);
+        printMatchingResults("Pablito clavó un clavito", "[lv]ito", 2);
+        printMatchingResults("Pablito clavó un clavito", "clavó|clavi", 2);
+
+        printMatchingResults("Pablito clavó un clavito, y un clavito clavó Pablito.", "clavi?", 4);
+        printMatchingResults("Pablito clavó un clavito, y un clavito clavó Pablito.", "clav(i)?", 4);
+        printMatchingResults("Pablito clavó un clavito, y un clavito clavó Pablito.", "(clavi)?", 46);
+        printMatchingResults("Pablito clavó un clavito, y un clavito clavó Pablito.", "clavi*", 4);
+        printMatchingResults("Pablito clavó un clavito, y un clavito clavó Pablito.", "clav(i)*", 4);
+        printMatchingResults("Pablito clavó un clavito, y un clavito clavó Pablito.", "(clavi)*", 46);
+        printMatchingResults("Pablito clavó un clavito, y un clavito clavó Pablito.", "clavi+", 2);
+        printMatchingResults("Pablito clavó un clavito, y un clavito clavó Pablito.", "clav(i)+", 2);
+        printMatchingResults("Pablito clavó un clavito, y un clavito clavó Pablito.", "(clavi)+", 2);
+
+        printMatchingResults("run run", "run{2}", 0);
+        printMatchingResults("runrun", "run{2}", 0);
+        printMatchingResults("runrun", "(run){2}", 1);
+        printMatchingResults("running", "run{2}", 1);
+
+
     }
 
     private void printMatchingResults(String input, String regex, int countGroups) {

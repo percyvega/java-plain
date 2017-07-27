@@ -165,6 +165,8 @@ public class RegExTest {
         assertFoundCount("She said YES!", "SAID (?i)yes", 0);
         assertFoundCount("She said YES!", "(?i)SAID yes", 1);
         assertFoundCount("She said YES!", "(?i)SAID (?-i)yes", 0);
+
+        assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "(?i)(un ((clav)ito))", 3);
     }
 
     @Test
@@ -176,6 +178,7 @@ public class RegExTest {
 
     @Test
     public void matches() {
+        // matches means that it matches exactly, unlike find()
         assertMatches("Run Forest, run!", "run", false);
         assertMatches("Run Forest, run!", "((Run)(\\s\\w+), run!)", true);
     }
@@ -196,67 +199,82 @@ public class RegExTest {
         assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "un (clav)ito", 1);
         assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "un ((clav)ito)", 2);
         assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "(un ((clav)ito))", 3);
-        assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "(?i)(un ((clav)ito))", 3);
-    }
 
-    @Test
-    public void capturingGroups2() {
-        assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "((clav[^ó])|(clav[ó]))", 3, false);
-        assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "((?<diminutivo>clav[^ó])|(?<pasado>clav[ó]))", 3, true);
+        assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "((clav[^ó])|(clav[ó]))", 3);
     }
 
     @Test
     public void backreferences() {
         assertFoundCount("Mama said to papa, I looooove you", "[a-z][a-z]\\1", 0);
         assertFoundCount("Mama said to papa, I looooove you", "([a-z][a-z])\\1", 2);
-        assertFoundCount("Mama said to papa, I looooove you", "((?i)[a-z][a-z])\\1", 2);
+        assertFoundCount("Mama said to papa, I looooove you", "(?i)[a-z][a-z]\\1", 2);
         assertFoundCount("Mama said to papa, I looooove you", "(?i)([a-z][a-z])\\1", 3);
         assertFoundCount("Mama said to papa, I looooove you", "(?i)([a-z][a-z])\\1", 3);
         assertFoundCount("Mama said to papa, I loooooooove you", "(?i)([a-z][a-z])\\1", 4);
 
         assertFoundCount("I want to go to Serres (Greece) by noon", "([a-z])([a-z])\\2\\1", 2);
-        assertFoundCount("I want to go to Serres (Greece) by noon", "(?<letter1>[a-z])(?<letter2>[a-z])\\k<letter2>\\k<letter1>", 2);
 
         assertFoundCount("<html><body>Hello World!</body></html>", "<(\\w+)>.*</\\1>", 1);
         assertFoundCount("<head><body>Hello World!</body></html>", "<(\\w+)>.*</\\1>", 1);
     }
 
     @Test
-    public void nonCapturingGroups() {
-        // capturing
-        assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "un clavito", 0);
-        assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "un (clav)ito", 1);
-        assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "un (clavito)", 1);
-        assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "(un clavito)", 1);
+    public void namedCapturingGroups() {
+        assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "((?<diminutivo>clav[^ó])|(?<pasado>clav[ó]))", 3, true);
+        //backreference
+        assertFoundCount("I want to go to Serres (Greece) by noon", "(?<letter1>[a-z])(?<letter2>[a-z])\\k<letter2>\\k<letter1>", 2);
+    }
 
-        // non-capturing
+    @Test
+    public void nonCapturingGroups() {
         assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "un clavito", 0);
         assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "un (?:clav)ito", 0);
         assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "un (?:clavito)", 0);
         assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "(?:un clavito)", 0);
+        assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "(?:)(un clavito)", 1);
+        assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "(?:un clavito)(otro)", 1);
     }
 
     @Test
     public void greedyQuantifiers() {
-        assertFoundCount("My name is Bond, James Bond.", "Bond.?", 2);
-        assertFoundCount("My name is Bond, James Bond.", ".?Bond", 2);
-        assertFoundCount("My name is Bond, James Bond.", ".{0,1}Bond", 2);
+        // no quantifier
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond", 3);
 
-        assertFoundCount("My name is Bond, James Bond.", "Bond", 2);
-        assertFoundCount("My name is Bond, James Bond.", "Bond.*", 1);
-        assertFoundCount("My name is Bond, James Bond.", ".*Bond", 1);
-        assertFoundCount("My name is Bond, James Bond.", ".{0,}Bond", 1);
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.?", 3);
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.{0,1}", 3);
+        assertFoundCount("Bond: My name is Bond, James Bond", ".?Bond", 3);
+        assertFoundCount("Bond: My name is Bond, James Bond", ".{0,1}Bond", 3);
 
-        assertFoundCount("My name is Bond, James Bond.", "Bond", 2);
-        assertFoundCount("My name is Bond, James Bond.", "Bond.+", 1);
-        assertFoundCount("My name is Bond, James Bond.", ".+Bond", 1);
-        assertFoundCount("My name is Bond, James Bond.", ".{1,}Bond", 1);
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.*", 1);
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.{0,}", 1);
+        assertFoundCount("Bond: My name is Bond, James Bond", ".*Bond", 1);
+        assertFoundCount("Bond: My name is Bond, James Bond", ".{0,}Bond", 1);
 
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.+", 1);
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.{1,}", 1);
+        assertFoundCount("Bond: My name is Bond, James Bond", ".+Bond", 1);
+        assertFoundCount("Bond: My name is Bond, James Bond", ".{1,}Bond", 1);
     }
 
     @Test
     public void reluctantOrLazyQuantifiers() {
+        // no quantifier
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond", 3);
 
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.??", 3);
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.{0,1}?", 3);
+        assertFoundCount("Bond: My name is Bond, James Bond", ".??Bond", 3);
+        assertFoundCount("Bond: My name is Bond, James Bond", ".{0,1}?Bond", 3);
+
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.*?", 3);
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.{0,}?", 3);
+        assertFoundCount("Bond: My name is Bond, James Bond", ".*?Bond", 3);
+        assertFoundCount("Bond: My name is Bond, James Bond", ".{0,}?Bond", 3);
+
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.+?", 2);
+        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.{1,}?", 2);
+        assertFoundCount("Bond: My name is Bond, James Bond", ".+?Bond", 2);
+        assertFoundCount("Bond: My name is Bond, James Bond", ".{1,}?Bond", 2);
     }
 
     @Test
@@ -270,7 +288,7 @@ public class RegExTest {
 
         // this doesn't make much sense
         while(matcher.find()) {
-            System.out.println("Input \"" + input + "\" and regex \"" + regex + "\" found (at index " + matcher.start() + ") " + matcher.group());
+            System.out.println("Input \"" + input + "\" and regex \"" + regex + "\" found (at index " + matcher.start() + ") the following: \"" + matcher.group() + "\"");
 
             for (int i = 0; i < matcher.groupCount(); i++) {
                 System.out.println("group(" + i + "): " + matcher.group(i));
@@ -318,7 +336,7 @@ public class RegExTest {
 
         int groupCounter = 0;
         while(matcher.find()) {
-            System.out.println("Input \"" + input + "\" and regex \"" + regex + "\" found (at index " + matcher.start() + ") " + matcher.group());
+            System.out.println("Input \"" + input + "\" and regex \"" + regex + "\" found (at index " + matcher.start() + ") the following: \"" + matcher.group() + "\"");
             groupCounter++;
         }
 

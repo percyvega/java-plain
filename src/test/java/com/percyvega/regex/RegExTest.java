@@ -205,9 +205,9 @@ public class RegExTest {
 
     @Test
     public void backreferences() {
+        assertFoundCount("Mama said to papa, I looooove you", "[a-z]\\1", 0);
         assertFoundCount("Mama said to papa, I looooove you", "[a-z][a-z]\\1", 0);
         assertFoundCount("Mama said to papa, I looooove you", "([a-z][a-z])\\1", 2);
-        assertFoundCount("Mama said to papa, I looooove you", "(?i)[a-z][a-z]\\1", 2);
         assertFoundCount("Mama said to papa, I looooove you", "(?i)([a-z][a-z])\\1", 3);
         assertFoundCount("Mama said to papa, I looooove you", "(?i)([a-z][a-z])\\1", 3);
         assertFoundCount("Mama said to papa, I loooooooove you", "(?i)([a-z][a-z])\\1", 4);

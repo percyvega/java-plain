@@ -57,7 +57,7 @@ public class RegExTest {
     }
 
     @Test
-    public void verboseQuantifiers() {
+    public void numericQuantifiers() {
         assertFoundCount("run run", "run{2}", 0);
         assertFoundCount("runrun", "run{2}", 0);
         assertFoundCount("runrun", "(run){2}", 1);
@@ -72,6 +72,11 @@ public class RegExTest {
         assertFoundCount("mamama", "(ma){2,}", 1);
         assertFoundCount("mamama mama", "(ma){3,}", 1);
         assertFoundCount("mamama mama", "(ma){1,2}", 3);
+    }
+
+    @Test
+    public void negation() {
+        // TODO
     }
 
     @Test
@@ -238,48 +243,69 @@ public class RegExTest {
     @Test
     public void greedyQuantifiers() {
         // no quantifier
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond", 3);
 
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.?", 3);
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.{0,1}", 3);
-        assertFoundCount("Bond: My name is Bond, James Bond", ".?Bond", 3);
-        assertFoundCount("Bond: My name is Bond, James Bond", ".{0,1}Bond", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.?", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.{0,1}", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".?Bond", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".{0,1}Bond", 3);
 
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.*", 1);
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.{0,}", 1);
-        assertFoundCount("Bond: My name is Bond, James Bond", ".*Bond", 1);
-        assertFoundCount("Bond: My name is Bond, James Bond", ".{0,}Bond", 1);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.*", 1);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.{0,}", 1);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".*Bond", 1);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".{0,}Bond", 1);
 
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.+", 1);
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.{1,}", 1);
-        assertFoundCount("Bond: My name is Bond, James Bond", ".+Bond", 1);
-        assertFoundCount("Bond: My name is Bond, James Bond", ".{1,}Bond", 1);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.+", 1);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.{1,}", 1);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".+Bond", 1);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".{1,}Bond", 1);
     }
 
     @Test
     public void reluctantOrLazyQuantifiers() {
         // no quantifier
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond", 3);
 
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.??", 3);
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.{0,1}?", 3);
-        assertFoundCount("Bond: My name is Bond, James Bond", ".??Bond", 3);
-        assertFoundCount("Bond: My name is Bond, James Bond", ".{0,1}?Bond", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.??", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.{0,1}?", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".??Bond", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".{0,1}?Bond", 3);
 
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.*?", 3);
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.{0,}?", 3);
-        assertFoundCount("Bond: My name is Bond, James Bond", ".*?Bond", 3);
-        assertFoundCount("Bond: My name is Bond, James Bond", ".{0,}?Bond", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.*?", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.{0,}?", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".*?Bond", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".{0,}?Bond", 3);
 
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.+?", 2);
-        assertFoundCount("Bond: My name is Bond, James Bond", "Bond.{1,}?", 2);
-        assertFoundCount("Bond: My name is Bond, James Bond", ".+?Bond", 2);
-        assertFoundCount("Bond: My name is Bond, James Bond", ".{1,}?Bond", 2);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.+?", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.{1,}?", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".+?Bond", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".{1,}?Bond", 3);
     }
 
     @Test
     public void possessiveQuantifiers() {
+        // no quantifier
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond", 3);
 
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.?+", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.{0,1}+", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".?+Bond", 3);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".{0,1}+Bond", 3);
+
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.*+", 1);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.{0,}+", 1);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".*+Bond", 0);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".{0,}+Bond", 0);
+
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.++", 1);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", "Bond.{1,}+", 1);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".++Bond", 0);
+        assertFoundCount("And Bond says: My name is Bond, James Bond. And then shoots.", ".{1,}+Bond", 0);
+    }
+
+    @Test
+    public void boundaries() {
+        // TODO
     }
 
     private void assertCapturingGroupCount(String input, String regex, int groupCount, boolean printCapturingGroupNames) {

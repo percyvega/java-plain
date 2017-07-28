@@ -7,6 +7,8 @@ public class Log4jTest {
 
     private static final Logger LOGGER = Logger.getLogger(Log4jTest.class);
 
+    private static final long SLEEP_FOR = 5_000L;
+
     public static void main(String[] args) {
         Log4jTest console = new Log4jTest();
 
@@ -14,7 +16,7 @@ public class Log4jTest {
             while (true) {
                 console.execute();
                 try {
-                    Thread.sleep(10_000l);
+                    Thread.sleep(SLEEP_FOR);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

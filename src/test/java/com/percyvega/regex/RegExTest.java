@@ -10,6 +10,59 @@ import static org.assertj.core.api.Assertions.*;
 public class RegExTest {
 
     @Test
+    public void predefinedConstructs() {
+        // any character
+        assertMatches("aa11@@  \\t\\n", ".*", true);
+
+        // any digit
+        assertMatches("0011", "\\d*", true);
+        assertMatches("aa11", "\\d*", false);
+
+        // any non-digit
+        assertMatches("aa  @@\t\n", "\\D*", true);
+        assertMatches("aa11@@\t\n", "\\D*", false);
+
+        // any whitespace character
+        assertMatches("\t\n\f\r  ", "\\s*", true);
+        assertMatches("aa11@@\t\n", "\\s*", false);
+
+        // any non-whitespace character
+        assertMatches("aa11@@", "\\S*", true);
+        assertMatches("aa11@@  ", "\\S*", false);
+
+        // any word (alphanumeric) character
+        assertMatches("aa11", "\\w*", true);
+        assertMatches("aa11  ", "\\w*", false);
+
+        // any non-word (alphanumeric) character
+        assertMatches("\t\n  @#", "\\W*", true);
+        assertMatches("00\t\n  @#", "\\W*", false);
+    }
+
+    @Test
+    public void escapeCharacters() {
+        // \.[]{}()*+-?^$|
+        assertMatches("\\", "\\\\", true);
+        assertMatches(".", "\\.", true);
+        assertMatches("[", "\\[", true);
+        assertMatches("]", "\\]", true);
+        assertMatches("{", "\\{", true);
+        assertMatches("}", "\\}", true);
+        assertMatches("(", "\\(", true);
+        assertMatches(")", "\\)", true);
+        assertMatches("*", "\\*", true);
+        assertMatches("+", "\\+", true);
+        assertMatches("-", "\\-", true);
+        assertMatches("?", "\\?", true);
+        assertMatches("^", "\\^", true);
+        assertMatches("$", "\\$", true);
+        assertMatches("|", "\\|", true);
+
+        assertMatches("\\", "\\Q\\\\E", true);
+        assertMatches(".", "\\Q.\\E", true);
+    }
+
+    @Test
     public void characters() {
         assertFoundCount("abbc*cc", "c", 3);
         assertFoundCount("abbc*cc", "[c]", 3);
@@ -76,7 +129,44 @@ public class RegExTest {
 
     @Test
     public void negation() {
-        // TODO
+        assertMatches("aa  @@\t\n", "[^0-9]*", true);
+        assertMatches("aa11@@", "[^\\s]*", true);
+        assertMatches("\t\n  @#", "[^a-zA-Z0-9]*", true);
+
+        String regex;
+
+        // no mouse
+        regex = "^(?!.*mouse).*$";
+        assertFoundCount("cat", regex, 1);
+        assertFoundCount("mouse", regex, 0);
+        assertFoundCount("mouse and a dog", regex, 0);
+        assertFoundCount("dog", regex, 1);
+        assertFoundCount("dog, a cat", regex, 1);
+        assertFoundCount("dog, a mouse", regex, 0);
+        assertFoundCount("dog, a cat and a mouse", regex, 0);
+        assertFoundCount("dog, a mouse and a cat", regex, 0);
+
+        // neither a cat nor a mouse
+        regex = "^(?!.*(cat|mouse)).*$";
+        assertFoundCount("cat", regex, 0);
+        assertFoundCount("mouse", regex, 0);
+        assertFoundCount("mouse and a dog", regex, 0);
+        assertFoundCount("dog", regex, 1);
+        assertFoundCount("dog, a cat", regex, 0);
+        assertFoundCount("dog, a mouse", regex, 0);
+        assertFoundCount("dog, a cat and a mouse", regex, 0);
+        assertFoundCount("dog, a mouse and a cat", regex, 0);
+
+        // no cat AND yes mouse
+        regex = "^(?!.*cat.*)(.*mouse.*)$";
+        assertFoundCount("cat", regex, 0);
+        assertFoundCount("mouse", regex, 1);
+        assertFoundCount("mouse and a dog", regex, 1);
+        assertFoundCount("dog", regex, 0);
+        assertFoundCount("dog, a cat", regex, 0);
+        assertFoundCount("dog, a mouse", regex, 1);
+        assertFoundCount("dog, a cat and a mouse", regex, 0);
+        assertFoundCount("dog, a mouse and a cat", regex, 0);
     }
 
     @Test
@@ -172,13 +262,6 @@ public class RegExTest {
         assertFoundCount("She said YES!", "(?i)SAID (?-i)yes", 0);
 
         assertCapturingGroupCount("Pablito clavó un clavito, y un clavito clavó Pablito.", "(?i)(un ((clav)ito))", 3);
-    }
-
-    @Test
-    public void beginningEnd() {
-        assertFoundCount("run run", "run", 2);
-        assertFoundCount("run run", "^run", 1);
-        assertFoundCount("run run", "run$", 1);
     }
 
     @Test
@@ -305,7 +388,12 @@ public class RegExTest {
 
     @Test
     public void boundaries() {
-        // TODO
+        assertFoundCount("Walk, don't run", "run", 1);
+        assertFoundCount("Walk, don't run", "^Walk", 1);
+        assertFoundCount("Walk, don't run", "run$", 1);
+
+        assertMatches("Walk, don't run", "W.*run", true);
+        assertMatches("Walk, don't run", "^W.*run$", true);
     }
 
     private void assertCapturingGroupCount(String input, String regex, int groupCount, boolean printCapturingGroupNames) {

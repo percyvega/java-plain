@@ -394,6 +394,11 @@ public class RegExTest {
 
         assertMatches("Walk, don't run", "W.*run", true);
         assertMatches("Walk, don't run", "^W.*run$", true);
+
+        // \\b is the word (alphanumeric) boundary
+        assertFoundCount("he said", "\\bhe\\b", 1);
+        // \\B is the non-word (alphanumeric) boundary
+        assertFoundCount("0he said", "\\Bhe\\b", 1);
     }
 
     private void assertCapturingGroupCount(String input, String regex, int groupCount, boolean printCapturingGroupNames) {

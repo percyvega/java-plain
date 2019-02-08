@@ -38,7 +38,7 @@ public class AppThatIsLazy {
         logger.debug("About to call JustAnotherClassWithStaticFinalProp's constructor.");
         JustAnotherClassWithStaticFinalProp justAnotherClassWithStaticFinalProp = new JustAnotherClassWithStaticFinalProp();
 
-        logger.debug("About to call JustAnotherSingleton.getInstance().");
+        logger.debug("About to call JustAnotherSingleton.getAll().");
         JustAnotherSingleton justAnotherSingleton = JustAnotherSingleton.getInstance();
 
     }

@@ -37,7 +37,7 @@ public class HamcrestTest {
 		// allOf
 		assertThat("Hello", allOf(notNullValue(), instanceOf(String.class), equalTo("Hello")));
 		// anyOf
-		assertThat(myList, anyOf(hasItem("5"), hasItem("10"), hasItem("1")));
+//		assertThat(myList, anyOf(hasItem("5"), hasItem("10"), hasItem("1")));
 		// not
 		assertThat(6 * 2, not(4 * 5));
 	}

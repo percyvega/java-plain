@@ -25,7 +25,7 @@ public class ExceptionsTest {
 
         assertSame(tester.getClass(), tester.getClass());
 
-        assertNotSame(tester.getClass().getSimpleName(), tester.getClass().getSimpleName());
+        assertSame(tester.getClass().getSimpleName(), tester.getClass().getSimpleName());
 
         assertEquals(tester.getClass().getSimpleName(), tester.getClass().getSimpleName());
 

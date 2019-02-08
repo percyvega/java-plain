@@ -1,4 +1,4 @@
-package com.percyvega.algorithms;
+package com.percyvega.experiments.hamcrest;
 
 import com.percyvega.datastructure.arraylist.ArrayList;
 

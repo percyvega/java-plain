@@ -2,11 +2,8 @@ package com.percyvega.experiments.collections;
 
 import lombok.extern.log4j.Log4j2;
 
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
-
 @Log4j2
-public abstract class BibleInfo {
+public abstract class BibleCounter {
 
     public static String bookNames[] = new String[]{
             "Genesis",
@@ -304,8 +301,8 @@ public abstract class BibleInfo {
 
     public static final int COUNT_BOOK_OT = 39;
     public static final int COUNT_BOOK_NT = 27;
-    public static final int COUNT_VERSES_OT = BibleInfo.getTotalVerseCountOT();
-    public static final int COUNT_VERSES_NT = BibleInfo.getTotalVerseCountNT();
+    public static final int COUNT_VERSES_OT = BibleCounter.getTotalVerseCountOT();
+    public static final int COUNT_VERSES_NT = BibleCounter.getTotalVerseCountNT();
     public static final int COUNT_VERSES = COUNT_VERSES_OT + COUNT_VERSES_NT;
 
     /**
@@ -368,8 +365,8 @@ public abstract class BibleInfo {
 
         int totalVerses = 0;
         for (int bookNum = fromBook; bookNum <= toBook; bookNum++) {
-            for (int chapterNum = 1; chapterNum <= BibleInfo.getChapterCount(bookNum); chapterNum++) {
-                totalVerses += BibleInfo.getVerseCount(bookNum, chapterNum);
+            for (int chapterNum = 1; chapterNum <= BibleCounter.getChapterCount(bookNum); chapterNum++) {
+                totalVerses += BibleCounter.getVerseCount(bookNum, chapterNum);
             }
         }
         return totalVerses;

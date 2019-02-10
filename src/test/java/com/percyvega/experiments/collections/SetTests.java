@@ -13,6 +13,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Log4j2
 public class SetTests {
 
+    private static final BibleReference GENESIS_1_1 = new BibleReference("Genesis", 1, 1);
+    private static final BibleReference EXODUS_1_1 = new BibleReference("Exodus", 1, 1);
+    private static final BibleReference LEVITICUS_1_1 = new BibleReference("Leviticus", 1, 1);
+    private static final BibleReference NUMBERS_1_1 = new BibleReference("Numbers", 1, 1);
+    private static final BibleReference DEUTERONOMY_1_1 = new BibleReference("Deuteronomy", 1, 1);
+    private static final BibleReference REVELATION_22_21 = new BibleReference("Revelation", 22, 21);
+
+    @Test
+    public void set_elements() {
+        addElementsAndPrint(new HashSet<>());
+        addElementsAndPrint(new LinkedHashSet<>());
+        addElementsAndPrint(new TreeSet<>());
+    }
+
+    private void addElementsAndPrint(Set<BibleReference> set) {
+        set.add(GENESIS_1_1);
+        set.add(EXODUS_1_1);
+        set.add(LEVITICUS_1_1);
+        set.add(NUMBERS_1_1);
+        set.add(DEUTERONOMY_1_1);
+        set.add(REVELATION_22_21);
+
+        log.info("{} Printing {} {}", "***********", set.getClass().getSimpleName(), "***********");
+        set.forEach((e) -> log.info(e.getFullName()));
+    }
+
     @Test
     public void set_operations() {
         Set<Integer> ages = new HashSet<>();
@@ -27,45 +53,71 @@ public class SetTests {
     }
 
     @Test
-    public void test_hashSet() {
-        Set<String> booksHashSet = Arrays.stream(BibleReferences.getAll()).map(BibleReference::getBook).collect(Collectors.toCollection(HashSet::new));
+    public void test_hashSet_is_unordered() {
+        Set<String> booksHashSet = Arrays
+                .stream(BibleReferences.getAll())
+                .map(BibleReference::getBook)
+                .collect(Collectors.toCollection(HashSet::new));
 
         booksHashSet.forEach(log::info);
 
-        assertThat(booksHashSet.size()).isEqualTo(BibleInfo.getBookCount());
+        assertThat(booksHashSet.size()).isEqualTo(BibleCounter.getBookCount());
     }
 
     @Test
     public void test_hashSet_find() {
-        Set<String> fullNamesHashSet = Arrays.stream(BibleReferences.getAll()).map(BibleReference::getFullName).collect(Collectors.toCollection(HashSet::new));
+        Set<String> fullNamesHashSet = Arrays
+                .stream(BibleReferences.getAll())
+                .map(BibleReference::getFullName)
+                .collect(Collectors.toCollection(HashSet::new));
 
-        assertThat(fullNamesHashSet.size()).isEqualTo(BibleInfo.getTotalVerseCount());
+        assertThat(fullNamesHashSet.size()).isEqualTo(BibleCounter.getTotalVerseCount());
 
         LocalTime started = LocalTime.now();
-        assertThat(fullNamesHashSet.contains("Ephesians 2:8")).isTrue();
+        assertThat(fullNamesHashSet.contains(REVELATION_22_21.getFullName())).isTrue();
+        LocalTime finished = LocalTime.now();
+        log.info("hashset.contains finished in {} nanoseconds", ChronoUnit.NANOS.between(started, finished));
+    }
+
+    @Test
+    public void test_hashSet_find_myClass() {
+        Set<BibleReference> hashSet = Arrays
+                .stream(BibleReferences.getAll())
+                .collect(Collectors.toCollection(HashSet::new));
+
+        assertThat(hashSet.size()).isEqualTo(BibleCounter.getTotalVerseCount());
+
+        LocalTime started = LocalTime.now();
+        assertThat(hashSet.contains(REVELATION_22_21)).isTrue();
         LocalTime finished = LocalTime.now();
         log.info("hashset.contains finished in {} nanoseconds", ChronoUnit.NANOS.between(started, finished));
     }
 
     @Test
     public void test_linkedHashSet_is_ordered() {
-        Set<String> booksLinkedHashSet = Arrays.stream(BibleReferences.getAll()).map(BibleReference::getBook).collect(Collectors.toCollection(LinkedHashSet::new));
+        Set<String> booksLinkedHashSet = Arrays
+                .stream(BibleReferences.getAll())
+                .map(BibleReference::getBook)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
 
         booksLinkedHashSet.forEach(log::info);
 
-        assertThat(booksLinkedHashSet.toArray()[0]).isEqualTo(BibleInfo.bookNames[0]);
+        assertThat(booksLinkedHashSet.toArray()[0]).isEqualTo(BibleCounter.bookNames[0]);
     }
 
     @Test
     public void test_linkedHashSet_adding_an_existing_element_does_not_change_its_location() {
-        Set<String> booksLinkedHashSet = Arrays.stream(BibleReferences.getAll()).map(BibleReference::getBook).collect(Collectors.toCollection(LinkedHashSet::new));
+        Set<String> booksLinkedHashSet = Arrays
+                .stream(BibleReferences.getAll())
+                .map(BibleReference::getBook)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
 
         booksLinkedHashSet.forEach(log::info);
 
-        assertThat(booksLinkedHashSet.size()).isEqualTo(BibleInfo.getBookCount());
+        assertThat(booksLinkedHashSet.size()).isEqualTo(BibleCounter.getBookCount());
 
         Object[] booksBeforeInsertion = booksLinkedHashSet.toArray();
-        booksLinkedHashSet.add(BibleInfo.bookNames[1]); // Exodus
+        booksLinkedHashSet.add(BibleCounter.bookNames[1]); // Exodus
         Object[] booksAfterInsertion = booksLinkedHashSet.toArray();
 
         assertThat(booksBeforeInsertion).isEqualTo(booksAfterInsertion);
@@ -73,19 +125,39 @@ public class SetTests {
 
     @Test
     public void test_linkedHashSet_find() {
-        Set<String> fullNamesLinkedHashSet = Arrays.stream(BibleReferences.getAll()).map(BibleReference::getFullName).collect(Collectors.toCollection(LinkedHashSet::new));
+        Set<String> fullNamesLinkedHashSet = Arrays
+                .stream(BibleReferences.getAll())
+                .map(BibleReference::getFullName)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
 
-        assertThat(fullNamesLinkedHashSet.size()).isEqualTo(BibleInfo.getTotalVerseCount());
+        assertThat(fullNamesLinkedHashSet.size()).isEqualTo(BibleCounter.getTotalVerseCount());
 
         LocalTime started = LocalTime.now();
-        assertThat(fullNamesLinkedHashSet.contains("Ephesians 2:8")).isTrue();
+        assertThat(fullNamesLinkedHashSet.contains(REVELATION_22_21.getFullName())).isTrue();
+        LocalTime finished = LocalTime.now();
+        log.info("linkedhashset.contains finished in {} nanoseconds", ChronoUnit.NANOS.between(started, finished));
+    }
+
+    @Test
+    public void test_linkedHashSet_find_myClass() {
+        Set<BibleReference> linkedHashSet = Arrays
+                .stream(BibleReferences.getAll())
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+
+        assertThat(linkedHashSet.size()).isEqualTo(BibleCounter.getTotalVerseCount());
+
+        LocalTime started = LocalTime.now();
+        assertThat(linkedHashSet.contains(REVELATION_22_21)).isTrue();
         LocalTime finished = LocalTime.now();
         log.info("linkedhashset.contains finished in {} nanoseconds", ChronoUnit.NANOS.between(started, finished));
     }
 
     @Test
     public void test_treeSet_is_sorted() {
-        Set<String> booksHashSet = Arrays.stream(BibleReferences.getAll()).map(BibleReference::getBook).collect(Collectors.toCollection(HashSet::new));
+        Set<String> booksHashSet = Arrays
+                .stream(BibleReferences.getAll())
+                .map(BibleReference::getBook)
+                .collect(Collectors.toCollection(HashSet::new));
         Set<String> booksTreeSet = new TreeSet<>(booksHashSet);
 
         booksTreeSet.forEach(log::info);
@@ -95,12 +167,29 @@ public class SetTests {
 
     @Test
     public void test_treeSet_find() {
-        Set<String> fullNamesHashSet = Arrays.stream(BibleReferences.getAll()).map(BibleReference::getFullName).collect(Collectors.toCollection(HashSet::new));
+        Set<String> fullNamesHashSet = Arrays
+                .stream(BibleReferences.getAll())
+                .map(BibleReference::getFullName)
+                .collect(Collectors.toCollection(HashSet::new));
         Set<String> fullNamesTreeSet = new TreeSet<>(fullNamesHashSet);
 
         LocalTime started = LocalTime.now();
-        assertThat(fullNamesTreeSet.contains("Ephesians 2:8")).isTrue();
+        assertThat(fullNamesTreeSet.contains(REVELATION_22_21.getFullName())).isTrue();
         LocalTime finished = LocalTime.now();
         log.info("treeset.contains finished in {} nanoseconds", ChronoUnit.NANOS.between(started, finished));
+    }
+    @Test
+    public void test_treeSet_find_myClass() {
+        Set<BibleReference> hashSet = Arrays
+                .stream(BibleReferences.getAll())
+                .collect(Collectors.toCollection(HashSet::new));
+        Set<BibleReference> treeSet = new TreeSet<>(hashSet);
+
+        LocalTime started = LocalTime.now();
+        assertThat(treeSet.contains(REVELATION_22_21)).isTrue();
+        LocalTime finished = LocalTime.now();
+        log.info("treeset.contains finished in {} nanoseconds", ChronoUnit.NANOS.between(started, finished));
+
+        treeSet.forEach(log::info);
     }
 }

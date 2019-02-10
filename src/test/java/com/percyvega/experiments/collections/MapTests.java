@@ -16,6 +16,7 @@ public class MapTests {
     private static final BibleReference LEVITICUS_1_1 = new BibleReference("Leviticus", 1, 1);
     private static final BibleReference NUMBERS_1_1 = new BibleReference("Numbers", 1, 1);
     private static final BibleReference DEUTERONOMY_1_1 = new BibleReference("Deuteronomy", 1, 1);
+    private static final BibleReference REVELATION_1_1 = new BibleReference("Revelation", 1, 1);
     private static final BibleReference REVELATION_22_21 = new BibleReference("Revelation", 22, 21);
 
     @Test
@@ -23,6 +24,7 @@ public class MapTests {
         addElementsAndPrint(new HashMap<>());
         addElementsAndPrint(new LinkedHashMap<>());
         addElementsAndPrint(new TreeMap<>());
+        addElementsAndPrint(new Hashtable<>());
     }
 
     private void addElementsAndPrint(Map<BibleReference, BibleReference> map) {
@@ -31,6 +33,7 @@ public class MapTests {
         map.put(LEVITICUS_1_1, LEVITICUS_1_1);
         map.put(NUMBERS_1_1, NUMBERS_1_1);
         map.put(DEUTERONOMY_1_1, DEUTERONOMY_1_1);
+        map.put(REVELATION_1_1, REVELATION_1_1);
         map.put(REVELATION_22_21, REVELATION_22_21);
 
         log.info("{} Printing {} {}", "***********", map.getClass().getSimpleName(), "***********");
@@ -74,7 +77,7 @@ public class MapTests {
                 .stream(BibleCounter.bookNames)
                 .collect(
                         LinkedHashMap::new,
-                        (map, b) -> map.put(b, b),
+                        (map, e) -> map.put(e, e),
                         Map::putAll);
 
         bookReference.forEach(log::info);
@@ -100,4 +103,80 @@ public class MapTests {
 
         assertThat(bookReference.keySet().toArray()[bookReference.size() - 1]).isEqualTo("Zephaniah");
     }
+
+    @Test
+    public void test_hashtable_with_string_key() {
+        Map<String, BibleReference> bookBibleReference = new Hashtable<>();
+        bookBibleReference.put(GENESIS_1_1.getBook(), GENESIS_1_1);
+        bookBibleReference.put(EXODUS_1_1.getBook(), EXODUS_1_1);
+        bookBibleReference.put(LEVITICUS_1_1.getBook(), LEVITICUS_1_1);
+        bookBibleReference.put(NUMBERS_1_1.getBook(), NUMBERS_1_1);
+        bookBibleReference.put(DEUTERONOMY_1_1.getBook(), DEUTERONOMY_1_1);
+        bookBibleReference.put(REVELATION_1_1.getBook(), REVELATION_1_1);
+        bookBibleReference.put(REVELATION_22_21.getBook(), REVELATION_22_21);
+
+        System.out.println();
+
+        log.info("Size: {}", bookBibleReference.size());
+
+        System.out.println();
+
+        bookBibleReference.forEach((k, v) -> log.info("Key: {} and Value: {}", k, v));
+
+        System.out.println();
+
+        log.info(((Hashtable<String, BibleReference>) bookBibleReference).contains(REVELATION_1_1));
+
+        System.out.println();
+
+        log.info(((Hashtable<String, BibleReference>) bookBibleReference).contains(REVELATION_22_21));
+    }
+
+    @Test
+    public void test_hashtable_with_bibleReference_key() {
+        Map<BibleReference, BibleReference> hashtable = new Hashtable<>();
+        hashtable.put(GENESIS_1_1, GENESIS_1_1);
+        hashtable.put(EXODUS_1_1, EXODUS_1_1);
+        hashtable.put(LEVITICUS_1_1, LEVITICUS_1_1);
+        hashtable.put(NUMBERS_1_1, NUMBERS_1_1);
+        hashtable.put(DEUTERONOMY_1_1, DEUTERONOMY_1_1);
+        hashtable.put(REVELATION_1_1, REVELATION_1_1);
+        hashtable.put(REVELATION_22_21, REVELATION_22_21);
+
+        System.out.println();
+
+        log.info("Size: {}", hashtable.size());
+
+        System.out.println();
+
+        hashtable.forEach((k, v) -> log.info("Key: {} and Value: {}", k, v));
+
+        System.out.println();
+
+        log.info(((Hashtable<BibleReference, BibleReference>) hashtable).contains(REVELATION_1_1));
+
+        System.out.println();
+
+        log.info(((Hashtable<BibleReference, BibleReference>) hashtable).contains(REVELATION_22_21));
+    }
+
+    @Test
+    public void test_hashtable_with_bibleReferences() {
+        Map<BibleReference, BibleReference> hashtable = Arrays
+                .stream(BibleReferences.getAll())
+                .collect(Hashtable::new,
+                        (map, e) -> map.put(e, e),
+                        Hashtable::putAll);
+
+        log.info("Size: {}", hashtable.size());
+
+        System.out.println();
+
+        log.info(((Hashtable<BibleReference, BibleReference>) hashtable).contains(REVELATION_1_1));
+
+        System.out.println();
+
+        log.info(((Hashtable<BibleReference, BibleReference>) hashtable).contains(REVELATION_22_21));
+    }
+
 }

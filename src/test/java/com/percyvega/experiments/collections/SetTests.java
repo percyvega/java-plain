@@ -18,6 +18,7 @@ public class SetTests {
     private static final BibleReference LEVITICUS_1_1 = new BibleReference("Leviticus", 1, 1);
     private static final BibleReference NUMBERS_1_1 = new BibleReference("Numbers", 1, 1);
     private static final BibleReference DEUTERONOMY_1_1 = new BibleReference("Deuteronomy", 1, 1);
+    private static final BibleReference REVELATION_1_1 = new BibleReference("Revelation", 1, 1);
     private static final BibleReference REVELATION_22_21 = new BibleReference("Revelation", 22, 21);
 
     @Test
@@ -176,8 +177,9 @@ public class SetTests {
         LocalTime started = LocalTime.now();
         assertThat(fullNamesTreeSet.contains(REVELATION_22_21.getFullName())).isTrue();
         LocalTime finished = LocalTime.now();
-        log.info("treeset.contains finished in {} nanoseconds", ChronoUnit.NANOS.between(started, finished));
+        log.info("treeSet.contains finished in {} nanoseconds", ChronoUnit.NANOS.between(started, finished));
     }
+
     @Test
     public void test_treeSet_find_myClass() {
         Set<BibleReference> hashSet = Arrays
@@ -188,8 +190,6 @@ public class SetTests {
         LocalTime started = LocalTime.now();
         assertThat(treeSet.contains(REVELATION_22_21)).isTrue();
         LocalTime finished = LocalTime.now();
-        log.info("treeset.contains finished in {} nanoseconds", ChronoUnit.NANOS.between(started, finished));
-
-        treeSet.forEach(log::info);
+        log.info("treeSet.contains finished in {} nanoseconds", ChronoUnit.NANOS.between(started, finished));
     }
 }

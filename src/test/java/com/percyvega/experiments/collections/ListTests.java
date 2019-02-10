@@ -3,27 +3,23 @@ package com.percyvega.experiments.collections;
 import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 public class ListTests {
 
-    @Test
-    public void useLists() {
-        List<String> places1 = Arrays.asList("Buenos Aires", "Córdoba"); // unmutable list
-        ArrayList<String> places2 = new ArrayList<>(Arrays.asList("Bariloche", "La Plata"));
-
-        log.debug("********** Lists { **********");
-        // places1.add("Mendoza"); throws exception for trying to add an item to an unmutable list
-        for (String aPlaces1 : places1)
-            log.debug(aPlaces1);
-
-        places2.add("Mar de Plata");
-        for (String place : places2)
-            log.debug(place);
-        log.debug("********** } Lists **********");
-    }
+    private static final BibleReference GENESIS_1_1 = new BibleReference("Genesis", 1, 1);
+    private static final BibleReference EXODUS_1_1 = new BibleReference("Exodus", 1, 1);
+    private static final BibleReference LEVITICUS_1_1 = new BibleReference("Leviticus", 1, 1);
+    private static final BibleReference NUMBERS_1_1 = new BibleReference("Numbers", 1, 1);
+    private static final BibleReference DEUTERONOMY_1_1 = new BibleReference("Deuteronomy", 1, 1);
+    private static final BibleReference REVELATION_1_1 = new BibleReference("Revelation", 1, 1);
+    private static final BibleReference REVELATION_22_21 = new BibleReference("Revelation", 22, 21);
 
 }

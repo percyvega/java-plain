@@ -35,13 +35,12 @@ public class AnnotationsTest {
         logger.debug("Starting @After");
     }
 
-    @Ignore
-    @Test(timeout = 40000)
+    @Test(timeout = 1000)
     public void ignoredInfiniteLoop() {
         logger.debug("Starting @Ignore @Test(timeout = 4000) ignoredInfiniteLoop()");
 
-        while (true)
-            ;
+//        while (true)
+//            ;
     }
 
     @Test

@@ -9,6 +9,14 @@ import java.util.Objects;
 @Data
 public class BibleReference implements Comparable {
 
+    public static final BibleReference GENESIS_1_1 = new BibleReference("Genesis", 1, 1);
+    public static final BibleReference EXODUS_1_1 = new BibleReference("Exodus", 1, 1);
+    public static final BibleReference LEVITICUS_1_1 = new BibleReference("Leviticus", 1, 1);
+    public static final BibleReference NUMBERS_1_1 = new BibleReference("Numbers", 1, 1);
+    public static final BibleReference DEUTERONOMY_1_1 = new BibleReference("Deuteronomy", 1, 1);
+    public static final BibleReference REVELATION_1_1 = new BibleReference("Revelation", 1, 1);
+    public static final BibleReference REVELATION_22_21 = new BibleReference("Revelation", 22, 21);
+
     private static final String SPACE = " ";
     private static final String COLON = ":";
 

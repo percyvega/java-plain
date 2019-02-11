@@ -8,18 +8,11 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.percyvega.experiments.collections.BibleReference.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 public class SetTests {
-
-    private static final BibleReference GENESIS_1_1 = new BibleReference("Genesis", 1, 1);
-    private static final BibleReference EXODUS_1_1 = new BibleReference("Exodus", 1, 1);
-    private static final BibleReference LEVITICUS_1_1 = new BibleReference("Leviticus", 1, 1);
-    private static final BibleReference NUMBERS_1_1 = new BibleReference("Numbers", 1, 1);
-    private static final BibleReference DEUTERONOMY_1_1 = new BibleReference("Deuteronomy", 1, 1);
-    private static final BibleReference REVELATION_1_1 = new BibleReference("Revelation", 1, 1);
-    private static final BibleReference REVELATION_22_21 = new BibleReference("Revelation", 22, 21);
 
     @Test
     public void set_elements() {
@@ -34,6 +27,7 @@ public class SetTests {
         set.add(LEVITICUS_1_1);
         set.add(NUMBERS_1_1);
         set.add(DEUTERONOMY_1_1);
+        set.add(REVELATION_1_1);
         set.add(REVELATION_22_21);
 
         log.info("{} Printing {} {}", "***********", set.getClass().getSimpleName(), "***********");

@@ -6,18 +6,11 @@ import org.junit.Test;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.percyvega.experiments.collections.BibleReference.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 public class MapTests {
-
-    private static final BibleReference GENESIS_1_1 = new BibleReference("Genesis", 1, 1);
-    private static final BibleReference EXODUS_1_1 = new BibleReference("Exodus", 1, 1);
-    private static final BibleReference LEVITICUS_1_1 = new BibleReference("Leviticus", 1, 1);
-    private static final BibleReference NUMBERS_1_1 = new BibleReference("Numbers", 1, 1);
-    private static final BibleReference DEUTERONOMY_1_1 = new BibleReference("Deuteronomy", 1, 1);
-    private static final BibleReference REVELATION_1_1 = new BibleReference("Revelation", 1, 1);
-    private static final BibleReference REVELATION_22_21 = new BibleReference("Revelation", 22, 21);
 
     @Test
     public void map_elements() {
@@ -105,31 +98,48 @@ public class MapTests {
     }
 
     @Test
+    public void hashtable_operations() {
+        Map<String, BibleReference> hashtable = new Hashtable<>();
+        hashtable.put(GENESIS_1_1.getBook(), GENESIS_1_1);
+        hashtable.put(EXODUS_1_1.getBook(), EXODUS_1_1);
+        hashtable.put(LEVITICUS_1_1.getBook(), LEVITICUS_1_1);
+        hashtable.put(NUMBERS_1_1.getBook(), NUMBERS_1_1);
+        hashtable.put(DEUTERONOMY_1_1.getBook(), DEUTERONOMY_1_1);
+        hashtable.put(REVELATION_1_1.getBook(), REVELATION_1_1);
+        hashtable.put(REVELATION_22_21.getBook(), REVELATION_22_21);
+
+        log.info(hashtable.get(DEUTERONOMY_1_1.getBook()));
+        log.info(hashtable.remove(DEUTERONOMY_1_1.getBook()));
+
+        hashtable.forEach((k, v) -> log.info("Key: {} and Value: {}", k, v));
+    }
+
+    @Test
     public void test_hashtable_with_string_key() {
-        Map<String, BibleReference> bookBibleReference = new Hashtable<>();
-        bookBibleReference.put(GENESIS_1_1.getBook(), GENESIS_1_1);
-        bookBibleReference.put(EXODUS_1_1.getBook(), EXODUS_1_1);
-        bookBibleReference.put(LEVITICUS_1_1.getBook(), LEVITICUS_1_1);
-        bookBibleReference.put(NUMBERS_1_1.getBook(), NUMBERS_1_1);
-        bookBibleReference.put(DEUTERONOMY_1_1.getBook(), DEUTERONOMY_1_1);
-        bookBibleReference.put(REVELATION_1_1.getBook(), REVELATION_1_1);
-        bookBibleReference.put(REVELATION_22_21.getBook(), REVELATION_22_21);
+        Map<String, BibleReference> hashtable = new Hashtable<>();
+        hashtable.put(GENESIS_1_1.getBook(), GENESIS_1_1);
+        hashtable.put(EXODUS_1_1.getBook(), EXODUS_1_1);
+        hashtable.put(LEVITICUS_1_1.getBook(), LEVITICUS_1_1);
+        hashtable.put(NUMBERS_1_1.getBook(), NUMBERS_1_1);
+        hashtable.put(DEUTERONOMY_1_1.getBook(), DEUTERONOMY_1_1);
+        hashtable.put(REVELATION_1_1.getBook(), REVELATION_1_1);
+        hashtable.put(REVELATION_22_21.getBook(), REVELATION_22_21);
 
         System.out.println();
 
-        log.info("Size: {}", bookBibleReference.size());
+        log.info("Size: {}", hashtable.size());
 
         System.out.println();
 
-        bookBibleReference.forEach((k, v) -> log.info("Key: {} and Value: {}", k, v));
+        hashtable.forEach((k, v) -> log.info("Key: {} and Value: {}", k, v));
 
         System.out.println();
 
-        log.info(((Hashtable<String, BibleReference>) bookBibleReference).contains(REVELATION_1_1));
+        log.info(((Hashtable<String, BibleReference>) hashtable).contains(REVELATION_1_1));
 
         System.out.println();
 
-        log.info(((Hashtable<String, BibleReference>) bookBibleReference).contains(REVELATION_22_21));
+        log.info(((Hashtable<String, BibleReference>) hashtable).contains(REVELATION_22_21));
     }
 
     @Test

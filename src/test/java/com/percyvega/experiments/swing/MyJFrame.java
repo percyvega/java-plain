@@ -33,8 +33,8 @@ public class MyJFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         if (command.equals("m2u")) {
-            double val = Double.valueOf(litersTF.getText()).doubleValue();
-            litersL.setText(new Double(val * 2.113).toString());
+            double val = Double.valueOf(litersTF.getText());
+            litersL.setText(Double.toString(val * 2.113));
         }
     }
 

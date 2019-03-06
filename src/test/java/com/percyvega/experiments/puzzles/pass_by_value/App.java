@@ -21,14 +21,14 @@ public class App {
     private void initialize() {
         this.myString = " 1 ";
         this.myInt = 2;
-        this.myInteger = new Integer(3);
+        this.myInteger = 3;
         this.myPerson = new Person(26, "Percy", "Vega");
     }
 
     private void alter(String paramString, int paramInt, Integer paramInteger, Being paramPerson) {
         paramString = paramString.trim();
         paramInt = paramInt + 1;
-        paramInteger = new Integer(2);
+        paramInteger = 2;
         paramPerson = new Person(33);
 
         this.print(paramString, paramInt, paramInteger, paramPerson);

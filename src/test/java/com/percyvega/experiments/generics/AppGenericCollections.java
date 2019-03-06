@@ -27,7 +27,7 @@ public class AppGenericCollections {
 
         Set<Object> setOfAnyType = new HashSet<Object>();
         setOfAnyType.add("abc"); //legal
-        setOfAnyType.add(new Float(3.0f));
+        setOfAnyType.add(3.0f);
 
         Set<?> setOfUnknownType = new LinkedHashSet<String>();
         setOfUnknownType = new LinkedHashSet<Integer>();

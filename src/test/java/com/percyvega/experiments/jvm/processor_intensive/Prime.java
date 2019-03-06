@@ -1,4 +1,6 @@
-package com.percyvega.experiments.jvm.processor;
+package com.percyvega.experiments.jvm.processor_intensive;
+
+import lombok.extern.log4j.Log4j2;
 
 import java.math.BigInteger;
 import java.util.Date;
@@ -9,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Usually takes 70-75 seconds to complete.
  */
+@Log4j2
 public class Prime {
 
     public static Integer HIGHEST_NUM = 40000;
@@ -30,7 +33,7 @@ public class Prime {
     public static void main(String[] args) throws InterruptedException {
         long start = System.currentTimeMillis();
 
-        System.out.println("Starting main at " + start);
+        log.info("Starting main at " + start);
 
         ExecutorService executorService = Executors.newFixedThreadPool(NUM_THREADS);
         for (int j = 0; j < NUM_THREADS; j++) {
@@ -43,7 +46,7 @@ public class Prime {
 
                     if ((System.currentTimeMillis() - lastPrinted) > 1000) {
                         lastPrinted = System.currentTimeMillis();
-                        System.out.println(new Date() + ", thread=" + ID + ", isPrime(" + i + ")=" + isPrime);
+                        log.info(new Date() + ", thread=" + ID + ", isPrime(" + i + ")=" + isPrime);
                     }
 
                 }
@@ -52,7 +55,7 @@ public class Prime {
 
         executorService.shutdown();
         executorService.awaitTermination(5, TimeUnit.MINUTES);
-        System.out.println("Finishing main after " + (System.currentTimeMillis() - start) / 1000f + " seconds.");
+        log.info("Finishing main after " + (System.currentTimeMillis() - start) / 1000f + " seconds.");
     }
 
 }

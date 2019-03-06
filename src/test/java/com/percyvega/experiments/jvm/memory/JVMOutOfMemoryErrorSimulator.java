@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class JVMOutOfMemoryErrorSimulator {
 
     private final static int NB_ITERATIONS = 500000;
@@ -48,7 +51,7 @@ public class JVMOutOfMemoryErrorSimulator {
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-        System.out.println("The size in bytes of the object (before appending 7 characters) is: " + (bOut.toByteArray().length - 7));
+        log.info("The size in bytes of the object (before appending 7 characters) is: " + (bOut.toByteArray().length - 7));
 
         int i = 0;
         try {
@@ -59,10 +62,10 @@ public class JVMOutOfMemoryErrorSimulator {
                 String data3 = BIG_STRING + 3 + s;
                 String data4 = BIG_STRING + 4 + s;
                 if (i % 10000 == 0) {
-                    System.out.println("Stored the first " + s + " elements in map1 with data: " + data1);
-                    System.out.println("Stored the first " + s + " elements in map2 with data: " + data2);
-                    System.out.println("Stored the first " + s + " elements in map3 with data: " + data3);
-                    System.out.println("Stored the first " + s + " elements in map4 with data: " + data4);
+                    log.info("Stored the first " + s + " elements in map1 with data: " + data1);
+                    log.info("Stored the first " + s + " elements in map2 with data: " + data2);
+                    log.info("Stored the first " + s + " elements in map3 with data: " + data3);
+                    log.info("Stored the first " + s + " elements in map4 with data: " + data4);
                 }
                 // Add data to our leaking Map data structure...
                 map1.put(data1, data1);
@@ -72,14 +75,14 @@ public class JVMOutOfMemoryErrorSimulator {
             }
         } catch (Throwable e) {
             if (e instanceof java.lang.OutOfMemoryError) {
-                System.out.println("OutOfMemoryError triggered! " + e.getMessage() + " [" + e + "]");
+                log.info("OutOfMemoryError triggered! " + e.getMessage() + " [" + e + "]");
             } else {
-                System.out.println("Unexpected Exception! " + e.getMessage() + " [" + e + "]");
+                log.info("Unexpected Exception! " + e.getMessage() + " [" + e + "]");
             }
-            System.out.println("Final value of i: " + i);
+            log.info("Final value of i: " + i);
         }
 
-        System.out.println("simulator done!");
+        log.info("simulator done!");
     }
 
 }

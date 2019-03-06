@@ -13,7 +13,7 @@ public class UnspecifiedArgsCount {
     public static void main(String... args) {
         logger.debug("Starting main()");
 
-        Integer planetNumber = new Integer(3);
+        Integer planetNumber = 3;
         Date now = new Date();
         String eventDescription = new String("disturbance in the force");
 

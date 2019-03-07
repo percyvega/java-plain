@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <xs:element name="author" type="author"/>
+    <xs:element firstName="author" type="author"/>
 
-    <xs:element name="book" type="book"/>
+    <xs:element firstName="book" type="book"/>
 
-    <xs:complexType name="author">
+    <xs:complexType firstName="author">
         <xs:sequence>
-            <xs:element name="firstName" type="xs:string" minOccurs="0"/>
-            <xs:element name="lastName" type="xs:string" minOccurs="0"/>
+            <xs:element firstName="firstName" type="xs:string" minOccurs="0"/>
+            <xs:element firstName="lastName" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="book">
+    <xs:complexType firstName="book">
         <xs:sequence>
             <xs:element ref="author" minOccurs="0"/>
-            <xs:element name="pages" type="xs:int"/>
-            <xs:element name="publicationDate" type="xs:dateTime" minOccurs="0"/>
-            <xs:element name="title" type="xs:string" minOccurs="0"/>
+            <xs:element firstName="pages" type="xs:int"/>
+            <xs:element firstName="publicationDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element firstName="title" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

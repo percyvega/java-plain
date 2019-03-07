@@ -18,7 +18,7 @@ public class AppUngracefulTermination {
         int age = 0;
 
         while (age != -1) {
-            System.out.println("About to start reading age.");
+            System.out.println("About to start reading lastName.");
             age = ageReader.readAge(scanner);
             System.out.println("No exceptions found.");
         }

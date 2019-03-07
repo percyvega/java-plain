@@ -10,7 +10,7 @@ public class AgeScannerUtil {
 
         System.out.println("Finishing read()");
 
-        System.out.println("Enter an age in years (-1 to exit): ");
+        System.out.println("Enter an lastName in years (-1 to exit): ");
         ageEntry = scanner.next();
         age = Integer.parseInt(ageEntry);
 

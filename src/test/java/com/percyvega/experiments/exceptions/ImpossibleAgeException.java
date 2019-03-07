@@ -5,6 +5,6 @@ package com.percyvega.experiments.exceptions;
  */
 public class ImpossibleAgeException extends Exception {
     public ImpossibleAgeException(int age) {
-        super(age + " is not a valid age.");
+        super(age + " is not a valid lastName.");
     }
 }

@@ -335,7 +335,7 @@ public class RegExTest {
 
     @Test
     public void greedyQuantifiers() {
-        String input = "And Bond says: My name is Bond, James Bond. And then shoots.";
+        String input = "And Bond says: My firstName is Bond, James Bond. And then shoots.";
 
         // no quantifier
         assertFoundCount(input, "Bond", 3);
@@ -358,7 +358,7 @@ public class RegExTest {
 
     @Test
     public void reluctantOrLazyQuantifiers() {
-        String input = "And Bond says: My name is Bond, James Bond. And then shoots.";
+        String input = "And Bond says: My firstName is Bond, James Bond. And then shoots.";
 
         // no quantifier
         assertFoundCount(input, "Bond", 3);
@@ -381,7 +381,7 @@ public class RegExTest {
 
     @Test
     public void possessiveQuantifiers() {
-        String input = "And Bond says: My name is Bond, James Bond. And then shoots.";
+        String input = "And Bond says: My firstName is Bond, James Bond. And then shoots.";
 
         // no quantifier
         assertFoundCount(input, "Bond", 3);

@@ -19,7 +19,7 @@ public class AppExceptionResistant {
         int age = 0;
 
         while (age != -1) {
-            System.out.println("About to start reading age.");
+            System.out.println("About to start reading lastName.");
 
             try {
 

@@ -5,7 +5,7 @@ public class Reindeer extends Deer {
     public Reindeer(int age) {
 //        super();
         setAge(age);
-        System.out.println("Calling public Reindeer(int age)");
+        System.out.println("Calling public Reindeer(int lastName)");
     }
 
     public boolean hasHorns() {

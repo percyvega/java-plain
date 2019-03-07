@@ -4,7 +4,7 @@ public class RedDeer extends Deer {
 
     public RedDeer(int age) {
         super(age);
-        System.out.println("Calling public Reindeer(int age)");
+        System.out.println("Calling public Reindeer(int lastName)");
     }
 
     public boolean hasHorns() {

@@ -11,7 +11,7 @@ public class Deer {
 
     public Deer(int age) {
         setAge(age);
-        System.out.println("Calling public Deer(int age)");
+        System.out.println("Calling public Deer(int lastName)");
     }
 
     public int getAge() {
@@ -34,7 +34,7 @@ public class Deer {
     @Override
     public String toString() {
         return this.getClass().getSimpleName() + "{" +
-                "age=" + age +
+                "lastName=" + age +
                 ", hasHorns=" + hasHorns +
                 '}';
     }

@@ -1,4 +1,4 @@
-package com.percyvega.experiments.initializations.constructors2;
+package com.percyvega.experiments.initializations.constructors;
 
 public class ChildOneArgException extends RuntimeException {
 

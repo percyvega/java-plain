@@ -1,4 +1,4 @@
-package com.percyvega.experiments.initializations.constructors2;
+package com.percyvega.experiments.initializations.constructors;
 
 public class Child4 extends Father4 {
 
@@ -11,7 +11,7 @@ public class Child4 extends Father4 {
 
 class Father4 {
 
-    // This can be commented our only because Child4's constructor specified another constructor
+    // This can be commented out only because Child4's constructor specified another constructor
 //    public Father4() {
 //        throw new FatherNoArgsException("Father's constructor() is being called.");
 //    }

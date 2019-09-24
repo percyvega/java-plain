@@ -1,17 +1,18 @@
-package com.percyvega.experiments.initializations.constructors2;
+package com.percyvega.experiments.initializations.constructors;
 
 public class Child2 extends Father2 {
 
     public Child2() {
+        // if I comment out the next line, the compiler will try to call the parent's default constructor, so this won't compile
         super("New name!");
-        throw new ChildNoArgsException("Child's constructor() is being called.");
+        System.out.println("Line never reached");
     }
 
 }
 
 class Father2 {
 
-    // This can be commented our only because Child2's constructor specified another constructor
+    // This can be commented out only because it's never called, hence unused
 //    public Father2() {
 //        throw new FatherNoArgsException("Father's constructor() is being called.");
 //    }

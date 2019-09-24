@@ -1,12 +1,27 @@
 package com.percyvega.experiments.initializations.constructors;
 
+import org.junit.Test;
+
 public class App {
 
-    public static void main(String[] args) {
-        Deer deer = new Reindeer(5);
-        System.out.println(deer.toString());
-        deer = new RedDeer(7);
-        System.out.println(deer.toString());
+    @Test(expected = FatherNoArgsException.class)
+    public void testChild1() {
+        new Child1();
+    }
+
+    @Test(expected = FatherOneArgException.class)
+    public void testChild2() {
+        new Child2();
+    }
+
+    @Test(expected = FatherNoArgsException.class)
+    public void testChild3() {
+        new Child3("Percy");
+    }
+
+    @Test(expected = FatherOneArgException.class)
+    public void testChild4() {
+        new Child4("Percy");
     }
 
 }

@@ -1,11 +1,11 @@
-package com.percyvega.experiments.initializations.constructors2;
+package com.percyvega.experiments.initializations.constructors;
 
 public class Child1 extends Father1 {
 
     public Child1() {
-        // This can be commented our only because the call is implicit
+        // This can be commented out only because the call happens anyway
 //        super();
-        throw new ChildNoArgsException("Child's constructor() is being called.");
+        System.out.println("Line never reached");
     }
 
 }

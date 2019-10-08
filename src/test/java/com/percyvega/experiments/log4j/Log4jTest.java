@@ -1,11 +1,11 @@
 package com.percyvega.experiments.log4j;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Level;
+
+@Log4j2
 public class Log4jTest {
-
-    private static final Logger LOGGER = Logger.getLogger(Log4jTest.class);
 
     private static final long SLEEP_FOR = 5_000L;
 
@@ -28,16 +28,14 @@ public class Log4jTest {
     }
 
     private void execute() {
-        LOGGER.log(Level.ALL, "A sample Level.ALL message.");
-        LOGGER.trace("A sample Level.TRACE message.");
-        LOGGER.debug("A sample Level.DEBUG message.");
-        LOGGER.info("A sample Level.INFO message.");
-        LOGGER.warn("A sample Level.WARN message.");
-        LOGGER.error("A sample Level.ERROR message.");
-        LOGGER.fatal("A sample Level.FATAL message.");
-        LOGGER.log(Level.OFF, "A sample Level.OFF message.");
-
-        LOGGER.log(Level.OFF, null);
+        log.log(Level.ALL, "A sample Level.ALL message.");
+        log.trace("A sample Level.TRACE message.");
+        log.debug("A sample Level.DEBUG message.");
+        log.info("A sample Level.INFO message.");
+        log.warn("A sample Level.WARN message.");
+        log.error("A sample Level.ERROR message.");
+        log.fatal("A sample Level.FATAL message.");
+        log.log(Level.OFF, "A sample Level.OFF message.");
 
         printLevelEnabled(Level.ALL);
         printLevelEnabled(Level.TRACE);
@@ -48,9 +46,9 @@ public class Log4jTest {
         printLevelEnabled(Level.FATAL);
         printLevelEnabled(Level.OFF);
 
-        assert (LOGGER.isTraceEnabled() == LOGGER.isEnabledFor(Level.TRACE));
-        assert (LOGGER.isDebugEnabled() == LOGGER.isEnabledFor(Level.DEBUG));
-        assert (LOGGER.isInfoEnabled() == LOGGER.isEnabledFor(Level.INFO));
+        assert (log.isTraceEnabled() == log.isEnabled(Level.TRACE));
+        assert (log.isDebugEnabled() == log.isEnabled(Level.DEBUG));
+        assert (log.isInfoEnabled() == log.isEnabled(Level.INFO));
     }
 
     private void printLevelEnabled(final Level level) {
@@ -59,13 +57,13 @@ public class Log4jTest {
         String IS_NOT_ENABLED = " is not enabled.";
 
         String message = LEVEL_NAME;
-        if (LOGGER.isEnabledFor(level)) {
+        if (log.isEnabled(level)) {
             message += IS_ENABLED;
         } else {
             message += IS_NOT_ENABLED;
         }
 
-        LOGGER.log(Level.OFF, message);
+        log.log(Level.OFF, message);
     }
 
 }

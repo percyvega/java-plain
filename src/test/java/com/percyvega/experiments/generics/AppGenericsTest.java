@@ -5,9 +5,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.percyvega.experiments.hamcrest.IsPalindromicInteger.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
 
 public class AppGenericsTest {

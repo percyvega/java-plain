@@ -21,7 +21,7 @@ public class FizzBuzz {
         for (int i = 1; i <= countNumbers; i++) {
             System.out.print(evaluate(i));
 
-            if(i != countNumbers)
+            if (i != countNumbers)
                 System.out.print(", ");
         }
 

@@ -1,46 +1,45 @@
 package com.percyvega.experiments.puzzles;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.Random;
 
+@Log4j2
 public class AppChars {
 
-    private static final Logger logger = LoggerFactory.getLogger(AppChars.class);
 
     private static void first() {
         int cap = 'P';
-        logger.debug(String.valueOf(cap));
+        log.debug(String.valueOf(cap));
 
         StringBuffer word = new StringBuffer('P');
         int randomInt = new Random().nextInt(2);
-        logger.debug(String.valueOf(randomInt));
+        log.debug(String.valueOf(randomInt));
 
-        logger.debug("word: " + word);
+        log.debug("word: " + word);
         switch (randomInt) {
             case 1:
                 word = new StringBuffer('P');
-                logger.debug("inside " + randomInt);
-                logger.debug("word: " + word);
+                log.debug("inside " + randomInt);
+                log.debug("word: " + word);
                 break;
             case 2:
                 word = new StringBuffer('G');
-                logger.debug("inside " + randomInt);
-                logger.debug("word: " + word);
+                log.debug("inside " + randomInt);
+                log.debug("word: " + word);
                 break;
             default:
                 word = new StringBuffer('M');
-                logger.debug("inside " + randomInt);
-                logger.debug("word: " + word);
+                log.debug("inside " + randomInt);
+                log.debug("word: " + word);
                 break;
         }
-        logger.debug("word: " + word);
+        log.debug("word: " + word);
 
         word.append('a');
         word.append('i');
         word.append('n');
-        logger.debug("word: " + word);
+        log.debug("word: " + word);
     }
 
     /**
@@ -51,7 +50,7 @@ public class AppChars {
     private static void second() {
         char ch = '0';
         ch *= 1.1;
-        logger.debug("" + ch);
+        log.debug("" + ch);
     }
 
     public static void main(String[] args) {

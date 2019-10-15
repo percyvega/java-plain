@@ -24,7 +24,7 @@ public class Queue<T> {
         if (!isEmpty()) {
             T data = first.data;
 
-            if(first.next != null) {
+            if (first.next != null) {
                 first = first.next;
             } else {
                 last = null;

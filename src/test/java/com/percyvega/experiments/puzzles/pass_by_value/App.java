@@ -1,11 +1,10 @@
 package com.percyvega.experiments.puzzles.pass_by_value;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class App {
 
-    private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     String myString;
     int myInt;
@@ -16,6 +15,10 @@ public class App {
         this.initialize();
         this.alter(myString, myInt, myInteger, myPerson);
         this.print(myString, myInt, myInteger, myPerson);
+    }
+
+    public static void main(String[] args) {
+        new App();
     }
 
     private void initialize() {
@@ -35,11 +38,7 @@ public class App {
     }
 
     private void print(String paramString, int paramInt, Integer paramInteger, Being paramPerson) {
-        logger.debug(paramString + ", " + paramInt + ", " + paramInteger);
-        logger.debug(paramPerson.toString());
-    }
-
-    public static void main(String args[]) {
-        new App();
+        log.debug(paramString + ", " + paramInt + ", " + paramInteger);
+        log.debug(paramPerson.toString());
     }
 }

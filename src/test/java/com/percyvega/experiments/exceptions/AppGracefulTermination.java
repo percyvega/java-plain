@@ -16,7 +16,7 @@ public class AppGracefulTermination {
 
         int age = 0;
 
-        try(Scanner scanner = new Scanner(System.in)) {
+        try (Scanner scanner = new Scanner(System.in)) {
 
             while (age != -1) {
                 System.out.println("About to start reading lastName.");

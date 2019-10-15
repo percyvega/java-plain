@@ -6,7 +6,7 @@ package com.percyvega.datastructure.stack;
 public class AppStackFactorialRecursive {
 
     private static int factorial(int n) {
-        if(n == 1) {
+        if (n == 1) {
             return n;
         }
 

@@ -8,7 +8,7 @@ public class AppStackFactorialIterative {
     private static Stack<Integer> stack = new Stack<>();
 
     private static int factorial(int n) {
-        if(n < 1) {
+        if (n < 1) {
             throw new RuntimeException("Factorial of " + n + " is undefined");
         }
 
@@ -20,7 +20,7 @@ public class AppStackFactorialIterative {
         int result = 1;
 
         // read from stack
-        while(!stack.isEmpty())
+        while (!stack.isEmpty())
             result *= stack.pop();
 
         return result;

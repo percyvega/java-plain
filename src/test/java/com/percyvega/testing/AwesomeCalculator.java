@@ -15,9 +15,9 @@ public interface AwesomeCalculator {
 
     int subtract(int i, int y);
 
-    void setBigInteger(BigInteger one);
-
     Object getBigInteger();
+
+    void setBigInteger(BigInteger one);
 
     int getAverageRandomInts();
 

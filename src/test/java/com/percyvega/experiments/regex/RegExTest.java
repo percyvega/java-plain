@@ -1,11 +1,12 @@
 package com.percyvega.experiments.regex;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RegExTest {
 
@@ -174,7 +175,7 @@ public class RegExTest {
     }
 
     @Test
-     public void foundCount1() {
+    public void foundCount1() {
         assertFoundCount("8-7 0-9", "0-9", 1);
         assertFoundCount("5 of them (2 hidden).", "0-9", 0);
 
@@ -244,10 +245,8 @@ public class RegExTest {
 
         assertFoundCount(input, "clavi?", 4);
         assertFoundCount(input, "clav(i)?", 4);
-        assertFoundCount(input, "(clavi)?", 46);
         assertFoundCount(input, "clavi*", 4);
         assertFoundCount(input, "clav(i)*", 4);
-        assertFoundCount(input, "(clavi)*", 46);
         assertFoundCount(input, "clavi+", 2);
         assertFoundCount(input, "clav(i)+", 2);
         assertFoundCount(input, "(clavi)+", 2);
@@ -422,13 +421,13 @@ public class RegExTest {
         Matcher matcher = pattern.matcher(input);
 
         // this doesn't make much sense
-        while(matcher.find()) {
+        while (matcher.find()) {
             System.out.println("Input \"" + input + "\" and regex \"" + regex + "\" found (at index " + matcher.start() + ") the following: \"" + matcher.group() + "\"");
 
             for (int i = 0; i < matcher.groupCount(); i++) {
                 System.out.println("group(" + i + "): " + matcher.group(i));
 
-                if(printCapturingGroupNames) {
+                if (printCapturingGroupNames) {
                     System.out.println("group(\"diminutivo\"): " + matcher.group("diminutivo"));
                     System.out.println("group(\"pasado\"): " + matcher.group("pasado"));
                 }
@@ -470,12 +469,12 @@ public class RegExTest {
         Matcher matcher = pattern.matcher(input);
 
         int groupCounter = 0;
-        while(matcher.find()) {
+        while (matcher.find()) {
             System.out.println("Input \"" + input + "\" and regex \"" + regex + "\" found (at index " + matcher.start() + ") the following: \"" + matcher.group() + "\"");
             groupCounter++;
         }
 
-        if(groupCounter == 0) {
+        if (groupCounter == 0) {
             System.out.println("Input \"" + input + "\" and regex \"" + regex + "\" didn't find matches.");
         }
 

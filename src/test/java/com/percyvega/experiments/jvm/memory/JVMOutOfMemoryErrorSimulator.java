@@ -1,13 +1,13 @@
 package com.percyvega.experiments.jvm.memory;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class JVMOutOfMemoryErrorSimulator {

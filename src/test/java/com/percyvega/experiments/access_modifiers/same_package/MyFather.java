@@ -5,10 +5,10 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class MyFather {
 
-    private String ssn;
-    String phone;
-    protected String lastName;
     public String firstName;
+    protected String lastName;
+    String phone;
+    private String ssn;
 
     public MyFather(String ssn, String phone, String lastName, String firstName) {
         this.ssn = ssn;

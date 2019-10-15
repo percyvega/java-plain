@@ -1,10 +1,10 @@
 package com.percyvega.testing.hamcrest.palindrome;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static com.percyvega.testing.hamcrest.palindrome.IsPalindromicInteger.*;
+import static com.percyvega.testing.hamcrest.palindrome.IsPalindromicInteger.isPalindromicInteger;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.not;
 
 public class IsPalindromicIntegerTest {
 

@@ -2,17 +2,17 @@ package com.percyvega.testing.hamcrest;
 
 import com.percyvega.testing.AwesomeCalculator;
 import com.percyvega.testing.AwesomeCalculatorImpl;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 /**
  * Created by percy on 1/16/2016.
@@ -28,7 +28,7 @@ public class MatcherTest {
 
     private static List<AwesomeCalculator> calculatorList;
 
-    @BeforeClass
+    @BeforeAll
     public static void given() {
         calculator = new AwesomeCalculatorImpl();
         calculator1 = new AwesomeCalculatorImpl();
@@ -36,10 +36,10 @@ public class MatcherTest {
         calculator3 = null;
         calculator4 = calculator;
         calculator5 = new AwesomeCalculatorImpl();
-        calculatorList = new ArrayList<AwesomeCalculator>();
+        calculatorList = new ArrayList();
     }
 
-    @Before
+    @BeforeEach
     public void when() {
         calculator1.setBigInteger(BigInteger.ONE);
         calculator2.setBigInteger(BigInteger.TEN);
@@ -49,45 +49,51 @@ public class MatcherTest {
 
     @Test
     public void then_assertTrue() {
-        assertThat(calculator.multiply(10, 5), is(50));
-        assertThat(calculator1.getBigInteger(), equalTo((Object) BigInteger.ONE));
-        assertThat(calculatorList, hasItem(calculator));
+        assertThat(calculator.multiply(10, 5)).isEqualTo(50);
+        assertThat(calculator1.getBigInteger()).isEqualTo(BigInteger.ONE);
+        assertThat(calculatorList).contains(calculator);
     }
+
     @Test
     public void then_assertFalse() {
-        assertThat(calculator.add(10, 5), not(greaterThan(105)));
-        assertThat(calculator, is(equalTo(calculator4)));
+        assertThat(calculator.add(10, 5)).isLessThanOrEqualTo(105);
+        assertThat(calculator).isEqualTo(calculator4);
     }
+
     @Test
     public void then_assertNull() {
-        assertThat(calculator.getBigInteger(), is(nullValue()));
-        assertThat(calculator3, is(nullValue()));
+        assertThat(calculator.getBigInteger()).isNull();
+        assertThat(calculator3).isNull();
     }
+
     @Test
     public void then_assertNotNull() {
-        assertThat(calculator1.getBigInteger(), is(not(nullValue())));
-        assertThat(calculator, not(nullValue()));
-        assertThat(calculatorList.iterator(), notNullValue());
+        assertThat(calculator).isNotNull();
+        assertThat(calculatorList.iterator()).isNotNull();
     }
+
     @Test
     public void then_assertEquals() {
-        assertThat(calculator2, equalTo(calculator5));
-        assertThat(calculator, equalTo(calculator));
+        assertThat(calculator2).isEqualTo(calculator5);
+        assertThat(calculator).isEqualTo(calculator);
     }
+
     @Test
     public void then_assertNotEquals() {
-        assertThat(calculator1, is(not(equalTo(calculator2))));
-        assertThat(calculator1.getBigInteger(), not(equalTo(calculator5.getBigInteger())));
+        assertThat(calculator1).isNotEqualTo(calculator2);
+        assertThat(calculator1.getBigInteger()).isNotEqualTo(calculator5.getBigInteger());
     }
+
     @Test
     public void then_assertSame() {
-        assertThat(calculator, sameInstance(calculator4));
-        assertThat(calculator1.getBigInteger(), is(sameInstance((Object) BigInteger.ONE)));
+        assertThat(calculator).isSameAs(calculator4);
+        assertThat(calculator1.getBigInteger()).isSameAs(BigInteger.ONE);
     }
+
     @Test
     public void then_assertNotSame() {
-        assertThat(calculator2, is(not(sameInstance(calculator5))));
-        assertThat(new AwesomeCalculatorImpl(), not(sameInstance(new AwesomeCalculatorImpl())));
+        assertThat(calculator2).isNotSameAs(calculator5);
+        assertThat(new AwesomeCalculatorImpl()).isNotSameAs(new AwesomeCalculatorImpl());
     }
 
 }

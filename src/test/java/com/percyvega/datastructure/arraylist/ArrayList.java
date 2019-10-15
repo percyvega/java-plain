@@ -13,12 +13,12 @@ public class ArrayList<T> {
     }
 
     public ArrayList(int size) {
-        array = (T[])new Object[size];
+        array = (T[]) new Object[size];
     }
 
     public void add(T s) {
-        if(array.length == size) {
-            T[] newArray = (T[])new Object[array.length * 2];
+        if (array.length == size) {
+            T[] newArray = (T[]) new Object[array.length * 2];
             System.out.println("Doubling size, from " + array.length + " to " + newArray.length);
             copyFromTo(array, newArray);
             array = newArray;

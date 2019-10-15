@@ -1,13 +1,13 @@
 package com.percyvega.testing.integration;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class IntegrationTestExampleIT {
 
@@ -19,7 +19,7 @@ public class IntegrationTestExampleIT {
         String inputLine;
         boolean foundTimeTable = false;
         while ((inputLine = in.readLine()) != null) {
-            if(inputLine.contains("timeTable")) {
+            if (inputLine.contains("timeTable")) {
                 foundTimeTable = true;
                 break;
             }

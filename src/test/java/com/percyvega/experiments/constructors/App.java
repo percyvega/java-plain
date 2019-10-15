@@ -1,27 +1,28 @@
 package com.percyvega.experiments.constructors;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class App {
 
-    @Test(expected = ParentNoArgsException.class)
+    @Test
     public void testChild1() {
-        new Child1();
+        Assertions.assertThrows(ParentNoArgsException.class, () -> new Child1());
     }
 
-    @Test(expected = ParentOneArgException.class)
+    @Test
     public void testChild2() {
-        new Child2();
+        Assertions.assertThrows(ParentOneArgException.class, () -> new Child2());
     }
 
-    @Test(expected = ParentNoArgsException.class)
+    @Test
     public void testChild3() {
-        new Child3("Percy");
+        Assertions.assertThrows(ParentNoArgsException.class, () -> new Child3("Percy"));
     }
 
-    @Test(expected = ParentOneArgException.class)
+    @Test
     public void testChild4() {
-        new Child4("Percy");
+        Assertions.assertThrows(ParentOneArgException.class, () -> new Child4("Percy"));
     }
 
 }

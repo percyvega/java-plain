@@ -1,8 +1,7 @@
 package com.percyvega.experiments.performance;
 
+import lombok.extern.log4j.Log4j2;
 import org.fluttercode.datafactory.impl.DataFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -11,9 +10,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
+@Log4j2
 public class App {
 
-    private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     private static int RECORD_COUNT = (int) Math.pow(2.0, 15.0);
     private static int SIZE_RANDOM_TEXT = 1024 * 4;
@@ -21,8 +20,8 @@ public class App {
     private static NumberFormat NUMBER_FORMAT = new DecimalFormat("##.##");
 
     public static void main(String[] args) {
-        logger.debug("RECORD_COUNT: " + RECORD_COUNT);
-        logger.debug("SIZE_RANDOM_TEXT: " + SIZE_RANDOM_TEXT);
+        log.debug("RECORD_COUNT: " + RECORD_COUNT);
+        log.debug("SIZE_RANDOM_TEXT: " + SIZE_RANDOM_TEXT);
 
         System.out.println();
         useArray(true);
@@ -35,43 +34,43 @@ public class App {
     }
 
     private static void useArray(boolean useMergeSort) {
-        logger.debug("<<<<<<<<<< Starting useArray(useMergeSort=" + useMergeSort + ")");
+        log.debug("<<<<<<<<<< Starting useArray(useMergeSort=" + useMergeSort + ")");
 
         long startMillis = System.currentTimeMillis();
         DbRecord[] dbRecords = getDbRecordsArray(RECORD_COUNT);
-        logger.debug(NUMBER_FORMAT.format((System.currentTimeMillis() - startMillis) / 1000.0) + " seconds to generated data");
+        log.debug(NUMBER_FORMAT.format((System.currentTimeMillis() - startMillis) / 1000.0) + " seconds to generated data");
 
         startMillis = System.currentTimeMillis();
-        if(useMergeSort)
+        if (useMergeSort)
             mergeSort(dbRecords);
         else
             bubbleSort(dbRecords);
-        logger.debug(NUMBER_FORMAT.format((System.currentTimeMillis() - startMillis) / 1000.0) + " seconds to sort data");
+        log.debug(NUMBER_FORMAT.format((System.currentTimeMillis() - startMillis) / 1000.0) + " seconds to sort data");
 
-        logger.debug("Min savings amount: $" + NUMBER_FORMAT.format(dbRecords[0].getSavingsAmountInCents() / 100.0) + " - " + dbRecords[0]);
-        logger.debug("Max savings amount: $" + NUMBER_FORMAT.format(dbRecords[dbRecords.length - 1].getSavingsAmountInCents() / 100.0) + " - " + dbRecords[dbRecords.length - 1]);
+        log.debug("Min savings amount: $" + NUMBER_FORMAT.format(dbRecords[0].getSavingsAmountInCents() / 100.0) + " - " + dbRecords[0]);
+        log.debug("Max savings amount: $" + NUMBER_FORMAT.format(dbRecords[dbRecords.length - 1].getSavingsAmountInCents() / 100.0) + " - " + dbRecords[dbRecords.length - 1]);
 
-        logger.debug(">>>>>>>>>> Finishing useArray(useMergeSort=" + useMergeSort + ")");
+        log.debug(">>>>>>>>>> Finishing useArray(useMergeSort=" + useMergeSort + ")");
     }
 
     private static void useArrayList(boolean useMergeSort) {
-        logger.debug("<<<<<<<<<< Starting useArrayList(useMergeSort=" + useMergeSort + ")");
+        log.debug("<<<<<<<<<< Starting useArrayList(useMergeSort=" + useMergeSort + ")");
 
         long startMillis = System.currentTimeMillis();
         ArrayList<DbRecord> dbRecords = getDbRecordsArrayList(RECORD_COUNT);
-        logger.debug(NUMBER_FORMAT.format((System.currentTimeMillis() - startMillis) / 1000.0) + " seconds to generated data");
+        log.debug(NUMBER_FORMAT.format((System.currentTimeMillis() - startMillis) / 1000.0) + " seconds to generated data");
 
         startMillis = System.currentTimeMillis();
-        if(useMergeSort)
+        if (useMergeSort)
             mergeSort(dbRecords);
         else
             bubbleSort(dbRecords);
-        logger.debug(NUMBER_FORMAT.format((System.currentTimeMillis() - startMillis) / 1000.0) + " seconds to sort data");
+        log.debug(NUMBER_FORMAT.format((System.currentTimeMillis() - startMillis) / 1000.0) + " seconds to sort data");
 
-        logger.debug("Min savings amount: $" + NUMBER_FORMAT.format(dbRecords.get(0).getSavingsAmountInCents() / 100.0) + " - " + dbRecords.get(0));
-        logger.debug("Max savings amount: $" + NUMBER_FORMAT.format(dbRecords.get(dbRecords.size() - 1).getSavingsAmountInCents() / 100.0) + " - " + dbRecords.get(dbRecords.size() - 1));
+        log.debug("Min savings amount: $" + NUMBER_FORMAT.format(dbRecords.get(0).getSavingsAmountInCents() / 100.0) + " - " + dbRecords.get(0));
+        log.debug("Max savings amount: $" + NUMBER_FORMAT.format(dbRecords.get(dbRecords.size() - 1).getSavingsAmountInCents() / 100.0) + " - " + dbRecords.get(dbRecords.size() - 1));
 
-        logger.debug(">>>>>>>>>> Finishing useArrayList(useMergeSort=" + useMergeSort + ")");
+        log.debug(">>>>>>>>>> Finishing useArrayList(useMergeSort=" + useMergeSort + ")");
     }
 
     private static DbRecord[] getDbRecordsArray(int recordCount) {

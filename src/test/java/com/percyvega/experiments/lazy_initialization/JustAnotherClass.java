@@ -16,9 +16,9 @@ package com.percyvega.experiments.lazy_initialization;
  * limitations under the License.
  */
 public class JustAnotherClass {
-    private long rightNow;
-
     static {
         System.out.println("JustAnotherClass is being INITIALIZED for the FIRST TIME!");
     }
+
+    private long rightNow;
 }

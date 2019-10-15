@@ -16,7 +16,7 @@ public class Hashtable<K, V> {
     public void put(K key, V value) {
         int hashTableKey = getHashTableKey(key);
 
-        if(hashCodes[hashTableKey] == null) {
+        if (hashCodes[hashTableKey] == null) {
             hashCodes[hashTableKey] = new DoublyLinkedList<>();
             size++;
         }
@@ -31,13 +31,13 @@ public class Hashtable<K, V> {
     public V get(K key) {
         int hashTableKey = getHashTableKey(key);
 
-        if(hashCodes[hashTableKey] == null) {
+        if (hashCodes[hashTableKey] == null) {
             return null;
         }
 
         for (int i = 0; i < hashCodes[hashTableKey].size(); i++) {
             KeyValue<K, V> keyValue = hashCodes[hashTableKey].get(i);
-            if(keyValue.key.equals(key))
+            if (keyValue.key.equals(key))
                 return keyValue.value;
         }
 

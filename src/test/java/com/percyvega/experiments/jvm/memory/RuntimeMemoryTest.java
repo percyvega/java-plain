@@ -5,6 +5,11 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class RuntimeMemoryTest {
 
+    public static void main(String[] args) {
+        RuntimeMemoryTest rmt = new RuntimeMemoryTest();
+        rmt.myMethod();
+    }
+
     @SuppressWarnings("unused")
     public void myMethod() {
         final long sizeMax = Runtime.getRuntime().maxMemory();
@@ -28,11 +33,6 @@ public class RuntimeMemoryTest {
 
         final long sizeFree2 = Runtime.getRuntime().freeMemory();
         log.debug("sizeFree2: " + sizeFree2);
-    }
-
-    public static void main(String[] args) {
-        RuntimeMemoryTest rmt = new RuntimeMemoryTest();
-        rmt.myMethod();
     }
 
 }

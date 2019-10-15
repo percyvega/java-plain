@@ -11,8 +11,8 @@ public class Child1 extends Parent1 {
         staticMethod();
     }
 
-    private void privateMethod() {
-        log.info(this.getClass().getSimpleName() + "'s privateMethod()");
+    public static void staticMethod() {
+        log.info(Child1.class.getSimpleName() + "'s staticMethod()");
     }
 
     // won't compile
@@ -20,8 +20,8 @@ public class Child1 extends Parent1 {
 //        log.info(this.getClass().getSimpleName() + "'s finalMethod()");
 //    }
 
-    public static void staticMethod() {
-        log.info(Child1.class.getSimpleName() + "'s staticMethod()");
+    private void privateMethod() {
+        log.info(this.getClass().getSimpleName() + "'s privateMethod()");
     }
 
 }
@@ -33,6 +33,10 @@ class Parent1 {
         privateMethod();
         finalMethod();
         staticMethod();
+    }
+
+    public static void staticMethod() {
+        log.info(Parent1.class.getSimpleName() + "'s staticMethod()");
     }
 
     public void callMethods() {
@@ -47,10 +51,6 @@ class Parent1 {
 
     public final void finalMethod() {
         log.info(this.getClass().getSimpleName() + "'s finalMethod()");
-    }
-
-    public static void staticMethod() {
-        log.info(Parent1.class.getSimpleName() + "'s staticMethod()");
     }
 
 }

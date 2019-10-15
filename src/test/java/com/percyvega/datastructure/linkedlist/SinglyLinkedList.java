@@ -18,7 +18,7 @@ public class SinglyLinkedList<E> {
             head = newNode;
         } else {
             SinglyLinkedListNode<E> iNode;
-            for (iNode = head; iNode.next != null; iNode = iNode.next);
+            for (iNode = head; iNode.next != null; iNode = iNode.next) ;
             iNode.next = newNode;
         }
 

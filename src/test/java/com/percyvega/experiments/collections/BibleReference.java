@@ -25,10 +25,6 @@ public class BibleReference implements Comparable {
     private int verse;
     private String fullName;
 
-    private void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public BibleReference(String book, int chapter, int verse) {
         this.book = book;
         this.chapter = chapter;
@@ -41,12 +37,16 @@ public class BibleReference implements Comparable {
                 .toString();
     }
 
+    private void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     // needed for all Tree implementations
     @Override
     public int compareTo(Object other) {
         BibleReference o = (BibleReference) other;
 
-        if(!book.equals(o.book)) {
+        if (!book.equals(o.book)) {
             return book.compareTo(o.book);
         } else if (chapter != o.chapter) {
             return Integer.compare(chapter, o.chapter);

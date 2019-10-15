@@ -20,7 +20,7 @@ public class AppHashtable {
             String key = name + i;
             hashtable.put(key, name);
 
-            if(i % 23 == 0) {
+            if (i % 23 == 0) {
                 keys.add(key);
             }
         }

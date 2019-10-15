@@ -9,7 +9,7 @@ public enum CurrencyDenomination {
 
     private int value;
 
-    private CurrencyDenomination(int value) {
+    CurrencyDenomination(int value) {
         this.value = value;
     }
 

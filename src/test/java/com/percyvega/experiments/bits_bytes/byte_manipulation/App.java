@@ -1,13 +1,12 @@
 package com.percyvega.experiments.bits_bytes.byte_manipulation;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.*;
 
+@Log4j2
 public class App {
 
-    private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     private static final int AGE = 300;
 
@@ -16,11 +15,11 @@ public class App {
         ImmutablePerson person = new ImmutablePerson("Percy", "Vega", AGE);
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        logger.debug(String.valueOf(byteArrayOutputStream.toByteArray().length));
+        log.debug(String.valueOf(byteArrayOutputStream.toByteArray().length));
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-        logger.debug(String.valueOf(byteArrayOutputStream.toByteArray().length));
+        log.debug(String.valueOf(byteArrayOutputStream.toByteArray().length));
         objectOutputStream.writeObject(person);
-        logger.debug(String.valueOf(byteArrayOutputStream.toByteArray().length));
+        log.debug(String.valueOf(byteArrayOutputStream.toByteArray().length));
         objectOutputStream.close();
 
         byte[] bytes = byteArrayOutputStream.toByteArray();
@@ -42,9 +41,9 @@ public class App {
             }
         }
 
-        logger.debug(stringBuilderChars.toString());
-        logger.debug(stringBuilderIntsChars.toString());
-        logger.debug(stringBuilderInts.toString());
+        log.debug(stringBuilderChars.toString());
+        log.debug(stringBuilderIntsChars.toString());
+        log.debug(stringBuilderInts.toString());
 
         int dogAge = AGE * 5;
         setAge(bytes, index, dogAge);

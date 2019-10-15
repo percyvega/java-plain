@@ -1,13 +1,12 @@
 package com.percyvega.experiments.reflection;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 
+@Log4j2
 public class AppReflection {
 
-    private final static Logger logger = LoggerFactory.getLogger(AppReflection.class);
 
     public static void main(String... args) {
 
@@ -23,11 +22,11 @@ public class AppReflection {
             try {
                 Class clazz = Class.forName(className);
                 clazz.getMethod(methodName);
-                logger.debug(className + " has the method " + methodName);
+                log.debug(className + " has the method " + methodName);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (NoSuchMethodException e) {
-                logger.debug(className + " does NOT have the method " + methodName);
+                log.debug(className + " does NOT have the method " + methodName);
                 continue;
             }
         }

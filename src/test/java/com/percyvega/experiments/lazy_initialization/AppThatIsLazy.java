@@ -1,8 +1,8 @@
 package com.percyvega.experiments.lazy_initialization;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 /**
  * Copyright 2015 Percy Vega
  * <p>
@@ -20,25 +20,24 @@ import org.slf4j.LoggerFactory;
  */
 public class AppThatIsLazy {
 
-    private static final Logger logger = LoggerFactory.getLogger(AppThatIsLazy.class);
 
     public static void main(String[] args) throws InterruptedException {
-        logger.debug("Starting main()");
+        log.debug("Starting main()");
 
-        logger.debug("About to sleep for 3 seconds.");
+        log.debug("About to sleep for 3 seconds.");
         Thread.sleep(3000);
-        logger.debug("Finished sleeping for 3 seconds.");
+        log.debug("Finished sleeping for 3 seconds.");
 
-        logger.debug("About to make reference to enum.");
+        log.debug("About to make reference to enum.");
         JustAnotherEnum justAnotherEnum = JustAnotherEnum.INSTANCE;
 
-        logger.debug("About to call JustAnotherClass' constructor.");
+        log.debug("About to call JustAnotherClass' constructor.");
         JustAnotherClass justAnotherClass = new JustAnotherClass();
 
-        logger.debug("About to call JustAnotherClassWithStaticFinalProp's constructor.");
+        log.debug("About to call JustAnotherClassWithStaticFinalProp's constructor.");
         JustAnotherClassWithStaticFinalProp justAnotherClassWithStaticFinalProp = new JustAnotherClassWithStaticFinalProp();
 
-        logger.debug("About to call JustAnotherSingleton.getAll().");
+        log.debug("About to call JustAnotherSingleton.getAll().");
         JustAnotherSingleton justAnotherSingleton = JustAnotherSingleton.getInstance();
 
     }

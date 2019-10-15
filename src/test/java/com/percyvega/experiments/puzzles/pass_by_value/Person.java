@@ -15,14 +15,6 @@ public class Person implements Being {
         this.lastName = lastName;
     }
 
-    public boolean isSpecial() {
-        return special;
-    }
-
-    public void setSpecial(boolean special) {
-        this.special = special;
-    }
-
     public Person(int age) {
         this.age = age;
     }
@@ -33,6 +25,14 @@ public class Person implements Being {
     }
 
     public Person() {
+    }
+
+    public boolean isSpecial() {
+        return special;
+    }
+
+    public void setSpecial(boolean special) {
+        this.special = special;
     }
 
     public int getAge() {
@@ -51,16 +51,16 @@ public class Person implements Being {
         this.firstName = firstName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public String getLastName() {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String toString() {
-        return new String(this.getFirstName() + "\t\t" + this.getAge() + "\t\t"
-                + this.special);
+        return this.getFirstName() + "\t\t" + this.getAge() + "\t\t"
+                + this.special;
     }
 }

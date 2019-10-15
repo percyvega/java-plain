@@ -14,10 +14,6 @@ public class AwesomeCalculatorImpl implements AwesomeCalculator {
         this.repo = repo;
     }
 
-    public void setBigInteger(BigInteger bigInteger) {
-        this.bigInteger = bigInteger;
-    }
-
     public int multiply(int i, int y) {
         return i * y;
     }
@@ -36,6 +32,10 @@ public class AwesomeCalculatorImpl implements AwesomeCalculator {
 
     public BigInteger getBigInteger() {
         return bigInteger;
+    }
+
+    public void setBigInteger(BigInteger bigInteger) {
+        this.bigInteger = bigInteger;
     }
 
     public int getAverageRandomInts() {

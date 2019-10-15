@@ -1,14 +1,14 @@
 package com.percyvega.experiments.operators.instanceof_app;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 
-public class AppInstanceof {
+@Log4j2
+public
+class AppInstanceof {
 
-    private final static Logger logger = LoggerFactory.getLogger(AppInstanceof.class);
 
     public static void main(String[] args) throws InterruptedException {
-        logger.debug("Starting main()");
+        log.debug("Starting main()");
 
         MyNumberRunnableClass myNumberRunnableClass = new MyNumberRunnableClass("3");
         Thread thread = new Thread(myNumberRunnableClass);
@@ -17,14 +17,14 @@ public class AppInstanceof {
 
         MyNumberClass myNumberClass = new MyNumberClass("5");
 
-        logger.debug("myNumberRunnableClass instanceof MyNumberClass: " + (myNumberRunnableClass instanceof MyNumberClass));
-        logger.debug("myNumberRunnableClass instanceof MyRunnableInterface: " + (myNumberRunnableClass instanceof MyRunnableInterface));
-        logger.debug("myNumberRunnableClass instanceof Number: " + (myNumberRunnableClass instanceof Number));
-        logger.debug("myNumberRunnableClass instanceof Runnable: " + (myNumberRunnableClass instanceof Runnable));
+        log.debug("myNumberRunnableClass instanceof MyNumberClass: " + (myNumberRunnableClass instanceof MyNumberClass));
+        log.debug("myNumberRunnableClass instanceof MyRunnableInterface: " + (myNumberRunnableClass instanceof MyRunnableInterface));
+        log.debug("myNumberRunnableClass instanceof Number: " + (myNumberRunnableClass instanceof Number));
+        log.debug("myNumberRunnableClass instanceof Runnable: " + (myNumberRunnableClass instanceof Runnable));
 
-        logger.debug("MyNumberClass instanceof Number: " + (myNumberClass instanceof Number));
+        log.debug("MyNumberClass instanceof Number: " + (myNumberClass instanceof Number));
 
-        logger.debug("Finishing main()");
+        log.debug("Finishing main()");
     }
 
 }

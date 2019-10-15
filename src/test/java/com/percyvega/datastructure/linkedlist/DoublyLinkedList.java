@@ -15,7 +15,7 @@ public class DoublyLinkedList<E> {
 
     public void add(E value) {
         DoublyLinkedListNode<E> newNode = new DoublyLinkedListNode<>(value);
-        if(size == 0) {
+        if (size == 0) {
             head = newNode;
             tail = newNode;
         } else {
@@ -28,7 +28,7 @@ public class DoublyLinkedList<E> {
     }
 
     public E get(int index) {
-        if(index >= size || index < 0)
+        if (index >= size || index < 0)
             throw new IndexOutOfBoundsException("Index is " + index + " and size is " + size);
 
         DoublyLinkedListNode<E> node = head;
@@ -39,7 +39,7 @@ public class DoublyLinkedList<E> {
     }
 
     public E delete(int index) {
-        if(index >= size || index < 0)
+        if (index >= size || index < 0)
             throw new IndexOutOfBoundsException("Index is " + index + " and size is " + size);
 
         DoublyLinkedListNode<E> node = head;
@@ -47,12 +47,12 @@ public class DoublyLinkedList<E> {
             node = node.next;
         }
 
-        if(node == head)
+        if (node == head)
             head = node.next;
         else
             node.prev.next = node.next;
 
-        if(node == tail)
+        if (node == tail)
             tail = node.prev;
         else
             node.next.prev = node.prev;
@@ -62,13 +62,11 @@ public class DoublyLinkedList<E> {
         return node.value;
     }
 
-    public DoublyLinkedListNode getHead()
-    {
+    public DoublyLinkedListNode getHead() {
         return head;
     }
 
-    public DoublyLinkedListNode getTail()
-    {
+    public DoublyLinkedListNode getTail() {
         return tail;
     }
 }

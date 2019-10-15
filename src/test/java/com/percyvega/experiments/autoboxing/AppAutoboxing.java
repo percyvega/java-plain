@@ -1,7 +1,6 @@
 package com.percyvega.experiments.autoboxing;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +10,15 @@ import java.util.Random;
     Autoboxing: automatically converting a primitive (e.g. int) to its corresponding object wrapper (e.g. Integer)
     Unboxing: e.g. Integer to int
  */
+@Log4j2
 public class AppAutoboxing {
 
-    private final static Logger logger = LoggerFactory.getLogger(AppAutoboxing.class);
 
     public static void main(String... args) {
         List<Integer> integers = autoboxingExample1();
-        logger.debug(integers.toString());
+        log.debug(integers.toString());
 
-        logger.debug(autoboxingExample2(integers).toString());
+        log.debug(autoboxingExample2(integers).toString());
     }
 
     public static List<Integer> autoboxingExample1() {

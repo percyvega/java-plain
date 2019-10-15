@@ -46,11 +46,11 @@ public enum Currency implements Runnable {
 
     private int value;
 
-    public abstract String color();
-
-    private Currency(int value) {
+    Currency(int value) {
         this.value = value;
     }
+
+    public abstract String color();
 
     @Override
     public String toString() {

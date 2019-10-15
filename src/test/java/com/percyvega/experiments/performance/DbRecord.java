@@ -23,92 +23,92 @@ public class DbRecord {
         return available;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public String getAddressLine2() {
-        return addressLine2;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public String getBusinessName() {
-        return businessName;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public int getSavingsAmountInCents() {
-        return savingsAmountInCents;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
+    public String getAddressLine2() {
+        return addressLine2;
+    }
+
     public void setAddressLine2(String addressLine2) {
         this.addressLine2 = addressLine2;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
     }
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
+    public String getBusinessName() {
+        return businessName;
+    }
+
     public void setBusinessName(String businessName) {
         this.businessName = businessName;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     public void setCity(String city) {
         this.city = city;
     }
 
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public int getSavingsAmountInCents() {
+        return savingsAmountInCents;
     }
 
     public void setSavingsAmountInCents(int savingsAmountInCents) {
         this.savingsAmountInCents = savingsAmountInCents;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNote() {
+        return note;
     }
 
     public void setNote(String note) {

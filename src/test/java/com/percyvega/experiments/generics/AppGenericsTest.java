@@ -1,11 +1,9 @@
 package com.percyvega.experiments.generics;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class AppGenericsTest {

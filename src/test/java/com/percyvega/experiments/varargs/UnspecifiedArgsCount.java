@@ -1,31 +1,30 @@
 package com.percyvega.experiments.varargs;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
 
 import java.text.MessageFormat;
 import java.util.Date;
 
+@Log4j2
 public class UnspecifiedArgsCount {
 
-    private final static Logger logger = LoggerFactory.getLogger(UnspecifiedArgsCount.class);
 
     public static void main(String... args) {
-        logger.debug("Starting main()");
+        log.debug("Starting main()");
 
         Integer planetNumber = 3;
         Date now = new Date();
-        String eventDescription = new String("disturbance in the force");
+        String eventDescription = "disturbance in the force";
 
         Object[] myStoryArgs = {planetNumber, now, eventDescription};
 
         String result1 = UnspecifiedArgsCount.getFullStory(myStoryArgs);
         String result2 = UnspecifiedArgsCount.getFullStory(planetNumber, now, eventDescription);
 
-        logger.debug(result1);
-        logger.debug(result2);
+        log.debug(result1);
+        log.debug(result2);
 
-        logger.debug("Finishing main()");
+        log.debug("Finishing main()");
     }
 
     private static String getFullStory(Object... myStoryArgs) {

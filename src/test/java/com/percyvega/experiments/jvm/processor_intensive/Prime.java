@@ -39,7 +39,7 @@ public class Prime {
         for (int j = 0; j < NUM_THREADS; j++) {
 
             final int ID = j;
-            executorService.submit((Runnable) () -> {
+            executorService.submit(() -> {
                 long lastPrinted = 0;
                 for (int i = 0; i < HIGHEST_NUM; i++) {
                     boolean isPrime = isPrime(new BigInteger(Integer.toString(i)));

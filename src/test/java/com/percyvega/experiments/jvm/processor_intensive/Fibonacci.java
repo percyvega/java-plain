@@ -1,11 +1,12 @@
 package com.percyvega.experiments.jvm.processor_intensive;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import lombok.extern.log4j.Log4j2;
 
 /**
  * Usually takes 100-105 seconds to complete.
@@ -32,7 +33,7 @@ public class Fibonacci {
         for (int j = 0; j < NUM_THREADS; j++) {
 
             final int ID = j;
-            executorService.submit((Runnable) () -> {
+            executorService.submit(() -> {
                 long lastPrinted = 0;
                 for (int i = 0; i < HIGHEST_NUM; i++) {
                     BigInteger fib = fib(new BigInteger(String.valueOf(i)));

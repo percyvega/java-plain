@@ -30,14 +30,6 @@ public class MyJFrame extends JFrame implements ActionListener {
         c.add(m2e);
     }
 
-    public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand();
-        if (command.equals("m2u")) {
-            double val = Double.valueOf(litersTF.getText());
-            litersL.setText(Double.toString(val * 2.113));
-        }
-    }
-
     public static void main(String[] args) {
         MyJFrame frame = new MyJFrame();
         frame.pack();
@@ -45,6 +37,14 @@ public class MyJFrame extends JFrame implements ActionListener {
         frame.setLocation(screenSize.width / 2 - frame.getWidth() / 2,
                 screenSize.height / 2 - frame.getHeight() / 2);
         frame.setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+        if (command.equals("m2u")) {
+            double val = Double.valueOf(litersTF.getText());
+            litersL.setText(Double.toString(val * 2.113));
+        }
     }
 
 }

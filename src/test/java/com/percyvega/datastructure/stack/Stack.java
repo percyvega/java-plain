@@ -8,7 +8,7 @@ public class Stack<T> {
     private StackNode<T> top;
 
     public T pop() {
-        if(top == null)
+        if (top == null)
             throw new NullPointerException("Stack is isEmpty. Pop is not allowed.");
 
         T data = top.data;

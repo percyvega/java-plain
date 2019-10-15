@@ -5,7 +5,10 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public abstract class BibleCounter {
 
-    public static String bookNames[] = new String[]{
+    public static final int COUNT_BOOK_OT = 39;
+    public static final int COUNT_BOOK_NT = 27;
+    public static final int COUNT_VERSES = BibleCounter.COUNT_VERSES_OT + BibleCounter.COUNT_VERSES_NT;
+    public static String[] bookNames = new String[]{
             "Genesis",
             "Exodus",
             "Leviticus",
@@ -73,8 +76,7 @@ public abstract class BibleCounter {
             "Jude",
             "Revelation",
     };
-
-    private static int bookChapterVerses[][] = new int[][]{
+    private static int[][] bookChapterVerses = new int[][]{
             // 1.  Genesis - 50
             {31, 25, 24, 26, 32, 22, 24, 22, 29, 32,
                     32, 20, 18, 24, 21, 16, 27, 33, 38, 18,
@@ -298,12 +300,8 @@ public abstract class BibleCounter {
                     19, 17, 18, 20, 8, 21, 18, 24, 21, 15,
                     27, 21}
     };
-
-    public static final int COUNT_BOOK_OT = 39;
-    public static final int COUNT_BOOK_NT = 27;
     public static final int COUNT_VERSES_OT = BibleCounter.getTotalVerseCountOT();
     public static final int COUNT_VERSES_NT = BibleCounter.getTotalVerseCountNT();
-    public static final int COUNT_VERSES = COUNT_VERSES_OT + COUNT_VERSES_NT;
 
     /**
      * returns 66
@@ -380,7 +378,7 @@ public abstract class BibleCounter {
         for (int iBook = 1; iBook <= bookNames.length; iBook++) {
             String book = bookNames[iBook - 1];
             int chapterCount = getChapterCount(iBook);
-            for (int chapter = 1; chapter <= chapterCount; chapter++ ) {
+            for (int chapter = 1; chapter <= chapterCount; chapter++) {
                 int verseCount = getVerseCount(iBook, chapter);
                 for (int verse = 1; verse <= verseCount; verse++) {
                     bibleReferences[iBibleReference++] = new BibleReference(book, chapter, verse);

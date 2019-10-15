@@ -31,7 +31,7 @@ public class AppIsPalindrome {
         for (int i = 0; i < list.size() / 2; i++) {
             int digitA = list.get(i);
             int digitB = list.get(list.size() - 1 - i);
-            if(digitA != digitB) {
+            if (digitA != digitB) {
                 isPalindrome = false;
                 break;
             }

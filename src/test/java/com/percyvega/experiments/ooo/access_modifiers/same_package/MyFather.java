@@ -1,4 +1,4 @@
-package com.percyvega.experiments.access_modifiers.same_package;
+package com.percyvega.experiments.ooo.access_modifiers.same_package;
 
 import lombok.extern.log4j.Log4j2;
 

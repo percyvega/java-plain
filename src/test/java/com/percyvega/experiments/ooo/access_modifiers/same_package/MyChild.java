@@ -1,11 +1,10 @@
-package com.percyvega.experiments.access_modifiers;
+package com.percyvega.experiments.ooo.access_modifiers.same_package;
 
-import com.percyvega.experiments.access_modifiers.same_package.MyFather;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
-public class MyChildAway extends MyFather {
-    public MyChildAway(String ssn, String phone, String lastName, String firstName) {
+public class MyChild extends MyFather {
+    public MyChild(String ssn, String phone, String lastName, String firstName) {
         super(ssn, phone, lastName, firstName);
     }
 
@@ -17,8 +16,8 @@ public class MyChildAway extends MyFather {
     }
 
     public void printInheritedValuesWithoutGetters() {
-//        log.info(ssn); // inaccessible, because it didn't inherit the field
-//        log.info(phone); // inaccessible, because it didn't inherit the field
+//        log.info(ssn); // inaccessible, because it didn't inherit it
+        log.info(phone);
         log.info(lastName);
         log.info(firstName);
     }
@@ -31,8 +30,8 @@ public class MyChildAway extends MyFather {
     }
 
     public void printSuperValuesWithoutGetters() {
-//        log.info(super.ssn); // inaccessible, because it's private
-//        log.info(super.phone); // inaccessible, because it's package
+//        log.info(super.ssn); // inaccessible because it's private
+        log.info(super.phone);
         log.info(super.lastName);
         log.info(super.firstName);
     }

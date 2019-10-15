@@ -1,4 +1,4 @@
-package com.percyvega.experiments.polimorphism;
+package com.percyvega.experiments.ooo.polimorphism;
 
 import lombok.extern.log4j.Log4j2;
 

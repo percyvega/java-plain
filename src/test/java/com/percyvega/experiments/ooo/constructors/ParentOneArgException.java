@@ -1,4 +1,4 @@
-package com.percyvega.experiments.constructors;
+package com.percyvega.experiments.ooo.constructors;
 
 public class ParentOneArgException extends RuntimeException {
 

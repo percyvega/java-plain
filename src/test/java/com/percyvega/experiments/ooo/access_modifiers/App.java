@@ -1,8 +1,8 @@
-package com.percyvega.experiments.access_modifiers;
+package com.percyvega.experiments.ooo.access_modifiers;
 
-import com.percyvega.experiments.access_modifiers.same_package.MyChild;
-import com.percyvega.experiments.access_modifiers.same_package.MyFather;
-import com.percyvega.experiments.access_modifiers.same_package.MyGrandchild;
+import com.percyvega.experiments.ooo.access_modifiers.same_package.MyChild;
+import com.percyvega.experiments.ooo.access_modifiers.same_package.MyFather;
+import com.percyvega.experiments.ooo.access_modifiers.same_package.MyGrandchild;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 

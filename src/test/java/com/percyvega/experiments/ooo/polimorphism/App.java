@@ -1,4 +1,4 @@
-package com.percyvega.experiments.polimorphism;
+package com.percyvega.experiments.ooo.polimorphism;
 
 import org.junit.jupiter.api.Test;
 

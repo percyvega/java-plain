@@ -2,7 +2,6 @@ package com.percyvega.experiments.ooo.polimorphism;
 
 import lombok.extern.log4j.Log4j2;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 

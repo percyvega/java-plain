@@ -7,7 +7,6 @@ public abstract class BibleCounter {
 
     public static final int COUNT_BOOK_OT = 39;
     public static final int COUNT_BOOK_NT = 27;
-    public static final int COUNT_VERSES = BibleCounter.COUNT_VERSES_OT + BibleCounter.COUNT_VERSES_NT;
     public static String[] bookNames = new String[]{
             "Genesis",
             "Exodus",
@@ -302,6 +301,7 @@ public abstract class BibleCounter {
     };
     public static final int COUNT_VERSES_OT = BibleCounter.getTotalVerseCountOT();
     public static final int COUNT_VERSES_NT = BibleCounter.getTotalVerseCountNT();
+    public static final int COUNT_VERSES = BibleCounter.COUNT_VERSES_OT + BibleCounter.COUNT_VERSES_NT;
 
     /**
      * returns 66

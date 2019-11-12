@@ -1,4 +1,4 @@
-package com.percyvega.experiments.puzzles;
+package com.percyvega.experiments.reflection;
 
 import java.lang.reflect.Field;
 

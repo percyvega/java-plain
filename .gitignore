@@ -49,6 +49,7 @@ app/
 # Package Files #
 *.jar
 *.war
+*.nar
 *.ear
 *.zip
 *.tar.gz
@@ -73,3 +74,6 @@ Thumbs.db
 
 
 dependency-reduced-pom.xml
+
+
+.vertx/

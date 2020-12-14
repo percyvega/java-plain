@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Log4j2
 @Data
-public class BibleReference implements Comparable {
+public class BibleReference implements Comparable<BibleReference> {
 
     public static final BibleReference GENESIS_1_1 = new BibleReference("Genesis", 1, 1);
     public static final BibleReference EXODUS_1_1 = new BibleReference("Exodus", 1, 1);
@@ -43,9 +43,7 @@ public class BibleReference implements Comparable {
 
     // needed for all Tree implementations
     @Override
-    public int compareTo(Object other) {
-        BibleReference o = (BibleReference) other;
-
+    public int compareTo(BibleReference o) {
         if (!book.equals(o.book)) {
             return book.compareTo(o.book);
         } else if (chapter != o.chapter) {

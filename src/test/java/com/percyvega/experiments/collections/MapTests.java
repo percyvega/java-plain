@@ -51,7 +51,7 @@ public class MapTests {
         for (Map.Entry<String, List<String>> entry : dictionary.entrySet()) {
             String key = entry.getKey();
             List<String> value = entry.getValue();
-            log.debug("Key: " + key + ", Value: " + value);
+            log.info("Key: " + key + ", Value: " + value);
         }
     }
 

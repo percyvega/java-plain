@@ -14,7 +14,7 @@ public class VolatileKeyword {
 
     private static final Runnable runnable1 = () -> {
         while (!isToStop) {
-            log.info("runnable1 still running at {}", System.nanoTime() - START_NANO_TIME);
+            log.info("runnable1 still running at {} {}", System.nanoTime() - START_NANO_TIME, isToStop);
         }
     };
 
@@ -22,14 +22,14 @@ public class VolatileKeyword {
         int counter = 0;
         while (true) {
             counter++;
-            if (counter >= 100_000_000) {
-                log.info("About to set isToStop to true at {}", System.nanoTime() - START_NANO_TIME);
+            if (counter >= 1_000_000) {
+                log.info("About to set isToStop to true at {} {}", System.nanoTime() - START_NANO_TIME, isToStop);
                 isToStop = true;
-                log.info("This should be the last log at {}", System.nanoTime() - START_NANO_TIME);
+                log.info("This should be the last log at {} {}", System.nanoTime() - START_NANO_TIME, isToStop);
                 break;
             }
             if (counter % 1_000 == 0) {
-                log.info("Current value: {} at {}", counter, System.nanoTime() - START_NANO_TIME);
+                log.info("Current value: {} at {} {}", counter, System.nanoTime() - START_NANO_TIME, isToStop);
             }
         }
     };

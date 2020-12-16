@@ -9,14 +9,14 @@ public class MyChild extends MyFather {
     }
 
     public void printInheritedValues() {
-        log.info(getSsn()); // accessible, because it inherited getSsn()
+        log.info(getSsn()); // accessible, because it inherited getSsn() and the others
         log.info(getPhone());
         log.info(getLastName());
         log.info(getFirstName());
     }
 
     public void printInheritedValuesWithoutGetters() {
-//        log.info(ssn); // inaccessible, because it didn't inherit it
+//        log.info(ssn); // inaccessible, because it can't reach visibly the ssn field
         log.info(phone);
         log.info(lastName);
         log.info(firstName);

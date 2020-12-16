@@ -19,6 +19,8 @@ public class App {
 
     @Test
     public void grandchild_calling_grandfatherMethod_whichUses_grandchildMethod() {
+        myGrandchild.printFatherValuesWithoutGetters();
+        System.out.println();
         myGrandchild.printFatherValues();
     }
 

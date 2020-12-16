@@ -18,7 +18,7 @@ public class Fibonacci {
     public static int NUM_THREADS = 30;
 
     public static BigInteger fib(BigInteger n) {
-        if (n.compareTo(BigInteger.ONE) == -1 || n.compareTo(BigInteger.ONE) == 0)
+        if (n.compareTo(BigInteger.ONE) < 0 || n.compareTo(BigInteger.ONE) == 0)
             return n;
         else
             return fib(n.subtract(BigInteger.ONE)).add(fib(n.subtract(BigInteger.ONE).subtract(BigInteger.ONE)));

@@ -17,8 +17,8 @@ public class MyChildAway extends MyFather {
     }
 
     public void printInheritedValuesWithoutGetters() {
-//        log.info(ssn); // inaccessible, because it didn't inherit the field
-//        log.info(phone); // inaccessible, because it didn't inherit the field
+//        log.info(ssn); // inaccessible, because it can't reach visibly the field
+//        log.info(phone); // inaccessible, because it can't reach visibly the field
         log.info(lastName);
         log.info(firstName);
     }

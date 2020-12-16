@@ -4,10 +4,9 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.percyvega.experiments.performance.DataPerformance.getDbRecordsArray;
 import static com.percyvega.experiments.performance.DataPerformance.getDbRecordsArrayList;
@@ -30,7 +29,10 @@ public class SortComparisonTest {
 
     @Test
     void quickSortArray() {
-        arraysSort(dbArray1);
+//        Arrays.sort(dbArray1, new SavingsAmountInCentsComparator());
+        Arrays.stream(dbArray1)
+                .sorted(new SavingsAmountInCentsComparator())
+                .collect(Collectors.toList());
     }
 
     @Test
@@ -40,20 +42,15 @@ public class SortComparisonTest {
 
     @Test
     void quickSortArrayList() {
-        collectionsSort(dbArrayList1);
+//        Collections.sort(dbArrayList1, new SavingsAmountInCentsComparator());
+//        dbArrayList1.sort(new SavingsAmountInCentsComparator());
+//        dbArrayList1.sort(Comparator.comparingInt(DbRecord::getSavingsAmountInCents));
+        dbArrayList1.sort(Comparator.comparing(DbRecord::getSavingsAmountInCents));
     }
 
     @Test
     void bubbleSortArrayList() {
         bubbleSort(dbArrayList2);
-    }
-
-    private static void arraysSort(DbRecord[] dbRecords) {
-        Arrays.sort(dbRecords, new SavingsAmountInCentsComparator());
-    }
-
-    private static void collectionsSort(ArrayList<DbRecord> dbRecords) {
-        Collections.sort(dbRecords, new SavingsAmountInCentsComparator());
     }
 
     private static void bubbleSort(DbRecord[] dbRecords) {

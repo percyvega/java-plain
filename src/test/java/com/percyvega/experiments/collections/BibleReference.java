@@ -37,10 +37,6 @@ public class BibleReference implements Comparable<BibleReference> {
                 .toString();
     }
 
-    private void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     // needed for all Tree implementations
     @Override
     public int compareTo(BibleReference o) {

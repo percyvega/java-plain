@@ -35,7 +35,7 @@ public class AssertionTests {
         calculator3 = null;
         calculator4 = calculator;
         calculator5 = new AwesomeCalculatorImpl();
-        calculatorList = new ArrayList<AwesomeCalculator>();
+        calculatorList = new ArrayList<>();
     }
 
     @BeforeEach

@@ -13,19 +13,19 @@ public class IntegrationTestExampleIT {
 
     @Test
     public void testInternetConnection() throws IOException {
-        URL oracle = new URL("http://www.clocktab.com/");
-        BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
+        URL url = new URL("https://www.google.com/");
+        BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
 
         String inputLine;
-        boolean foundTimeTable = false;
+        boolean bodyFound = false;
         while ((inputLine = in.readLine()) != null) {
-            if (inputLine.contains("timeTable")) {
-                foundTimeTable = true;
+            if (inputLine.contains("body")) {
+                bodyFound = true;
                 break;
             }
         }
 
-        assertTrue(foundTimeTable);
+        assertTrue(bodyFound);
 
         in.close();
     }

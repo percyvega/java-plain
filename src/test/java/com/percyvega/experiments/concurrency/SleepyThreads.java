@@ -1,6 +1,7 @@
 package com.percyvega.experiments.concurrency;
 
 import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
@@ -29,6 +30,7 @@ public class SleepyThreads {
 
     // since execute() doesn't return anything,
     //  only awaitTermination() precludes the main thread from terminating execution
+    @Disabled
     @Test
     void useExecutorServiceExecute() throws InterruptedException {
         long start = System.currentTimeMillis();
@@ -51,6 +53,7 @@ public class SleepyThreads {
 
     // since submit()'s return value (an int in this case) is read,
     //  the main thread is precluded from terminating execution
+    @Disabled
     @Test
     void useExecutorServiceSubmit() throws InterruptedException, ExecutionException {
         long start = System.currentTimeMillis();

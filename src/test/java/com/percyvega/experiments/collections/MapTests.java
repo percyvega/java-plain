@@ -15,8 +15,8 @@ public class MapTests {
     @Test
     public void map_elements() {
         addElementsAndPrint(new HashMap<>());
-        addElementsAndPrint(new LinkedHashMap<>());
-        addElementsAndPrint(new TreeMap<>());
+        addElementsAndPrint(new LinkedHashMap<>()); // guarantees order of insertion is kept
+        addElementsAndPrint(new TreeMap<>()); // sorted by key
         addElementsAndPrint(new Hashtable<>());
     }
 

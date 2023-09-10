@@ -17,13 +17,13 @@ package com.percyvega.experiments.lazy_initialization;
  */
 public class JustAnotherSingleton {
 
-    private static final JustAnotherSingleton singleton = new JustAnotherSingleton();
+    private static final JustAnotherSingleton INSTANCE = new JustAnotherSingleton();
 
     private JustAnotherSingleton() {
         System.out.println("JustAnotherSingleton is being INITIALIZED for the FIRST TIME!");
     }
 
     public static JustAnotherSingleton getInstance() {
-        return singleton;
+        return INSTANCE;
     }
 }

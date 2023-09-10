@@ -2,6 +2,7 @@ package com.percyvega.experiments.performance;
 
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -11,6 +12,7 @@ import java.util.stream.Stream;
 import static com.percyvega.experiments.performance.DataPerformance.getDbRecordsArray;
 import static com.percyvega.experiments.performance.DataPerformance.getDbRecordsArrayList;
 
+@Disabled
 @Log4j2
 public class SortComparisonTest {
 

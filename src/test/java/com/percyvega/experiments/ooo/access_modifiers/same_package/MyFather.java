@@ -17,7 +17,7 @@ public class MyFather {
         this.firstName = firstName;
     }
 
-    public void printFatherValues() {
+    public void printFatherValuesUsingGetters() {
         log.info(getSsn());
         log.info(getPhone());
         log.info(getLastName());

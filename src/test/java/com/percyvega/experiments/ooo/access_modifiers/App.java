@@ -21,13 +21,13 @@ public class App {
     public void grandchild_calling_grandfatherMethod_whichUses_grandchildMethod() {
         myGrandchild.printFatherValuesWithoutGetters();
         System.out.println();
-        myGrandchild.printFatherValues();
+        myGrandchild.printFatherValuesUsingGetters();
     }
 
     @Test
     public void casting_child_to_father_to_child() {
         MyFather myFather1 = myChild;
-        myFather1.printFatherValues();
+        myFather1.printFatherValuesUsingGetters();
 
         MyChild myChild1 = (MyChild) myFather1;
         myChild1.printInheritedValues();

@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 import java.util.stream.*;
 
@@ -67,6 +68,30 @@ class NumericStreamsTest {
         Stream<Integer> integerStream = Stream.of(8, 23, 1979);
         IntStream intStream = integerStream.mapToInt(Integer::intValue);
         intStream.forEach(value -> log.info("Unboxed (from Integer to int): " + value));
+    }
+
+    @Test
+    void sortIntStream() {
+        int[] ints = new int[]{8, 4, 2, 5};
+
+        // sort without streams
+        Arrays.sort(ints);
+        assertThat(ints[0]).isEqualTo(2);
+        assertThat(ints[ints.length - 1]).isEqualTo(8);
+
+        ints = new int[]{8, 4, 2, 5};
+
+        // sort with streams
+        ints = Arrays.stream(ints).sorted().toArray();
+        assertThat(ints[0]).isEqualTo(2);
+        assertThat(ints[ints.length - 1]).isEqualTo(8);
+
+        ints = new int[]{8, 4, 2, 5};
+
+        // sort in reverse order
+        ints = Arrays.stream(ints).boxed().sorted(Collections.reverseOrder()).mapToInt(Integer::intValue).toArray();
+        assertThat(ints[0]).isEqualTo(8);
+        assertThat(ints[ints.length - 1]).isEqualTo(2);
     }
 
     @Test

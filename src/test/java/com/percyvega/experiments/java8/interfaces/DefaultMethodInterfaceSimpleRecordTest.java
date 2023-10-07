@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class DefaultMethodInterfacePersonTest {
+public class DefaultMethodInterfaceSimpleRecordTest {
 
     @Test
     void testDefaultMethod() {

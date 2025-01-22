@@ -1,42 +1,52 @@
 package com.percyvega.experiments.concurrency;
 
 import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.Test;
 
 /**
  * Supposedly, if we remove the volatile keyword from line 11, then runnable1 will be so busy it won't even notice the change in value of isToStop.
- * In reality, my Mac may be so fast that runnable1 actually is always checking for isToStop.
+ * In reality, my Mac may be so fast that runnable1 is actually always checking for isToStop.
  */
 @Log4j2
 public class VolatileKeyword {
 
-    private static final long START_NANO_TIME = System.nanoTime();
-    private static volatile boolean isToStop = false;
+    private volatile boolean isToStop = false;
 
-    private static final Runnable runnable1 = () -> {
+    private final Runnable runnable1 = () -> {
         while (!isToStop) {
-            log.info("runnable1 still running at {} {}", System.nanoTime() - START_NANO_TIME, isToStop);
+            log.error("1111111 Millis delta: {}. isToStop: {}", System.currentTimeMillis(), isToStop);
         }
     };
 
-    private static final Runnable runnable2 = () -> {
+    private final Runnable runnable2 = () -> {
         int counter = 0;
-        while (true) {
+        while (!isToStop) {
             counter++;
-            if (counter >= 1_000_000) {
-                log.info("About to set isToStop to true at {} {}", System.nanoTime() - START_NANO_TIME, isToStop);
-                isToStop = true;
-                log.info("This should be the last log at {} {}", System.nanoTime() - START_NANO_TIME, isToStop);
-                break;
+            if (counter % 10_000 == 0) {
+                log.error("2222222 Counter: {}. Millis delta: {}. isToStop: {}", counter, System.currentTimeMillis(), isToStop);
             }
-            if (counter % 1_000 == 0) {
-                log.info("Current value: {} at {} {}", counter, System.nanoTime() - START_NANO_TIME, isToStop);
+            if (counter >= 1_000_000) {
+                log.info("------- About to set isToStop to true. Millis delta: {}. isToStop: {}", System.currentTimeMillis(), isToStop);
+                isToStop = true;
+                log.info("======= This should be the last log. Millis delta: {}. isToStop: {}", System.currentTimeMillis(), isToStop);
             }
         }
     };
 
-    public static void main(String[] args) {
-        new Thread(runnable1).start();
-        new Thread(runnable2).start();
+    public VolatileKeyword() throws InterruptedException {
+        Thread thread1 = new Thread(runnable1);
+        Thread thread2 = new Thread(runnable2);
+
+        thread1.start();
+        thread2.start();
+
+        thread1.join();
+        thread2.join();
+    }
+
+    @Test
+    void test() throws InterruptedException {
+        // no need to instantiate class for it to run automatically via its constructor
     }
 
 }

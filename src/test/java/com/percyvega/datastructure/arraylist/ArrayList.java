@@ -1,8 +1,11 @@
 package com.percyvega.datastructure.arraylist;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * Created by percy on 4/15/2017.
  */
+@Log4j2
 public class ArrayList<T> {
 
     private T[] array;
@@ -19,7 +22,7 @@ public class ArrayList<T> {
     public void add(T s) {
         if (array.length == size) {
             T[] newArray = (T[]) new Object[array.length * 2];
-            System.out.println("Doubling size, from " + array.length + " to " + newArray.length);
+            log.info("Doubling size, from " + array.length + " to " + newArray.length);
             copyFromTo(array, newArray);
             array = newArray;
         }
@@ -30,9 +33,7 @@ public class ArrayList<T> {
     }
 
     private void copyFromTo(T[] array, T[] newArray) {
-        for (int i = 0; i < array.length; i++) {
-            newArray[i] = array[i];
-        }
+        System.arraycopy(array, 0, newArray, 0, array.length);
     }
 
     public T get(int i) {

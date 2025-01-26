@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Log4j2
 class ComparatorTest {
 
-    private static List<String> stringList = Arrays.asList("She", "It", "I", "He", "A", null, "Abstract", "Internationalization", "Four", "Seven");
+    private static final List<String> stringList = Arrays.asList("She", "It", "I", "He", "A", null, "Abstract", "Internationalization", "Four", "Seven");
 
     Comparator<String> comparatorComparingLength = Comparator.comparingInt(String::length);
     Comparator<String> comparatorNullsLastComparingLengthComparingHashcode = Comparator.nullsLast(Comparator.comparingInt(String::length).thenComparingInt(String::hashCode));

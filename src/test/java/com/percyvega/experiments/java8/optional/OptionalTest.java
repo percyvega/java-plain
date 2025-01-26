@@ -2,13 +2,11 @@ package com.percyvega.experiments.java8.optional;
 
 import com.percyvega.experiments.java8.model.Student;
 import com.percyvega.experiments.java8.model.suppliers.OptionalStudentSupplier;
-import com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
@@ -131,19 +129,19 @@ public class OptionalTest {
 
         log.info("------------ flatMap: ------------");
         optionalStudentList.forEach(optionalStudent ->
-                        optionalStudent
-                                .filter(student -> student.getGpa() > 2.0)
-                                .flatMap(Student::getSpouse) // flatMap() when the field is an Optional, map() otherwise
-                                .ifPresent(log::info)
+                optionalStudent
+                        .filter(student -> student.getGpa() > 2.0)
+                        .flatMap(Student::getSpouse) // flatMap() when the field is an Optional, map() otherwise
+                        .ifPresent(log::info)
         );
 
         log.info("------------ flatMap and map: ------------");
         optionalStudentList.forEach(optionalStudent ->
-                        optionalStudent
-                                .filter(student -> student.getGpa() > 2.0)
-                                .flatMap(Student::getSpouse) // flatMap() when the field is an Optional, map() otherwise
-                                .map(Student::getGpa)
-                                .ifPresent(log::info)
+                optionalStudent
+                        .filter(student -> student.getGpa() > 2.0)
+                        .flatMap(Student::getSpouse) // flatMap() when the field is an Optional, map() otherwise
+                        .map(Student::getGpa)
+                        .ifPresent(log::info)
         );
     }
 

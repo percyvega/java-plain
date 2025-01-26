@@ -1,16 +1,19 @@
 package com.percyvega.experiments.exceptions;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.util.Scanner;
 
+@Log4j2
 public class AgeReaderThrowsException implements AgeReader {
 
     @Override
     public int readAge(Scanner scanner) throws ImpossibleAgeException {
-        System.out.println("Starting readAge()");
+        log.info("Starting readAge()");
 
         int age = AgeScannerUtil.read(scanner);
 
-        System.out.println("Finishing readAge()");
+        log.info("Finishing readAge()");
 
         return age;
     }

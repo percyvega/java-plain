@@ -1,6 +1,10 @@
 package com.percyvega.experiments.annotation;
 
-import com.percyvega.experiments.annotation.custom.*;
+import com.percyvega.experiments.annotation.custom.CapitalizedPrinter;
+import com.percyvega.experiments.annotation.custom.DefaultPrinter;
+import com.percyvega.experiments.annotation.custom.HtmlPrinter;
+import com.percyvega.experiments.annotation.custom.InvokableWithASingleStringParameter;
+import com.percyvega.experiments.annotation.custom.Printer;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 

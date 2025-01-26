@@ -6,7 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.util.Random;
-import java.util.function.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,16 +20,16 @@ public class MethodAndConstructorReferenceTest {
     @Test
     void methodReferenceTest() {
         IntFunction<String> fromIntToString = Integer::toString;
-        System.out.println("fromIntToString: " + fromIntToString.apply(23));
+        log.info("fromIntToString: " + fromIntToString.apply(23));
 
         Function<String, BigInteger> fromStringToBigInteger = BigInteger::new;
-        System.out.println(fromStringToBigInteger.apply("1234567890123456"));
+        log.info(fromStringToBigInteger.apply("1234567890123456"));
 
-        Consumer<String> consumer = System.out::println;
+        Consumer<String> consumer = log::info;
         consumer.accept("Message to print out");
 
         UnaryOperator<String> unaryOperator = "Hello "::concat;
-        System.out.println(unaryOperator.apply("Percy!"));
+        log.info(unaryOperator.apply("Percy!"));
     }
 
     @Test

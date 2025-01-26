@@ -20,7 +20,7 @@ public class ThreadsUpdatingSharedResources {
     private volatile long volatileCounter = 0;
     private final AtomicLong atomicCounter = new AtomicLong(0);
 
-    public ThreadsUpdatingSharedResources() throws InterruptedException {
+    public void processThis() throws InterruptedException {
         Runnable myRunnable = () -> {
             for (int i = 0; i < 1_000_000; i++) {
                 volatileCounter++;
@@ -48,7 +48,7 @@ public class ThreadsUpdatingSharedResources {
 
     @Test
     void test() throws InterruptedException {
-        // no need to instantiate class for it to run automatically via its constructor
+        new ThreadsUpdatingSharedResources().processThis();
     }
 
 }

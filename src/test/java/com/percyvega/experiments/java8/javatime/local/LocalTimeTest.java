@@ -4,7 +4,6 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
-import java.time.temporal.ChronoField;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -60,6 +59,6 @@ class LocalTimeTest {
 
         assertThat(localTime.withMinute(2).toString()).isEqualTo("03:02:23.000000012");
 
-        assertThat(localTime.with(ChronoField.HOUR_OF_DAY, 2).toString()).isEqualTo("02:44:23.000000012");
+        assertThat(localTime.withHour(2).toString()).isEqualTo("02:44:23.000000012");
     }
 }

@@ -26,7 +26,7 @@ public class PeekTest {
                 .peek(student -> logs.add(String.format("Peek #4: %s, Gender: %s", student.getName(), student.getGender())))
                 .forEach(student -> logs.add(String.format("Terminal: " + student)));
 
-        logs.forEach(System.out::println);
+        logs.forEach(log::info);
     }
 
 }

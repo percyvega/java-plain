@@ -1,5 +1,8 @@
 package com.percyvega.experiments.puzzles;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class AppObjectCache {
 
     /**
@@ -9,16 +12,16 @@ public class AppObjectCache {
     private static void first() {
         Integer a = -129;
         Integer b = -129;
-        System.out.println(a == b);
+        log.info(a == b);
         Integer c = -128;
         Integer d = -128;
-        System.out.println(c == d);
+        log.info(c == d);
         Integer e = 127;
         Integer f = 127;
-        System.out.println(e == f);
+        log.info(e == f);
         Integer g = 128;
         Integer h = 128;
-        System.out.println(g == h);
+        log.info(g == h);
     }
 
     public static void main(String[] args) {

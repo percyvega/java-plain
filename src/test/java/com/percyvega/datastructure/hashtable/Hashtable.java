@@ -10,7 +10,7 @@ public class Hashtable<K, V> {
 
     public static int KEY_SET_SIZE = 200;
 
-    private DoublyLinkedList<KeyValue>[] hashCodes = new DoublyLinkedList[KEY_SET_SIZE];
+    private final DoublyLinkedList<KeyValue>[] hashCodes = new DoublyLinkedList[KEY_SET_SIZE];
     private int size = 0;
 
     public void put(K key, V value) {

@@ -1,7 +1,7 @@
 package com.percyvega.experiments.java8.javatime.temporalamount;
 
 import lombok.extern.log4j.Log4j2;
-import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
@@ -30,7 +30,7 @@ public class DurationTest {
         assertThat(duration3.toMinutes()).isEqualTo(10);
     }
 
-    @Tag("This test will fail when there are less than 12 minutes until midnight")
+    @DisplayName("This test will fail when there are less than 12 minutes until midnight")
     @Test
     void durationBetweenTwoLocalTimes() {
         LocalTime localTime1 = LocalTime.now();

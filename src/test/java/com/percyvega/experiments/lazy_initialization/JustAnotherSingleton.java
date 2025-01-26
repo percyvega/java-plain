@@ -1,5 +1,7 @@
 package com.percyvega.experiments.lazy_initialization;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * Copyright 2015 Percy Vega
  * <p>
@@ -15,12 +17,13 @@ package com.percyvega.experiments.lazy_initialization;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@Log4j2
 public class JustAnotherSingleton {
 
     private static final JustAnotherSingleton INSTANCE = new JustAnotherSingleton();
 
     private JustAnotherSingleton() {
-        System.out.println("JustAnotherSingleton is being INITIALIZED for the FIRST TIME!");
+        log.info("JustAnotherSingleton is being INITIALIZED for the FIRST TIME!");
     }
 
     public static JustAnotherSingleton getInstance() {

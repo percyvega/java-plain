@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 @Log4j2
 public class App {
 
-    private MyChild myChild = new MyChild("593-10-1000", "954-700-7000", "Vega", "Percy");
-    private MyGrandchild myGrandchild = new MyGrandchild("593-10-1000", "954-700-7000", "Vega", "Percy");
+    private final MyChild myChild = new MyChild("593-10-1000", "954-700-7000", "Vega", "Percy");
+    private final MyGrandchild myGrandchild = new MyGrandchild("593-10-1000", "954-700-7000", "Vega", "Percy");
 
     @Test
     public void child_calling_fatherMethod_whichUses_privateFields() {
@@ -20,7 +20,6 @@ public class App {
     @Test
     public void grandchild_calling_grandfatherMethod_whichUses_grandchildMethod() {
         myGrandchild.printFatherValuesWithoutGetters();
-        System.out.println();
         myGrandchild.printFatherValuesUsingGetters();
     }
 

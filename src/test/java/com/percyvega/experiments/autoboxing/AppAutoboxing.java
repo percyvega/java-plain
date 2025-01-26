@@ -16,9 +16,9 @@ public class AppAutoboxing {
 
     public static void main(String... args) {
         List<Integer> integers = autoboxingExample1();
-        log.debug(integers.toString());
+        log.info(integers.toString());
 
-        log.debug(autoboxingExample2(integers).toString());
+        log.info(autoboxingExample2(integers).toString());
     }
 
     public static List<Integer> autoboxingExample1() {

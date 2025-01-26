@@ -1,11 +1,14 @@
 package com.percyvega.datastructure.stack;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * Created by percy on 4/29/2017.
  */
+@Log4j2
 public class AppStackFactorialIterative {
 
-    private static Stack<Integer> stack = new Stack<>();
+    private static final Stack<Integer> stack = new Stack<>();
 
     private static int factorial(int n) {
         if (n < 1) {
@@ -29,7 +32,7 @@ public class AppStackFactorialIterative {
     public static void main(String[] args) {
         int result = factorial(10);
 
-        System.out.println(result);
+        log.info(result);
     }
 
 }

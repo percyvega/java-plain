@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
 import java.time.temporal.ChronoField;
-import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,11 +20,11 @@ class LocalDateTest {
         LocalDate now = LocalDate.now();
         String nowString = now.toString();
 
-        now.plus(2, ChronoUnit.DAYS);
-        LocalDate now2 = LocalDate.from(now);
+        now.plusDays(2);
+        LocalDate now2 = now;
         String now2String = now2.toString();
 
-        LocalDate nowPlus2Days = now.plus(2, ChronoUnit.DAYS);
+        LocalDate nowPlus2Days = now.plusDays(2);
         String nowPlus2DaysString = nowPlus2Days.toString();
 
         assertThat(now).isEqualTo(now2);
@@ -70,10 +69,10 @@ class LocalDateTest {
         assertThat(localDate.plusYears(-1).toString()).isEqualTo("1978-08-23");
 
         assertThat(localDate.withYear(2020).toString()).isEqualTo("2020-08-23");
-        assertThat(localDate.with(ChronoField.DAY_OF_MONTH, 1).toString()).isEqualTo("1979-08-01");
+        assertThat(localDate.withDayOfMonth(1).toString()).isEqualTo("1979-08-01");
         assertThat(localDate.with(TemporalAdjusters.firstDayOfNextMonth()).toString()).isEqualTo("1979-09-01");
 
-        assertThat(localDate.plus(3, ChronoUnit.DAYS).toString()).isEqualTo("1979-08-26");
+        assertThat(localDate.plusDays(3).toString()).isEqualTo("1979-08-26");
     }
 
     @Test

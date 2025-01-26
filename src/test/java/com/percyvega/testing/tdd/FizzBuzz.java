@@ -1,8 +1,11 @@
 package com.percyvega.testing.tdd;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * Created by percy on 1/16/2016.
  */
+@Log4j2
 public class FizzBuzz {
 
     public static boolean isFizz(int number) {
@@ -18,13 +21,14 @@ public class FizzBuzz {
     }
 
     public static void printFizzBuzzFor(int countNumbers) {
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 1; i <= countNumbers; i++) {
-            System.out.print(evaluate(i));
+            stringBuilder.append(evaluate(i));
 
             if (i != countNumbers)
-                System.out.print(", ");
+                stringBuilder.append(", ");
         }
-
+        log.info(stringBuilder);
     }
 
     public static void main(String[] args) {

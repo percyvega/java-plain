@@ -30,7 +30,7 @@ public class Log4jTest {
     private void execute() {
         log.log(Level.ALL, "A sample Level.ALL message.");
         log.trace("A sample Level.TRACE message.");
-        log.debug("A sample Level.DEBUG message.");
+        log.info("A sample Level.DEBUG message.");
         log.info("A sample Level.INFO message.");
         log.warn("A sample Level.WARN message.");
         log.error("A sample Level.ERROR message.");

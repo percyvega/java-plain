@@ -1,20 +1,23 @@
 package com.percyvega.experiments.version;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class JavaVersion {
 
     public static void main(String[] args) {
-        System.out.println("-------------------------------");
+        log.info("-------------------------------");
         String property = "java.version";
         printProperty(property);
         property = "java.runtime.version";
         printProperty(property);
         property = "java.specification.version";
         printProperty(property);
-        System.out.println("ImplementationVersion: " + Runtime.class.getPackage().getImplementationVersion());
-        System.out.println("-------------------------------");
+        log.info("ImplementationVersion: " + Runtime.class.getPackage().getImplementationVersion());
+        log.info("-------------------------------");
     }
 
     private static void printProperty(String property) {
-        System.out.println(property + ": " + System.getProperty(property));
+        log.info(property + ": " + System.getProperty(property));
     }
 }

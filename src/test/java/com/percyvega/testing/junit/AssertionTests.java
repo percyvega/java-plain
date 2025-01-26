@@ -11,7 +11,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Created by percy on 1/15/2016.
@@ -48,15 +55,15 @@ public class AssertionTests {
 
     @Test
     public void then_assertTrue() {
-        assertTrue(calculator.multiply(10, 5) == 50);
-        assertTrue(calculator1.getBigInteger().equals(BigInteger.ONE));
+        assertEquals(50, calculator.multiply(10, 5));
+        assertEquals(calculator1.getBigInteger(), BigInteger.ONE);
         assertTrue(calculatorList.contains(calculator));
     }
 
     @Test
     public void then_assertFalse() {
         assertFalse(calculator.add(10, 5) != 15, "Wrong addition result");
-        assertFalse(calculator != calculator4);
+        assertSame(calculator, calculator4);
         assertFalse(calculatorList.isEmpty());
     }
 

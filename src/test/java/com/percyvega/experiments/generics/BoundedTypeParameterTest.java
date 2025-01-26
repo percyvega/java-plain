@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 interface MythologicalCharacter {
     String getOrigin();
 }
+
 interface Superhero {
     String getPublisher();
 }
@@ -33,6 +34,7 @@ class Thor extends ComicCharacter implements MythologicalCharacter, Superhero {
         return "DC";
     }
 }
+
 class Superman extends CharacterWithGender implements Superhero {
     @Override
     public String getPublisher() {

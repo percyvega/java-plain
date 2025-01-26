@@ -6,9 +6,8 @@ import lombok.extern.log4j.Log4j2;
 public
 class AppInstanceof {
 
-
     public static void main(String[] args) throws InterruptedException {
-        log.debug("Starting main()");
+        log.info("Starting main()");
 
         MyNumberRunnableClass myNumberRunnableClass = new MyNumberRunnableClass("3");
         Thread thread = new Thread(myNumberRunnableClass);
@@ -17,14 +16,14 @@ class AppInstanceof {
 
         MyNumberClass myNumberClass = new MyNumberClass("5");
 
-        log.debug("myNumberRunnableClass instanceof MyNumberClass: " + (myNumberRunnableClass instanceof MyNumberClass));
-        log.debug("myNumberRunnableClass instanceof MyRunnableInterface: " + (myNumberRunnableClass instanceof MyRunnableInterface));
-        log.debug("myNumberRunnableClass instanceof Number: " + (myNumberRunnableClass instanceof Number));
-        log.debug("myNumberRunnableClass instanceof Runnable: " + (myNumberRunnableClass instanceof Runnable));
+        log.info("myNumberRunnableClass instanceof MyNumberClass: " + (myNumberRunnableClass instanceof MyNumberClass));
+        log.info("myNumberRunnableClass instanceof MyRunnableInterface: " + (myNumberRunnableClass instanceof MyRunnableInterface));
+        log.info("myNumberRunnableClass instanceof Number: " + (myNumberRunnableClass instanceof Number));
+        log.info("myNumberRunnableClass instanceof Runnable: " + (myNumberRunnableClass instanceof Runnable));
 
-        log.debug("MyNumberClass instanceof Number: " + (myNumberClass instanceof Number));
+        log.info("MyNumberClass instanceof Number: " + (myNumberClass instanceof Number));
 
-        log.debug("Finishing main()");
+        log.info("Finishing main()");
     }
 
 }

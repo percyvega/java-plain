@@ -4,7 +4,8 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 /**
- * Supposedly, if we remove the volatile keyword from line 11, then runnable1 will be so busy it won't even notice the change in value of isToStop.
+ * Supposedly, if we remove the volatile keyword from line 11,
+ * then runnable1 will be so busy it won't even notice the change in value of isToStop and will continue logging.
  * In reality, my Mac may be so fast that runnable1 is actually always checking for isToStop.
  */
 @Log4j2
@@ -14,7 +15,7 @@ public class VolatileKeyword {
 
     private final Runnable runnable1 = () -> {
         while (!isToStop) {
-            log.error("1111111 Millis delta: {}. isToStop: {}", System.currentTimeMillis(), isToStop);
+            log.info("1111111 Millis delta: {}. isToStop: {}", System.currentTimeMillis(), isToStop);
         }
     };
 
@@ -23,17 +24,17 @@ public class VolatileKeyword {
         while (!isToStop) {
             counter++;
             if (counter % 10_000 == 0) {
-                log.error("2222222 Counter: {}. Millis delta: {}. isToStop: {}", counter, System.currentTimeMillis(), isToStop);
+                log.info("2222222 Counter: {}. Millis delta: {}. isToStop: {}", counter, System.currentTimeMillis(), isToStop);
             }
             if (counter >= 1_000_000) {
-                log.info("------- About to set isToStop to true. Millis delta: {}. isToStop: {}", System.currentTimeMillis(), isToStop);
+                log.info("--------------------- About to set isToStop to true. Millis delta: {}. isToStop: {}", System.currentTimeMillis(), isToStop);
                 isToStop = true;
-                log.info("======= This should be the last log. Millis delta: {}. isToStop: {}", System.currentTimeMillis(), isToStop);
+                log.info("===================== This is probably the last log (but not always). Millis delta: {}. isToStop: {}", System.currentTimeMillis(), isToStop);
             }
         }
     };
 
-    public VolatileKeyword() throws InterruptedException {
+    public void processThis() throws InterruptedException {
         Thread thread1 = new Thread(runnable1);
         Thread thread2 = new Thread(runnable2);
 
@@ -46,7 +47,7 @@ public class VolatileKeyword {
 
     @Test
     void test() throws InterruptedException {
-        // no need to instantiate class for it to run automatically via its constructor
+        new VolatileKeyword().processThis();
     }
 
 }

@@ -1,11 +1,13 @@
 package com.percyvega.datastructure.hashtable;
 
 
+import lombok.extern.log4j.Log4j2;
 import org.fluttercode.datafactory.impl.DataFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 public class AppHashtable {
 
     public static void main(String[] args) {
@@ -25,11 +27,11 @@ public class AppHashtable {
             }
         }
 
-        System.out.println("Key set size: " + Hashtable.KEY_SET_SIZE);
-        System.out.println("Key table: " + hashtable.size());
+        log.info("Key set size: " + Hashtable.KEY_SET_SIZE);
+        log.info("Key table: " + hashtable.size());
 
         for (String key : keys) {
-            System.out.println(hashtable.get(key));
+            log.info(hashtable.get(key));
         }
     }
 

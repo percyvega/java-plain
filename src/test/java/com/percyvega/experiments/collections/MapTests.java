@@ -3,10 +3,23 @@ package com.percyvega.experiments.collections;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-import static com.percyvega.experiments.collections.BibleReference.*;
+import static com.percyvega.experiments.collections.BibleReference.DEUTERONOMY_1_1;
+import static com.percyvega.experiments.collections.BibleReference.EXODUS_1_1;
+import static com.percyvega.experiments.collections.BibleReference.GENESIS_1_1;
+import static com.percyvega.experiments.collections.BibleReference.LEVITICUS_1_1;
+import static com.percyvega.experiments.collections.BibleReference.NUMBERS_1_1;
+import static com.percyvega.experiments.collections.BibleReference.REVELATION_1_1;
+import static com.percyvega.experiments.collections.BibleReference.REVELATION_22_21;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
@@ -125,20 +138,9 @@ public class MapTests {
         hashtable.put(REVELATION_1_1.getBook(), REVELATION_1_1);
         hashtable.put(REVELATION_22_21.getBook(), REVELATION_22_21);
 
-        System.out.println();
-
         log.info("Size: {}", hashtable.size());
-
-        System.out.println();
-
         hashtable.forEach((k, v) -> log.info("Key: {} and Value: {}", k, v));
-
-        System.out.println();
-
         log.info(((Hashtable<String, BibleReference>) hashtable).contains(REVELATION_1_1));
-
-        System.out.println();
-
         log.info(((Hashtable<String, BibleReference>) hashtable).contains(REVELATION_22_21));
     }
 
@@ -153,39 +155,22 @@ public class MapTests {
         hashtable.put(REVELATION_1_1, REVELATION_1_1);
         hashtable.put(REVELATION_22_21, REVELATION_22_21);
 
-        System.out.println();
-
         log.info("Size: {}", hashtable.size());
-
-        System.out.println();
-
         hashtable.forEach((k, v) -> log.info("Key: {} and Value: {}", k, v));
-
-        System.out.println();
-
         log.info(((Hashtable<BibleReference, BibleReference>) hashtable).contains(REVELATION_1_1));
-
-        System.out.println();
-
         log.info(((Hashtable<BibleReference, BibleReference>) hashtable).contains(REVELATION_22_21));
     }
 
     @Test
     public void test_hashtable_with_bibleReferences() {
         Map<BibleReference, BibleReference> hashtable = Arrays
-                .stream(BibleReferences.getAll())
+                .stream(BibleCounter.getBibleReferences())
                 .collect(Hashtable::new,
                         (map, e) -> map.put(e, e),
                         Hashtable::putAll);
 
         log.info("Size: {}", hashtable.size());
-
-        System.out.println();
-
         log.info(((Hashtable<BibleReference, BibleReference>) hashtable).contains(REVELATION_1_1));
-
-        System.out.println();
-
         log.info(((Hashtable<BibleReference, BibleReference>) hashtable).contains(REVELATION_22_21));
     }
 

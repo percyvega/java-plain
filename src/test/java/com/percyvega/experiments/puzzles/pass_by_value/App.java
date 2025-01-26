@@ -38,7 +38,7 @@ public class App {
     }
 
     private void print(String paramString, int paramInt, Integer paramInteger, Being paramPerson) {
-        log.debug(paramString + ", " + paramInt + ", " + paramInteger);
-        log.debug(paramPerson.toString());
+        log.info(paramString + ", " + paramInt + ", " + paramInteger);
+        log.info(paramPerson.toString());
     }
 }

@@ -66,7 +66,7 @@ public class PeriodTest {
         assertThat(period.getMonths()).isEqualTo(21);
         assertThat(period.getDays()).isEqualTo(41);
 
-        assertThat(period.toTotalMonths()).isEqualTo(1 * 12 + 21);
+        assertThat(period.toTotalMonths()).isEqualTo(12 + 21);
     }
 
 }

@@ -3,6 +3,7 @@ package com.percyvega.testing.mockito;
 import com.percyvega.testing.AwesomeCalculator;
 import com.percyvega.testing.AwesomeCalculatorImpl;
 import com.percyvega.testing.RandomIntsRepo;
+import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,6 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Created by percy on 1/17/2016.
  */
+@Log4j2
 public class AwesomeCalculatorStubTest {
 
     private static final int[] randomIntsFixtures = new int[]{3, 3, 3, 5, 5, 5};
@@ -28,7 +30,7 @@ public class AwesomeCalculatorStubTest {
 
         // then
         assertThat(average).isEqualTo(4);
-        System.out.println(average);
+        log.info(average);
 
     }
 

@@ -2,7 +2,11 @@ package com.percyvega.experiments.bits_bytes.byte_manipulation;
 
 import lombok.extern.log4j.Log4j2;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 @Log4j2
 public class App {
@@ -15,11 +19,11 @@ public class App {
         ImmutablePerson person = new ImmutablePerson("Percy", "Vega", AGE);
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        log.debug(String.valueOf(byteArrayOutputStream.toByteArray().length));
+        log.info(String.valueOf(byteArrayOutputStream.toByteArray().length));
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-        log.debug(String.valueOf(byteArrayOutputStream.toByteArray().length));
+        log.info(String.valueOf(byteArrayOutputStream.toByteArray().length));
         objectOutputStream.writeObject(person);
-        log.debug(String.valueOf(byteArrayOutputStream.toByteArray().length));
+        log.info(String.valueOf(byteArrayOutputStream.toByteArray().length));
         objectOutputStream.close();
 
         byte[] bytes = byteArrayOutputStream.toByteArray();
@@ -41,17 +45,17 @@ public class App {
             }
         }
 
-        log.debug(stringBuilderChars.toString());
-        log.debug(stringBuilderIntsChars.toString());
-        log.debug(stringBuilderInts.toString());
+        log.info(stringBuilderChars.toString());
+        log.info(stringBuilderIntsChars.toString());
+        log.info(stringBuilderInts.toString());
 
         int dogAge = AGE * 5;
         setAge(bytes, index, dogAge);
 
         ObjectInputStream oin = new ObjectInputStream(new ByteArrayInputStream(bytes));
         ImmutablePerson anotherPerson = (ImmutablePerson) oin.readObject();
-        System.out.println("Age as a person: " + person);
-        System.out.println("Age as a dog   : " + anotherPerson);
+        log.info("Age as a person: " + person);
+        log.info("Age as a dog   : " + anotherPerson);
     }
 
     private static void setAge(byte[] bytes, int index, int age) {

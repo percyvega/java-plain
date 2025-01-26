@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Log4j2
 class ClassLevelTypeVariableClass<T> {
 
-    private T[] array;
+    private final T[] array;
     private int index = 0;
 
     ClassLevelTypeVariableClass(int count) {

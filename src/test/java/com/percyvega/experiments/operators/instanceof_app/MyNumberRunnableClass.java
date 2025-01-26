@@ -11,13 +11,13 @@ public class MyNumberRunnableClass extends MyNumberClass implements MyRunnableIn
 
     @Override
     public void run() {
-        log.debug("Starting run()");
+        log.info("Starting run()");
 
         int intValue = intValue();
         for (int i = 1; i <= intValue; i++) {
-            log.debug("#{} of {}", i, intValue);
+            log.info("#{} of {}", i, intValue);
         }
 
-        log.debug("Finishing run()");
+        log.info("Finishing run()");
     }
 }

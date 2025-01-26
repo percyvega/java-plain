@@ -1,13 +1,11 @@
 package com.percyvega.testing.hamcrest.palindrome;
 
 import org.hamcrest.Description;
-import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
 public class IsPalindromicInteger extends TypeSafeMatcher<Integer> {
 
-    @Factory
     public static Matcher<Integer> isPalindromicInteger() {
         return new IsPalindromicInteger();
     }

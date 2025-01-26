@@ -26,46 +26,35 @@ public class AppBitShift {
         int firstInt = 0b0010_0101_0101_0101_0101_0011_1010_1111;
         int secondInt = 0b1101_1111_0001_0101_0000_0101_0101_0000;
 
-        log.debug(getBinString(firstInt) + " is   " + firstInt + " before << (Signed left shift)");
-        log.debug(getBinString(firstInt << 1) + " is  " + (firstInt << 1) + " after << 1");
-        log.debug(getBinString(firstInt << 2) + " is " + (firstInt << 2) + " after << 2");
-        log.debug(getBinString(firstInt << 3) + " is   " + (firstInt << 3) + " after << 3");
+        log.info(getBinString(firstInt) + " is   " + firstInt + " before << (Signed left shift)");
+        log.info(getBinString(firstInt << 1) + " is  " + (firstInt << 1) + " after << 1");
+        log.info(getBinString(firstInt << 2) + " is " + (firstInt << 2) + " after << 2");
+        log.info(getBinString(firstInt << 3) + " is   " + (firstInt << 3) + " after << 3");
 
-        System.out.println();
+        log.info(getBinString(secondInt) + " is  " + secondInt + " before << (Signed left shift)");
+        log.info(getBinString(secondInt << 1) + " is " + (secondInt << 1) + " after << 1");
+        log.info(getBinString(secondInt << 2) + " is  " + (secondInt << 2) + " after << 2");
+        log.info(getBinString(secondInt << 3) + " is  " + (secondInt << 3) + " after << 3");
 
-        log.debug(getBinString(secondInt) + " is  " + secondInt + " before << (Signed left shift)");
-        log.debug(getBinString(secondInt << 1) + " is " + (secondInt << 1) + " after << 1");
-        log.debug(getBinString(secondInt << 2) + " is  " + (secondInt << 2) + " after << 2");
-        log.debug(getBinString(secondInt << 3) + " is  " + (secondInt << 3) + " after << 3");
+        log.info(getBinString(firstInt) + " is   " + firstInt + " before >> (Signed right shift)");
+        log.info(getBinString(firstInt >> 1) + " is   " + (firstInt >> 1) + " after >> 1");
+        log.info(getBinString(firstInt >> 2) + " is   " + (firstInt >> 2) + " after >> 2");
+        log.info(getBinString(firstInt >> 3) + " is    " + (firstInt >> 3) + " after >> 3");
 
-        System.out.println();
+        log.info(getBinString(secondInt) + " is  " + secondInt + " before >> (Signed right shift)");
+        log.info(getBinString(secondInt >> 1) + " is  " + (secondInt >> 1) + " after >> 1");
+        log.info(getBinString(secondInt >> 2) + " is  " + (secondInt >> 2) + " after >> 2");
+        log.info(getBinString(secondInt >> 3) + " is   " + (secondInt >> 3) + " after >> 3");
 
-        log.debug(getBinString(firstInt) + " is   " + firstInt + " before >> (Signed right shift)");
-        log.debug(getBinString(firstInt >> 1) + " is   " + (firstInt >> 1) + " after >> 1");
-        log.debug(getBinString(firstInt >> 2) + " is   " + (firstInt >> 2) + " after >> 2");
-        log.debug(getBinString(firstInt >> 3) + " is    " + (firstInt >> 3) + " after >> 3");
+        log.info(getBinString(firstInt) + " is   " + firstInt + " before >>> (Unsigned right shift)");
+        log.info(getBinString(firstInt >>> 1) + " is   " + (firstInt >>> 1) + " after >>> 1");
+        log.info(getBinString(firstInt >>> 2) + " is   " + (firstInt >>> 2) + " after >>> 2");
+        log.info(getBinString(firstInt >>> 3) + " is    " + (firstInt >>> 3) + " after >>> 3");
 
-        System.out.println();
-
-        log.debug(getBinString(secondInt) + " is  " + secondInt + " before >> (Signed right shift)");
-        log.debug(getBinString(secondInt >> 1) + " is  " + (secondInt >> 1) + " after >> 1");
-        log.debug(getBinString(secondInt >> 2) + " is  " + (secondInt >> 2) + " after >> 2");
-        log.debug(getBinString(secondInt >> 3) + " is   " + (secondInt >> 3) + " after >> 3");
-
-        System.out.println();
-
-        log.debug(getBinString(firstInt) + " is   " + firstInt + " before >>> (Unsigned right shift)");
-        log.debug(getBinString(firstInt >>> 1) + " is   " + (firstInt >>> 1) + " after >>> 1");
-        log.debug(getBinString(firstInt >>> 2) + " is   " + (firstInt >>> 2) + " after >>> 2");
-        log.debug(getBinString(firstInt >>> 3) + " is    " + (firstInt >>> 3) + " after >>> 3");
-
-        System.out.println();
-
-        log.debug(getBinString(secondInt) + " is  " + secondInt + " before >>> (Unsigned right shift)");
-        log.debug(getBinString(secondInt >>> 1) + " is  " + (secondInt >>> 1) + " after >>> 1");
-        log.debug(getBinString(secondInt >>> 2) + " is   " + (secondInt >>> 2) + " after >>> 2");
-        log.debug(getBinString(secondInt >>> 3) + " is   " + (secondInt >>> 3) + " after >>> 3");
-
+        log.info(getBinString(secondInt) + " is  " + secondInt + " before >>> (Unsigned right shift)");
+        log.info(getBinString(secondInt >>> 1) + " is  " + (secondInt >>> 1) + " after >>> 1");
+        log.info(getBinString(secondInt >>> 2) + " is   " + (secondInt >>> 2) + " after >>> 2");
+        log.info(getBinString(secondInt >>> 3) + " is   " + (secondInt >>> 3) + " after >>> 3");
     }
 
     private static String getBinString(int intDec) {

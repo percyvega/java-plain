@@ -1,11 +1,13 @@
 package com.percyvega.experiments.generics;
 
 import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 class FullGenericsTest {
 
     @Test
@@ -33,7 +35,7 @@ class FullGenericsTest {
     }
 
     public static void print(List<? extends LivingBeing> livingBeings) {
-        livingBeings.forEach(System.out::println);
+        livingBeings.forEach(log::info);
     }
 
     public static void addCats(List<? super Animal> animals) {

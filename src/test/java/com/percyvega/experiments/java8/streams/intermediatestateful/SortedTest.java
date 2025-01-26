@@ -47,8 +47,7 @@ class SortedTest {
         studentList
                 .sort(Comparator.nullsFirst(STUDENT_COMPARATOR));
         studentList
-                .forEach(System.out::println);
-        System.out.println();
+                .forEach(log::info);
         studentList
                 .stream()
                 .filter(Objects::nonNull)

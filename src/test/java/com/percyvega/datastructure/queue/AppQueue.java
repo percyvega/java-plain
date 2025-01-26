@@ -1,8 +1,11 @@
 package com.percyvega.datastructure.queue;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * Created by percy on 4/30/2017.
  */
+@Log4j2
 public class AppQueue {
 
     public static void main(String[] args) {
@@ -13,10 +16,10 @@ public class AppQueue {
             stack.add(i);
         }
 
-        System.out.println("Peek: " + stack.peek());
+        log.info("Peek: " + stack.peek());
 
         while (!stack.isEmpty())
-            System.out.println(stack.remove());
+            log.info(stack.remove());
 
     }
 

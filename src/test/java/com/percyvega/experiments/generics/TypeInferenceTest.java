@@ -22,7 +22,7 @@ class TypeInferenceTest {
 
 class MyClass<X> {
 
-    private X x;
+    private final X x;
 
     <T> MyClass(T t) {
         x = (X) t.toString();

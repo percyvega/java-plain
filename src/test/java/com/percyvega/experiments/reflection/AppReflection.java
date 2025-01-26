@@ -22,11 +22,11 @@ public class AppReflection {
             try {
                 Class clazz = Class.forName(className);
                 clazz.getMethod(methodName);
-                log.debug(className + " has the method " + methodName);
+                log.info(className + " has the method " + methodName);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (NoSuchMethodException e) {
-                log.debug(className + " does NOT have the method " + methodName);
+                log.info(className + " does NOT have the method " + methodName);
                 continue;
             }
         }

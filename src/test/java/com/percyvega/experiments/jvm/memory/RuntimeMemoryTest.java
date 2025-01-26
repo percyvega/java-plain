@@ -13,26 +13,26 @@ public class RuntimeMemoryTest {
     @SuppressWarnings("unused")
     public void myMethod() {
         final long sizeMax = Runtime.getRuntime().maxMemory();
-        log.debug("sizeMax: " + sizeMax);
+        log.info("sizeMax: " + sizeMax);
 //		byte[] dataSizeMax = new byte[(int) sizeMax]; // throws error
 
         final long sizeTotal = Runtime.getRuntime().totalMemory();
-        log.debug("sizeTotal: " + sizeTotal);
+        log.info("sizeTotal: " + sizeTotal);
         byte[] dataSizeTotal = new byte[(int) sizeTotal];
 
         final long sizeFree = Runtime.getRuntime().freeMemory();
-        log.debug("sizeFree: " + sizeFree);
+        log.info("sizeFree: " + sizeFree);
         byte[] dataSizeFree = new byte[(int) sizeFree];
 
 
         final long sizeMax2 = Runtime.getRuntime().maxMemory();
-        log.debug("sizeMax2: " + sizeMax2);
+        log.info("sizeMax2: " + sizeMax2);
 
         final long sizeTotal2 = Runtime.getRuntime().totalMemory();
-        log.debug("sizeTotal2: " + sizeTotal2);
+        log.info("sizeTotal2: " + sizeTotal2);
 
         final long sizeFree2 = Runtime.getRuntime().freeMemory();
-        log.debug("sizeFree2: " + sizeFree2);
+        log.info("sizeFree2: " + sizeFree2);
     }
 
 }

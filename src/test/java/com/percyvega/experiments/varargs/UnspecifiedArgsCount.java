@@ -10,7 +10,7 @@ public class UnspecifiedArgsCount {
 
 
     public static void main(String... args) {
-        log.debug("Starting main()");
+        log.info("Starting main()");
 
         Integer planetNumber = 3;
         Date now = new Date();
@@ -21,10 +21,10 @@ public class UnspecifiedArgsCount {
         String result1 = UnspecifiedArgsCount.getFullStory(myStoryArgs);
         String result2 = UnspecifiedArgsCount.getFullStory(planetNumber, now, eventDescription);
 
-        log.debug(result1);
-        log.debug(result2);
+        log.info(result1);
+        log.info(result2);
 
-        log.debug("Finishing main()");
+        log.info("Finishing main()");
     }
 
     private static String getFullStory(Object... myStoryArgs) {

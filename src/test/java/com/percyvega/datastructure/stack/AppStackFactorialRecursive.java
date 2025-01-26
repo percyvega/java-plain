@@ -1,8 +1,11 @@
 package com.percyvega.datastructure.stack;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * Created by percy on 4/29/2017.
  */
+@Log4j2
 public class AppStackFactorialRecursive {
 
     private static int factorial(int n) {
@@ -16,7 +19,7 @@ public class AppStackFactorialRecursive {
     public static void main(String[] args) {
         int result = factorial(10);
 
-        System.out.println(result);
+        log.info(result);
     }
 
 }

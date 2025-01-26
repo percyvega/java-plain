@@ -1,7 +1,6 @@
 package com.percyvega.experiments.concurrency;
 
 import lombok.extern.log4j.Log4j2;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -22,24 +21,24 @@ public class FutureTests {
 
     // since submit() returns a Future value, if Future get() is called, the main thread will be blocked from terminating execution.
     // submit() puts all NUMBER_OF_TASKS tasks in the executorService's queue, but only THREAD_POOL_SIZE tasks are processed at any point in time.
-    @Disabled
     @Test
-    void useExecutorServiceSubmit() throws InterruptedException, ExecutionException {
+    void submitFutureAndTryToGetValue() throws InterruptedException, ExecutionException {
         long start = System.currentTimeMillis();
 
         ExecutorService executorService = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
-        List<Future<String>> futureTasks = new ArrayList<>();
+        List<Future<Integer>> futureTasks = new ArrayList<>();
         for (int i = 0; i < NUMBER_OF_TASKS; i++) {
             // submit return immediately with a Future
-            futureTasks.add(executorService.submit(ConcurrencyUtil::performLongTask));
+            futureTasks.add(executorService.submit(ConcurrencyUtil::performLongTaskAndReturnRandomInt));
         }
         log.info("All tasks have been put in the queue.");
 
         for (int i = 0; i < NUMBER_OF_TASKS; i++) {
-            log.info(futureTasks.get(i).get()); // blocks!!!!!!!!!!!!!!!!!!!!
+            log.info("Result {}: {}", i + 1, futureTasks.get(i).get()); // blocks!!!!!!!!!!!!!!!!!!!!
         }
-        log.info("Finished obtaining return values from futures.");
+
+        log.info("Finished obtaining return values from futures. Their product is {}.", ConcurrencyUtil.productOf(futureTasks));
 
         executorService.shutdown();
 
@@ -47,25 +46,26 @@ public class FutureTests {
     }
 
     @Test
-    public void testFuture() throws InterruptedException, ExecutionException {
-        long start = System.nanoTime();
+    public void submitFutureAndAskIfIsDone() throws InterruptedException, ExecutionException {
+        long start = System.currentTimeMillis();
 
         ExecutorService executorService = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
-        List<Future<String>> futureTasks = new ArrayList<>();
-        for (int i = 0; i < THREAD_POOL_SIZE; i++) {
+        List<Future<Integer>> futureTasks = new ArrayList<>();
+        for (int i = 0; i < NUMBER_OF_TASKS; i++) {
             futureTasks.add(executorService.submit(getWorkerCallable()));
         }
 
-        if (futureTasks.stream().anyMatch(f -> !f.isDone())) {
-            log.info("Reading and processing not yet finished.");
-            // Simulating another task
+        while (futureTasks.stream().anyMatch(f -> !f.isDone())) {
+            log.info("At least one of the tasks has not finished yet.");
             TimeUnit.SECONDS.sleep(1); // blocks!!!!!!!!!!!!!!!!!!!!
         }
 
-        for (int i = 0; i < THREAD_POOL_SIZE; i++) {
-            log.info(futureTasks.get(i).get());
+        for (int i = 0; i < NUMBER_OF_TASKS; i++) {
+            log.info("Result {}: {}", i + 1, futureTasks.get(i).get());
         }
+
+        log.info("Finished obtaining return values from futures. Their product is {}.", ConcurrencyUtil.productOf(futureTasks));
 
         executorService.shutdown();
 

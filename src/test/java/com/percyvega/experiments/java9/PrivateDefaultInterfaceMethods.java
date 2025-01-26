@@ -3,7 +3,7 @@ package com.percyvega.experiments.java9;
 public interface PrivateDefaultInterfaceMethods {
 
     default float multiply(int x, int y) {
-        if(isZero(x) || isZero(y)) {
+        if (isZero(x) || isZero(y)) {
             return 0;
         }
         return x * y;

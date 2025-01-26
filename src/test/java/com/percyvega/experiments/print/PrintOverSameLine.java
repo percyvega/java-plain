@@ -24,18 +24,16 @@ public class PrintOverSameLine {
                         TimeUnit.MILLISECONDS.toMinutes(eta) % TimeUnit.HOURS.toMinutes(1),
                         TimeUnit.MILLISECONDS.toSeconds(eta) % TimeUnit.MINUTES.toSeconds(1));
 
-        StringBuilder string = new StringBuilder(140);
         int percent = (int) (current * 100 / total);
-        string
-                .append('\r')
-                .append(String.join("", Collections.nCopies(percent == 0 ? 2 : 2 - (int) (Math.log10(percent)), " ")))
-                .append(String.format(" %d%% [", percent))
-                .append(String.join("", Collections.nCopies(percent, "=")))
-                .append('>')
-                .append(String.join("", Collections.nCopies(100 - percent, " ")))
-                .append(']')
-                .append(String.join("", Collections.nCopies((int) (Math.log10(total)) - (int) (Math.log10(current)), " ")))
-                .append(String.format(" %d/%d, ETA: %s", current, total, etaHms));
+        String string = '\r' +
+                String.join("", Collections.nCopies(percent == 0 ? 2 : 2 - (int) (Math.log10(percent)), " ")) +
+                String.format(" %d%% [", percent) +
+                String.join("", Collections.nCopies(percent, "=")) +
+                '>' +
+                String.join("", Collections.nCopies(100 - percent, " ")) +
+                ']' +
+                String.join("", Collections.nCopies((int) (Math.log10(total)) - (int) (Math.log10(current)), " ")) +
+                String.format(" %d/%d, ETA: %s", current, total, etaHms);
 
         System.out.print(string);
     }

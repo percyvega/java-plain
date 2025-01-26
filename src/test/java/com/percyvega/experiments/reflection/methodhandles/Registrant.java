@@ -10,7 +10,7 @@ public class Registrant {
         // not thread safe
         count++;
 
-        setSavingsAmount(count * 1000);
+        setSavingsAmount(count * 1000L);
     }
 
     public Registrant(String name) {

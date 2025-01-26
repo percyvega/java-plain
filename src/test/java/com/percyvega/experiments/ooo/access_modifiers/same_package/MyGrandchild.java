@@ -5,7 +5,7 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class MyGrandchild extends MyChild {
 
-    private String firstName = "Nicholas";
+    private final String firstName = "Nicholas";
 
     public MyGrandchild(String ssn, String phone, String lastName, String firstName) {
         super(ssn, phone, lastName, firstName);

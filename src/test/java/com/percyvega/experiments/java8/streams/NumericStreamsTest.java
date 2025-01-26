@@ -6,7 +6,11 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,13 +19,10 @@ class NumericStreamsTest {
 
     @Test
     void createIntStreams() {
-        IntStream.range(1, 9).forEach(System.out::print);
-        System.out.println();
-        IntStream.of(1, 4, 6, 7, 9).forEach(System.out::print);
-        System.out.println();
-        Stream.of(1, 4, 6, 7, 9).forEach(System.out::print);
-        System.out.println();
-        Arrays.stream(new int[]{1, 4, 6, 7, 9}).forEach(System.out::print);
+        IntStream.range(1, 9).forEach(log::info);
+        IntStream.of(1, 4, 6, 7, 9).forEach(log::info);
+        Stream.of(1, 4, 6, 7, 9).forEach(log::info);
+        Arrays.stream(new int[]{1, 4, 6, 7, 9}).forEach(log::info);
     }
 
     @Test
@@ -29,14 +30,14 @@ class NumericStreamsTest {
         IntStream.of(1, 2, 4, 6, 9, 11)
                 .map(n -> n * n)
                 .average()
-                .ifPresent(System.out::println);
+                .ifPresent(log::info);
     }
 
     @Test
     void mapToInt() {
         Stream.of(1.5, 2.5, 10.2)
                 .mapToInt(Double::intValue)
-                .forEach(System.out::println);
+                .forEach(log::info);
     }
 
     @Test

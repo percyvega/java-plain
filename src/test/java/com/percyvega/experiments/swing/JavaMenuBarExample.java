@@ -75,7 +75,7 @@ public class JavaMenuBarExample implements Runnable, ActionListener {
      * This dialog is displayed when the user selects the File/Open menu item.
      */
     private class SampleDialog extends JDialog implements ActionListener {
-        private JButton okButton = new JButton("OK");
+        private final JButton okButton = new JButton("OK");
 
         private SampleDialog() {
             super(frame, "Sample Dialog", true);

@@ -1,6 +1,8 @@
 package com.percyvega.datastructure.arraylist;
 
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class AppArrayList {
 
     public static void main(String[] args) {
@@ -13,7 +15,7 @@ public class AppArrayList {
         }
 
         for (int i = 0; i < arrayList1.size(); i++) {
-            System.out.println(arrayList1.get(i) + ", " + arrayList2.get(i));
+            log.info(arrayList1.get(i) + ", " + arrayList2.get(i));
         }
     }
 

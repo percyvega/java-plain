@@ -15,14 +15,14 @@ public class AppConstructors {
 
         Class<?> aClass = person.getClass();
 
-        System.out.println(aClass.getName());
+        log.info(aClass.getName());
 
         Constructor<?>[] constructors = aClass.getConstructors();
-        System.out.println("Constructor count: " + constructors.length);
+        log.info("Constructor count: " + constructors.length);
 
         Object fran = constructors[0].newInstance("Fran", 31);
-        System.out.println(((Person) fran).getName());
-        System.out.println(((Person) fran).getAge());
+        log.info(((Person) fran).getName());
+        log.info(((Person) fran).getAge());
     }
 
 }

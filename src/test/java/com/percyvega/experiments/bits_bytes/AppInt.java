@@ -20,39 +20,32 @@ import lombok.extern.log4j.Log4j2;
  */
 public class AppInt {
 
-
     // java int: 32-bit signed two's complement integer. -2,147,483,648 <= x <= 2,147,483,647
     public static void main(String[] args) {
 
         int maxIntBin = 0b0111_1111_1111_1111_1111_1111_1111_1111; // maximum value for an int in hex
-        log.debug("0b0111_1111_1111_1111_1111_1111_1111_1111 (bin): " + String.format("%32s", Integer.toBinaryString(maxIntBin)).replace(' ', '0'));
-        log.debug("0b0111_1111_1111_1111_1111_1111_1111_1111 (oct): " + String.format("%16s", Integer.toOctalString(maxIntBin)).replace(' ', '0'));
-        log.debug("0b0111_1111_1111_1111_1111_1111_1111_1111 (hex): " + String.format("%8s", Integer.toHexString(maxIntBin)).replace(' ', '0'));
-        log.debug("0b0111_1111_1111_1111_1111_1111_1111_1111 (dec): " + Integer.parseInt(Integer.toBinaryString(maxIntBin), 2)); // maxIntBin
-
-        System.out.println();
+        log.info("0b0111_1111_1111_1111_1111_1111_1111_1111 (bin): " + String.format("%32s", Integer.toBinaryString(maxIntBin)).replace(' ', '0'));
+        log.info("0b0111_1111_1111_1111_1111_1111_1111_1111 (oct): " + String.format("%16s", Integer.toOctalString(maxIntBin)).replace(' ', '0'));
+        log.info("0b0111_1111_1111_1111_1111_1111_1111_1111 (hex): " + String.format("%8s", Integer.toHexString(maxIntBin)).replace(' ', '0'));
+        log.info("0b0111_1111_1111_1111_1111_1111_1111_1111 (dec): " + Integer.parseInt(Integer.toBinaryString(maxIntBin), 2)); // maxIntBin
 
         int minIntBin = 0b1000_0000_0000_0000_0000_0000_0000_0000; // minimum value for an int in bin
-        log.debug("0b1000_0000_0000_0000_0000_0000_0000_0000 (bin): " + String.format("%32s", Integer.toBinaryString(minIntBin)).replace(' ', '0'));
-        log.debug("0b1000_0000_0000_0000_0000_0000_0000_0000 (oct): " + String.format("%16s", Integer.toOctalString(minIntBin)).replace(' ', '0'));
-        log.debug("0b1000_0000_0000_0000_0000_0000_0000_0000 (hex): " + String.format("%8s", Integer.toHexString(minIntBin)).replace(' ', '0'));
-        log.debug("0b1000_0000_0000_0000_0000_0000_0000_0000 (dec): " + minIntBin); // Exception when using: Integer.parseInt(Integer.toBinaryString(minIntBin), 2)) because 32nd bit is 1. Needs complement.
-
-        System.out.println();
+        log.info("0b1000_0000_0000_0000_0000_0000_0000_0000 (bin): " + String.format("%32s", Integer.toBinaryString(minIntBin)).replace(' ', '0'));
+        log.info("0b1000_0000_0000_0000_0000_0000_0000_0000 (oct): " + String.format("%16s", Integer.toOctalString(minIntBin)).replace(' ', '0'));
+        log.info("0b1000_0000_0000_0000_0000_0000_0000_0000 (hex): " + String.format("%8s", Integer.toHexString(minIntBin)).replace(' ', '0'));
+        log.info("0b1000_0000_0000_0000_0000_0000_0000_0000 (dec): " + minIntBin); // Exception when using: Integer.parseInt(Integer.toBinaryString(minIntBin), 2)) because 32nd bit is 1. Needs complement.
 
         int maxIntHex = 0x7FFFFFFF; // maximum value for an int in hex
-        log.debug("0x7FFFFFFF (bin): " + String.format("%32s", Integer.toBinaryString(maxIntHex)).replace(' ', '0'));
-        log.debug("0x7FFFFFFF (oct): " + String.format("%8s", Integer.toOctalString(maxIntHex)).replace(' ', '0'));
-        log.debug("0x7FFFFFFF (hex): " + String.format("%2s", Integer.toHexString(maxIntHex)).replace(' ', '0'));
-        log.debug("0x7FFFFFFF (dec): " + Integer.parseInt(Integer.toHexString(maxIntHex), 16)); // maxIntHex
-
-        System.out.println();
+        log.info("0x7FFFFFFF (bin): " + String.format("%32s", Integer.toBinaryString(maxIntHex)).replace(' ', '0'));
+        log.info("0x7FFFFFFF (oct): " + String.format("%8s", Integer.toOctalString(maxIntHex)).replace(' ', '0'));
+        log.info("0x7FFFFFFF (hex): " + String.format("%2s", Integer.toHexString(maxIntHex)).replace(' ', '0'));
+        log.info("0x7FFFFFFF (dec): " + Integer.parseInt(Integer.toHexString(maxIntHex), 16)); // maxIntHex
 
         int minIntHex = 0x80000000; // minimum value for an int in hex
-        log.debug("0xF0000000 (bin): " + String.format("%32s", Integer.toBinaryString(minIntHex)).replace(' ', '0'));
-        log.debug("0xF0000000 (oct): " + String.format("%8s", Integer.toOctalString(minIntHex)).replace(' ', '0'));
-        log.debug("0xF0000000 (hex): " + String.format("%2s", Integer.toHexString(minIntHex)).replace(' ', '0'));
-        log.debug("0xF0000000 (dec): " + minIntHex); // Exception when using: Integer.parseInt(Integer.toHexString(minIntHex), 16)) because 32nd bit is 1. Needs complement.
+        log.info("0xF0000000 (bin): " + String.format("%32s", Integer.toBinaryString(minIntHex)).replace(' ', '0'));
+        log.info("0xF0000000 (oct): " + String.format("%8s", Integer.toOctalString(minIntHex)).replace(' ', '0'));
+        log.info("0xF0000000 (hex): " + String.format("%2s", Integer.toHexString(minIntHex)).replace(' ', '0'));
+        log.info("0xF0000000 (dec): " + minIntHex); // Exception when using: Integer.parseInt(Integer.toHexString(minIntHex), 16)) because 32nd bit is 1. Needs complement.
 
     }
 }

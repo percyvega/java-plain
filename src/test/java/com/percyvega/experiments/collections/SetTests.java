@@ -5,10 +5,20 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-import static com.percyvega.experiments.collections.BibleReference.*;
+import static com.percyvega.experiments.collections.BibleReference.DEUTERONOMY_1_1;
+import static com.percyvega.experiments.collections.BibleReference.EXODUS_1_1;
+import static com.percyvega.experiments.collections.BibleReference.GENESIS_1_1;
+import static com.percyvega.experiments.collections.BibleReference.LEVITICUS_1_1;
+import static com.percyvega.experiments.collections.BibleReference.NUMBERS_1_1;
+import static com.percyvega.experiments.collections.BibleReference.REVELATION_1_1;
+import static com.percyvega.experiments.collections.BibleReference.REVELATION_22_21;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
@@ -50,7 +60,7 @@ public class SetTests {
     @Test
     public void test_hashSet_is_unordered() {
         Set<String> booksHashSet = Arrays
-                .stream(BibleReferences.getAll())
+                .stream(BibleCounter.getBibleReferences())
                 .map(BibleReference::getBook)
                 .collect(Collectors.toCollection(HashSet::new));
 
@@ -62,7 +72,7 @@ public class SetTests {
     @Test
     public void test_hashSet_find() {
         Set<String> fullNamesHashSet = Arrays
-                .stream(BibleReferences.getAll())
+                .stream(BibleCounter.getBibleReferences())
                 .map(BibleReference::getFullName)
                 .collect(Collectors.toCollection(HashSet::new));
 
@@ -77,7 +87,7 @@ public class SetTests {
     @Test
     public void test_hashSet_find_myClass() {
         Set<BibleReference> hashSet = Arrays
-                .stream(BibleReferences.getAll())
+                .stream(BibleCounter.getBibleReferences())
                 .collect(Collectors.toCollection(HashSet::new));
 
         assertThat(hashSet.size()).isEqualTo(BibleCounter.getTotalVerseCount());
@@ -91,7 +101,7 @@ public class SetTests {
     @Test
     public void test_linkedHashSet_is_ordered() {
         Set<String> booksLinkedHashSet = Arrays
-                .stream(BibleReferences.getAll())
+                .stream(BibleCounter.getBibleReferences())
                 .map(BibleReference::getBook)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
 
@@ -103,7 +113,7 @@ public class SetTests {
     @Test
     public void test_linkedHashSet_adding_an_existing_element_does_not_change_its_location() {
         Set<String> booksLinkedHashSet = Arrays
-                .stream(BibleReferences.getAll())
+                .stream(BibleCounter.getBibleReferences())
                 .map(BibleReference::getBook)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
 
@@ -121,7 +131,7 @@ public class SetTests {
     @Test
     public void test_linkedHashSet_find() {
         Set<String> fullNamesLinkedHashSet = Arrays
-                .stream(BibleReferences.getAll())
+                .stream(BibleCounter.getBibleReferences())
                 .map(BibleReference::getFullName)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
 
@@ -136,7 +146,7 @@ public class SetTests {
     @Test
     public void test_linkedHashSet_find_myClass() {
         Set<BibleReference> linkedHashSet = Arrays
-                .stream(BibleReferences.getAll())
+                .stream(BibleCounter.getBibleReferences())
                 .collect(Collectors.toCollection(LinkedHashSet::new));
 
         assertThat(linkedHashSet.size()).isEqualTo(BibleCounter.getTotalVerseCount());
@@ -150,7 +160,7 @@ public class SetTests {
     @Test
     public void test_treeSet_is_sorted() {
         Set<String> booksHashSet = Arrays
-                .stream(BibleReferences.getAll())
+                .stream(BibleCounter.getBibleReferences())
                 .map(BibleReference::getBook)
                 .collect(Collectors.toCollection(HashSet::new));
         Set<String> booksTreeSet = new TreeSet<>(booksHashSet);
@@ -163,7 +173,7 @@ public class SetTests {
     @Test
     public void test_treeSet_find() {
         Set<String> fullNamesHashSet = Arrays
-                .stream(BibleReferences.getAll())
+                .stream(BibleCounter.getBibleReferences())
                 .map(BibleReference::getFullName)
                 .collect(Collectors.toCollection(HashSet::new));
         Set<String> fullNamesTreeSet = new TreeSet<>(fullNamesHashSet);
@@ -177,7 +187,7 @@ public class SetTests {
     @Test
     public void test_treeSet_find_myClass() {
         Set<BibleReference> hashSet = Arrays
-                .stream(BibleReferences.getAll())
+                .stream(BibleCounter.getBibleReferences())
                 .collect(Collectors.toCollection(HashSet::new));
         Set<BibleReference> treeSet = new TreeSet<>(hashSet);
 

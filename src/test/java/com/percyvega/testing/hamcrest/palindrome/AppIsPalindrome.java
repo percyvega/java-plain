@@ -1,10 +1,12 @@
 package com.percyvega.testing.hamcrest.palindrome;
 
 import com.percyvega.datastructure.arraylist.ArrayList;
+import lombok.extern.log4j.Log4j2;
 
 /**
  * Created by percy on 4/29/2017.
  */
+@Log4j2
 public class AppIsPalindrome {
 
     public static void main(String[] args) {
@@ -37,7 +39,7 @@ public class AppIsPalindrome {
             }
         }
 
-        System.out.println("Is " + n + " palindrome? " + isPalindrome);
+        log.info("Is " + n + " palindrome? " + isPalindrome);
     }
 
 }

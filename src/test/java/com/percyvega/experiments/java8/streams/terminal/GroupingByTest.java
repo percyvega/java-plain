@@ -5,7 +5,12 @@ import com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -20,7 +25,6 @@ public class GroupingByTest {
         for (Map.Entry<String, List<Student>> entry : studentsByGender.entrySet()) {
             log.info(entry.getKey());
             entry.getValue().forEach(log::info);
-            System.out.println();
         }
     }
 
@@ -33,7 +37,6 @@ public class GroupingByTest {
         for (Map.Entry<String, List<Student>> entry : studentsByGender.entrySet()) {
             log.info(entry.getKey());
             entry.getValue().forEach(log::info);
-            System.out.println();
         }
     }
 
@@ -52,9 +55,7 @@ public class GroupingByTest {
             for (Map.Entry<String, List<Student>> stringListEntry : value.entrySet()) {
                 log.info(stringListEntry.getKey());
                 stringListEntry.getValue().forEach(log::info);
-                System.out.println();
             }
-            System.out.println();
         }
     }
 
@@ -70,7 +71,6 @@ public class GroupingByTest {
         for (Map.Entry<String, Integer> entry : notebooksByGender.entrySet()) {
             log.info(entry.getKey());
             log.info(entry.getValue());
-            System.out.println();
         }
     }
 
@@ -89,7 +89,6 @@ public class GroupingByTest {
             for (Student student : entry.getValue()) {
                 log.info(student);
             }
-            System.out.println();
         }
     }
 
@@ -105,7 +104,6 @@ public class GroupingByTest {
         for (Map.Entry<Integer, Optional<Student>> entry : collect.entrySet()) {
             log.info(entry.getKey());
             log.info(entry.getValue());
-            System.out.println();
         }
     }
 
@@ -123,7 +121,6 @@ public class GroupingByTest {
         for (Map.Entry<Integer, Student> entry : collect.entrySet()) {
             log.info(entry.getKey());
             log.info(entry.getValue());
-            System.out.println();
         }
     }
 
@@ -139,7 +136,6 @@ public class GroupingByTest {
         for (Map.Entry<String, Optional<Student>> entry : collect.entrySet()) {
             log.info(entry.getKey());
             log.info(entry.getValue());
-            System.out.println();
         }
     }
 

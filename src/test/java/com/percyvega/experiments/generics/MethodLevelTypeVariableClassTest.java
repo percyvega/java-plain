@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import static com.percyvega.experiments.generics.MethodLevelTypeVariableClass.*;
+import static com.percyvega.experiments.generics.MethodLevelTypeVariableClass.getDouble;
+import static com.percyvega.experiments.generics.MethodLevelTypeVariableClass.getLargest;
+import static com.percyvega.experiments.generics.MethodLevelTypeVariableClass.print;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2

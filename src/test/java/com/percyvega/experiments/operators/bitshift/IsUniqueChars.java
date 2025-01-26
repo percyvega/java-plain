@@ -1,5 +1,8 @@
 package com.percyvega.experiments.operators.bitshift;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class IsUniqueChars {
 
     private static boolean isUniqueChars(String str) {
@@ -22,7 +25,7 @@ public class IsUniqueChars {
     }
 
     private static void eval(String s) {
-        System.out.println("Evaluating " + s + ": " + isUniqueChars(s.toLowerCase()));
+        log.info("Evaluating " + s + ": " + isUniqueChars(s.toLowerCase()));
     }
 
 }

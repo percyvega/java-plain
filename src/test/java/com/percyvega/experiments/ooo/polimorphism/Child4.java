@@ -17,7 +17,7 @@ public class Child4 extends Parent4 {
 
     // compiles well even though the RuntimeException has not been declared
     public void throwsRuntimeException(Object canBeNull) {
-        System.out.println(canBeNull.toString());
+        log.info(canBeNull.toString());
     }
 
 }
@@ -32,7 +32,7 @@ class Parent4 {
     }
 
     public void throwsRuntimeException(Object canBeNull) throws NullPointerException {
-        System.out.println(canBeNull.toString());
+        log.info(canBeNull.toString());
     }
 
 }

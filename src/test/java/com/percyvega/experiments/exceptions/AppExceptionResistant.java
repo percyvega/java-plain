@@ -1,5 +1,7 @@
 package com.percyvega.experiments.exceptions;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.util.Scanner;
 
 /**
@@ -8,10 +10,11 @@ import java.util.Scanner;
  * Third time enter any letter.
  * Kill the app.
  */
+@Log4j2
 public class AppExceptionResistant {
 
     public static void main(String[] args) {
-        System.out.println("Starting main()");
+        log.info("Starting main()");
 
         Scanner scanner = new Scanner(System.in);
         AgeReader ageReader = new AgeReaderThrowsException();
@@ -19,12 +22,12 @@ public class AppExceptionResistant {
         int age = 0;
 
         while (age != -1) {
-            System.out.println("About to start reading lastName.");
+            log.info("About to start reading lastName.");
 
             try {
 
                 age = ageReader.readAge(scanner);
-                System.out.println("No exceptions found.");
+                log.info("No exceptions found.");
 
             } catch (ImpossibleAgeException e) {
 
@@ -36,7 +39,7 @@ public class AppExceptionResistant {
 
         scanner.close();
 
-        System.out.println("Finishing main()");
+        log.info("Finishing main()");
     }
 
 }

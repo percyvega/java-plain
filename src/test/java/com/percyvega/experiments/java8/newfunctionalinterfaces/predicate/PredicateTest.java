@@ -8,7 +8,10 @@ import java.util.Arrays;
 import java.util.function.Predicate;
 
 import static com.percyvega.experiments.java8.model.Constants.MALE;
-import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.*;
+import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.BRAD;
+import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.EMMA;
+import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.MATT;
+import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.MERYL;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2

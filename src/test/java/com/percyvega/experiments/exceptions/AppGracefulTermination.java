@@ -1,5 +1,7 @@
 package com.percyvega.experiments.exceptions;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.util.Scanner;
 
 /**
@@ -7,10 +9,11 @@ import java.util.Scanner;
  * Second time enter -2.
  * Third time enter any letter.
  */
+@Log4j2
 public class AppGracefulTermination {
 
     public static void main(String[] args) {
-        System.out.println("Starting main()");
+        log.info("Starting main()");
 
         AgeReader ageReader = new AgeReaderThrowsException();
 
@@ -19,9 +22,9 @@ public class AppGracefulTermination {
         try (Scanner scanner = new Scanner(System.in)) {
 
             while (age != -1) {
-                System.out.println("About to start reading lastName.");
+                log.info("About to start reading lastName.");
                 age = ageReader.readAge(scanner);
-                System.out.println("No exceptions found.");
+                log.info("No exceptions found.");
             }
 
         } catch (ImpossibleAgeException e) {
@@ -31,11 +34,11 @@ public class AppGracefulTermination {
 
         } finally {
 
-            System.out.println(AppGracefulTermination.class.getSimpleName() + "'s Finally");
+            log.info(AppGracefulTermination.class.getSimpleName() + "'s Finally");
 
         }
 
-        System.out.println("Finishing gracefully main()");
+        log.info("Finishing gracefully main()");
     }
 
 }

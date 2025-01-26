@@ -34,7 +34,7 @@ public class FindAnyAndFindFirstTest {
         Stream.of("Percy", "Fran", "Nico", "Isabella")
                 .sorted()
                 .findFirst()
-                .ifPresent(System.out::println);
+                .ifPresent(log::info);
     }
 
 }

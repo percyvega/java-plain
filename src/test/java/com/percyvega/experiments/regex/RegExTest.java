@@ -1,6 +1,7 @@
 package com.percyvega.experiments.regex;
 
 
+import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 import java.util.regex.Matcher;
@@ -8,6 +9,7 @@ import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Log4j2
 public class RegExTest {
 
     @Test
@@ -422,17 +424,16 @@ public class RegExTest {
 
         // this doesn't make much sense
         while (matcher.find()) {
-            System.out.println("Input \"" + input + "\" and regex \"" + regex + "\" found (at index " + matcher.start() + ") the following: \"" + matcher.group() + "\"");
+            log.info("Input \"" + input + "\" and regex \"" + regex + "\" found (at index " + matcher.start() + ") the following: \"" + matcher.group() + "\"");
 
             for (int i = 0; i < matcher.groupCount(); i++) {
-                System.out.println("group(" + i + "): " + matcher.group(i));
+                log.info("group(" + i + "): " + matcher.group(i));
 
                 if (printCapturingGroupNames) {
-                    System.out.println("group(\"diminutivo\"): " + matcher.group("diminutivo"));
-                    System.out.println("group(\"pasado\"): " + matcher.group("pasado"));
+                    log.info("group(\"diminutivo\"): " + matcher.group("diminutivo"));
+                    log.info("group(\"pasado\"): " + matcher.group("pasado"));
                 }
             }
-            System.out.println();
         }
 
         assertThat(matcher.groupCount()).isEqualTo(groupCount);
@@ -450,9 +451,7 @@ public class RegExTest {
         String[] splits = pattern.split(input);
 
         for (String split : splits)
-            System.out.println(split);
-
-        System.out.println();
+            log.info(split);
 
         assertThat(splits.length).isEqualTo(splitCount);
     }
@@ -470,15 +469,13 @@ public class RegExTest {
 
         int groupCounter = 0;
         while (matcher.find()) {
-            System.out.println("Input \"" + input + "\" and regex \"" + regex + "\" found (at index " + matcher.start() + ") the following: \"" + matcher.group() + "\"");
+            log.info("Input \"" + input + "\" and regex \"" + regex + "\" found (at index " + matcher.start() + ") the following: \"" + matcher.group() + "\"");
             groupCounter++;
         }
 
         if (groupCounter == 0) {
-            System.out.println("Input \"" + input + "\" and regex \"" + regex + "\" didn't find matches.");
+            log.info("Input \"" + input + "\" and regex \"" + regex + "\" didn't find matches.");
         }
-
-        System.out.println();
 
         assertThat(groupCounter).isEqualTo(matchesFoundCount);
     }

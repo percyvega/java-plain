@@ -10,36 +10,36 @@ public class AppChars {
 
     private static void first() {
         int cap = 'P';
-        log.debug(String.valueOf(cap));
+        log.info(String.valueOf(cap));
 
         StringBuffer word = new StringBuffer('P');
         int randomInt = new Random().nextInt(2);
-        log.debug(String.valueOf(randomInt));
+        log.info(String.valueOf(randomInt));
 
-        log.debug("word: " + word);
+        log.info("word: " + word);
         switch (randomInt) {
             case 1:
                 word = new StringBuffer('P');
-                log.debug("inside " + randomInt);
-                log.debug("word: " + word);
+                log.info("inside " + randomInt);
+                log.info("word: " + word);
                 break;
             case 2:
                 word = new StringBuffer('G');
-                log.debug("inside " + randomInt);
-                log.debug("word: " + word);
+                log.info("inside " + randomInt);
+                log.info("word: " + word);
                 break;
             default:
                 word = new StringBuffer('M');
-                log.debug("inside " + randomInt);
-                log.debug("word: " + word);
+                log.info("inside " + randomInt);
+                log.info("word: " + word);
                 break;
         }
-        log.debug("word: " + word);
+        log.info("word: " + word);
 
         word.append('a');
         word.append('i');
         word.append('n');
-        log.debug("word: " + word);
+        log.info("word: " + word);
     }
 
     /**
@@ -50,12 +50,11 @@ public class AppChars {
     private static void second() {
         char ch = '0';
         ch *= 1.1;
-        log.debug("" + ch);
+        log.info("" + ch);
     }
 
     public static void main(String[] args) {
         first();
-        System.out.println();
         second();
     }
 }

@@ -7,7 +7,7 @@ public enum CurrencyDenomination {
     DIME(10),
     QUARTER(25);
 
-    private int value;
+    private final int value;
 
     CurrencyDenomination(int value) {
         this.value = value;

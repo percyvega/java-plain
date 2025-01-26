@@ -1,8 +1,11 @@
 package com.percyvega.datastructure.stack;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * Created by percy on 4/29/2017.
  */
+@Log4j2
 public class AppStack {
 
     public static void main(String[] args) {
@@ -13,10 +16,10 @@ public class AppStack {
             stack.push(i);
         }
 
-        System.out.println("Peek: " + stack.peek());
+        log.info("Peek: " + stack.peek());
 
         while (!stack.isEmpty())
-            System.out.println(stack.pop());
+            log.info(stack.pop());
 
     }
 

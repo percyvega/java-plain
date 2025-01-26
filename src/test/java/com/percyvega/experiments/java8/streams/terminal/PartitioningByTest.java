@@ -22,7 +22,6 @@ public class PartitioningByTest {
         for (Map.Entry<Boolean, List<Student>> entry : collect.entrySet()) {
             log.info(entry.getKey());
             entry.getValue().forEach(log::info);
-            System.out.println();
         }
     }
 
@@ -37,7 +36,6 @@ public class PartitioningByTest {
         for (Map.Entry<Boolean, Set<Student>> entry : collect.entrySet()) {
             log.info(entry.getKey());
             entry.getValue().forEach(log::info);
-            System.out.println();
         }
     }
 

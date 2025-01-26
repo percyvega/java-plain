@@ -9,22 +9,22 @@ public class App {
 
         CurrencyDenomination[] denoms = CurrencyDenomination.values();
         for (CurrencyDenomination denom : denoms) {
-            log.debug(denom.name() + ", " + denom.getValue() + ", " + denom.toString() + ", " + denom.ordinal());
+            log.info(denom.name() + ", " + denom.getValue() + ", " + denom + ", " + denom.ordinal());
         }
 
         for (CurrencyDenomination denom : denoms) {
             switch (denom) {
                 case PENNY:
-                    log.debug("This is the smallest coin.");
+                    log.info("This is the smallest coin.");
                     break;
                 case NICKLE:
-                    log.debug("This is the second smallest coin.");
+                    log.info("This is the second smallest coin.");
                     break;
                 case DIME:
-                    log.debug("This is the second largest coin.");
+                    log.info("This is the second largest coin.");
                     break;
                 case QUARTER:
-                    log.debug("This is the largest coin.");
+                    log.info("This is the largest coin.");
                     break;
             }
 
@@ -32,12 +32,12 @@ public class App {
 
         CurrencyDenomination myDime = CurrencyDenomination.DIME;
         if (myDime == CurrencyDenomination.DIME) {
-            log.debug("enum in java can be compared using ==");
+            log.info("enum in java can be compared using ==");
         }
 
         Currency[] currencies = Currency.values();
         for (Currency currency : currencies) {
-            log.debug(currency.name() + ", " + currency.color() + ", " + currency.toString() + ", " + currency.ordinal());
+            log.info(currency.name() + ", " + currency.color() + ", " + currency + ", " + currency.ordinal());
         }
     }
 

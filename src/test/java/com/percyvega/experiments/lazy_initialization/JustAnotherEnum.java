@@ -1,5 +1,7 @@
 package com.percyvega.experiments.lazy_initialization;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * Copyright 2015 Percy Vega
  * <p>
@@ -15,10 +17,11 @@ package com.percyvega.experiments.lazy_initialization;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@Log4j2
 public enum JustAnotherEnum {
     INSTANCE;
 
     static {
-        System.out.println("JustAnotherEnum is being INITIALIZED for the FIRST TIME!");
+        log.info("JustAnotherEnum is being INITIALIZED for the FIRST TIME!");
     }
 }

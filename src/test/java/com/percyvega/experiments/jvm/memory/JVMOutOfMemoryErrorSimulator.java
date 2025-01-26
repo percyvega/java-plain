@@ -28,10 +28,10 @@ public class JVMOutOfMemoryErrorSimulator {
                     + "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012";
 
     // Map used to stored our leaking String instances
-    private static Map<String, String> map1;
-    private static Map<String, String> map2;
-    private static Map<String, String> map3;
-    private static Map<String, String> map4;
+    private static final Map<String, String> map1;
+    private static final Map<String, String> map2;
+    private static final Map<String, String> map3;
+    private static final Map<String, String> map4;
 
     static {
         map1 = new HashMap<>();

@@ -9,7 +9,14 @@ import java.util.List;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
-import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.*;
+import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.BRAD;
+import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.CATE;
+import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.CLINT;
+import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.EMMA;
+import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.GEORGE;
+import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.JODIE;
+import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.JOHNNY;
+import static com.percyvega.experiments.java8.model.suppliers.StudentsListSupplier.MATT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2

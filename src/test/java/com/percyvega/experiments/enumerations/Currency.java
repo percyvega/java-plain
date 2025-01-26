@@ -1,11 +1,14 @@
 package com.percyvega.experiments.enumerations;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public enum Currency implements Runnable {
 
     PENNY(1) {
         @Override
         public void run() {
-            System.out.println("copper");
+            log.info("copper");
         }
 
         @Override
@@ -15,7 +18,7 @@ public enum Currency implements Runnable {
     }, NICKLE(5) {
         @Override
         public void run() {
-            System.out.println("bronze");
+            log.info("bronze");
         }
 
         @Override
@@ -25,7 +28,7 @@ public enum Currency implements Runnable {
     }, DIME(10) {
         @Override
         public void run() {
-            System.out.println("silver");
+            log.info("silver");
         }
 
         @Override
@@ -35,7 +38,7 @@ public enum Currency implements Runnable {
     }, QUARTER(25) {
         @Override
         public void run() {
-            System.out.println("silver");
+            log.info("silver");
         }
 
         @Override
@@ -44,7 +47,7 @@ public enum Currency implements Runnable {
         }
     };
 
-    private int value;
+    private final int value;
 
     Currency(int value) {
         this.value = value;

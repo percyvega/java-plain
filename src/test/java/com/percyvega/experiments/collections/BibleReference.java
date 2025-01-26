@@ -29,12 +29,11 @@ public class BibleReference implements Comparable<BibleReference> {
         this.book = book;
         this.chapter = chapter;
         this.verse = verse;
-        this.fullName = new StringBuilder(book)
-                .append(SPACE)
-                .append(chapter)
-                .append(COLON)
-                .append(verse)
-                .toString();
+        this.fullName = book +
+                SPACE +
+                chapter +
+                COLON +
+                verse;
     }
 
     // needed for all Tree implementations

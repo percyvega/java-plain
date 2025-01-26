@@ -6,7 +6,7 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class MyStrangerAway {
 
-    private MyFather notMyFather;
+    private final MyFather notMyFather;
 
     public MyStrangerAway(String ssn, String phone, String lastName, String firstName) {
         notMyFather = new MyFather(ssn, phone, lastName, firstName);

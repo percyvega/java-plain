@@ -4,10 +4,19 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Vector;
 
-import static com.percyvega.experiments.collections.BibleReference.*;
+import static com.percyvega.experiments.collections.BibleReference.DEUTERONOMY_1_1;
+import static com.percyvega.experiments.collections.BibleReference.EXODUS_1_1;
+import static com.percyvega.experiments.collections.BibleReference.GENESIS_1_1;
+import static com.percyvega.experiments.collections.BibleReference.LEVITICUS_1_1;
+import static com.percyvega.experiments.collections.BibleReference.NUMBERS_1_1;
+import static com.percyvega.experiments.collections.BibleReference.REVELATION_1_1;
+import static com.percyvega.experiments.collections.BibleReference.REVELATION_22_21;
 
 @Log4j2
 public class ListTests {
@@ -87,7 +96,7 @@ public class ListTests {
 
     @Test
     public void vector_operations() {
-        Vector<BibleReference> list = new Vector<>(Arrays.asList(BibleReferences.getAll()));
+        Vector<BibleReference> list = new Vector<>(Arrays.asList(BibleCounter.getBibleReferences()));
 
         log.info(list.size());
         log.info(list.get(0));

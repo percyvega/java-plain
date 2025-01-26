@@ -22,22 +22,22 @@ public class AppThatIsLazy {
 
 
     public static void main(String[] args) throws InterruptedException {
-        log.debug("Starting main()");
+        log.info("Starting main()");
 
-        log.debug("About to sleep for 3 seconds.");
+        log.info("About to sleep for 3 seconds.");
         Thread.sleep(3000);
-        log.debug("Finished sleeping for 3 seconds.");
+        log.info("Finished sleeping for 3 seconds.");
 
-        log.debug("About to make reference to enum.");
+        log.info("About to make reference to enum.");
         JustAnotherEnum justAnotherEnum = JustAnotherEnum.INSTANCE;
 
-        log.debug("About to call JustAnotherClass' constructor.");
+        log.info("About to call JustAnotherClass' constructor.");
         JustAnotherClass justAnotherClass = new JustAnotherClass();
 
-        log.debug("About to call JustAnotherClassWithStaticFinalProp's constructor.");
+        log.info("About to call JustAnotherClassWithStaticFinalProp's constructor.");
         JustAnotherClassWithStaticFinalProp justAnotherClassWithStaticFinalProp = new JustAnotherClassWithStaticFinalProp();
 
-        log.debug("About to call JustAnotherSingleton.getAll().");
+        log.info("About to call JustAnotherSingleton.getAll().");
         JustAnotherSingleton justAnotherSingleton = JustAnotherSingleton.getInstance();
 
     }

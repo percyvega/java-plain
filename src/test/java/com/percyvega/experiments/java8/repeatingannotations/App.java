@@ -1,6 +1,10 @@
 package com.percyvega.experiments.java8.repeatingannotations;
 
-import com.percyvega.experiments.java8.repeatingannotations.model.*;
+import com.percyvega.experiments.java8.repeatingannotations.model.Color;
+import com.percyvega.experiments.java8.repeatingannotations.model.Colors;
+import com.percyvega.experiments.java8.repeatingannotations.model.Pants;
+import com.percyvega.experiments.java8.repeatingannotations.model.Shirt;
+import com.percyvega.experiments.java8.repeatingannotations.model.TShirt;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 

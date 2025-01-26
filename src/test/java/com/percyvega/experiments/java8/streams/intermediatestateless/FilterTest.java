@@ -30,7 +30,7 @@ public class FilterTest {
     void testStreamOf() {
         Stream.of("apple", "pear", "banana", "cherry", "apricot")
                 .filter(f -> f.startsWith("a"))
-                .forEach(f -> System.out.println("Starts with an 'a': " + f));
+                .forEach(f -> log.info("Starts with an 'a': " + f));
     }
 
 }

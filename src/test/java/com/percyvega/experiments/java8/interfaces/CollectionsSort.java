@@ -83,8 +83,8 @@ public class CollectionsSort {
     }
 
     private void printStrings(String name, List<String> strings) {
-        System.out.println("\n" + name + ": -------------");
-        strings.forEach(System.out::println);
+        log.info("\n" + name + ": -------------");
+        strings.forEach(log::info);
     }
 
 }

@@ -19,7 +19,7 @@ import static com.percyvega.experiments.collections.BibleReference.REVELATION_1_
 import static com.percyvega.experiments.collections.BibleReference.REVELATION_22_21;
 
 @Log4j2
-public class ListTests {
+public class ListTest {
 
     static List<BibleReference> bibleReferenceList = new ArrayList<>();
 

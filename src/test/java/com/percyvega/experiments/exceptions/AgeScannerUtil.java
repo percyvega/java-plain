@@ -7,22 +7,16 @@ import java.util.Scanner;
 @Log4j2
 public class AgeScannerUtil {
 
-    public static int read(Scanner scanner) throws ImpossibleAgeException {
-        int age;
-        String ageEntry;
+    public static int readButSometimesFails(Scanner scanner) throws UnrealisticAgeException {
+        if (!scanner.hasNextLine()) {
+            throw new RuntimeException("File does not contain another line");
+        }
 
-        log.info("Finishing read()");
-
-        log.info("Enter an lastName in years (-1 to exit): ");
-        ageEntry = scanner.next();
-        age = Integer.parseInt(ageEntry);
+        String line = scanner.nextLine();
+        int age = Integer.parseInt(line);
 
         if (age > 120 || age < -1)
-            throw new ImpossibleAgeException(age);
-
-        log.info("No exceptions found. Age entered: " + age);
-
-        log.info("Finishing read()");
+            throw new UnrealisticAgeException(age);
 
         return age;
     }

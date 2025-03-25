@@ -23,7 +23,7 @@ import static com.percyvega.experiments.collections.BibleReference.REVELATION_22
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class MapTests {
+public class MapTest {
 
     @Test
     public void map_elements() {

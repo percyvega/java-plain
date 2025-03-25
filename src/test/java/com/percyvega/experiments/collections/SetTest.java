@@ -22,7 +22,7 @@ import static com.percyvega.experiments.collections.BibleReference.REVELATION_22
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class SetTests {
+public class SetTest {
 
     @Test
     public void set_elements() {

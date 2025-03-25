@@ -2,7 +2,7 @@
     <Appenders>
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
             <PatternLayout disableAnsi="false"
-                           pattern="%style{%d{DEFAULT_MICROS}}{yellow} %highlight{%-5level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green}%c{1}:%L [%t] %message\n"/>
+                           pattern="%style{%d{DEFAULT_MICROS}}{yellow} %highlight{%-6level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green}%c{1}:%L [%t] %message\n"/>
         </Console>
     </Appenders>
     <Loggers>

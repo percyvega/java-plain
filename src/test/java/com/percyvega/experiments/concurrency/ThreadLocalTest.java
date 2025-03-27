@@ -6,35 +6,29 @@ import org.junit.jupiter.api.Test;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @Log4j2
 public class ThreadLocalTest {
 
     @Test
     void testThreadLocalRandom() throws InterruptedException {
-        ThreadLocal<Integer> integerThreadLocal = ThreadLocal.withInitial(() -> ThreadLocalRandom.current().nextInt());
+        ThreadLocal<Integer> threadLocalOfInteger = ThreadLocal.withInitial(() -> ThreadLocalRandom.current().nextInt());
 
-        int threadLocalRandomForMainThread1 = integerThreadLocal.get();
-        int threadLocalRandomForMainThread2 = integerThreadLocal.get();
+        int threadLocalRandomForMainThread1Value = threadLocalOfInteger.get();
+        int threadLocalRandomForMainThread2Value = threadLocalOfInteger.get();
 
-        // integerThreadLocal.get() is being called from the same "main" thread, so it will return the same number.
-        assertThat(threadLocalRandomForMainThread1).isEqualTo(threadLocalRandomForMainThread2);
+        // threadLocalOfInteger.get() is being called from the same "main" thread twice, so both returned values will be the same.
+        assert threadLocalRandomForMainThread1Value == threadLocalRandomForMainThread2Value;
 
         AtomicInteger threadLocalRandomForThread1 = new AtomicInteger();
-        Thread thread1 = new Thread(() -> {
-            threadLocalRandomForThread1.set(integerThreadLocal.get());
-        });
-
         AtomicInteger threadLocalRandomForThread2 = new AtomicInteger();
-        Thread thread2 = new Thread(() -> {
-            threadLocalRandomForThread2.set(integerThreadLocal.get());
-        });
 
-        // here integerThreadLocal.get() is called from different threads, so it returns a different number
-        assertThat(threadLocalRandomForMainThread1).isNotEqualTo(threadLocalRandomForThread1);
-        assertThat(threadLocalRandomForMainThread1).isNotEqualTo(threadLocalRandomForThread2);
-        assertThat(threadLocalRandomForThread1).isNotEqualTo(threadLocalRandomForThread2);
+        // here threadLocalOfInteger.get() is called from 2 different threads, so the values they return are different between them and from the one obtained by "main".
+        Thread thread1 = new Thread(() -> {
+            threadLocalRandomForThread1.set(threadLocalOfInteger.get());
+        });
+        Thread thread2 = new Thread(() -> {
+            threadLocalRandomForThread2.set(threadLocalOfInteger.get());
+        });
 
         thread1.start();
         thread2.start();
@@ -42,6 +36,9 @@ public class ThreadLocalTest {
         thread1.join();
         thread2.join();
 
+        assert threadLocalRandomForThread1.get() != threadLocalRandomForThread2.get();
+        assert threadLocalRandomForMainThread1Value != threadLocalRandomForThread1.get();
+        assert threadLocalRandomForMainThread1Value != threadLocalRandomForThread2.get();
     }
 
 }

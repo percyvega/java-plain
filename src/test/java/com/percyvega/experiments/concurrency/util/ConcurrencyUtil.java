@@ -47,11 +47,12 @@ public class ConcurrencyUtil {
         int msToSleep = ThreadLocalRandom.current().nextInt(1000, 5000);
 
         try {
+            log.info("{} STARTING to work for {} ms.", Thread.currentThread().getName(), msToSleep);
             TimeUnit.MILLISECONDS.sleep(msToSleep);
         } catch (InterruptedException e) {
-            log.error("Failed to work for {} ms.", msToSleep);
+            log.error("FAILED to work for {} ms.", msToSleep);
         }
-        log.info("{} finished working for {} ms.", Thread.currentThread().getName(), msToSleep);
+        log.info("{} FINISHED working for {} ms.", Thread.currentThread().getName(), msToSleep);
 
         return msToSleep / 100;
     }

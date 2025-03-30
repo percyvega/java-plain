@@ -17,18 +17,6 @@ public class ConcurrencyUtil {
     public static final int NUMBER_OF_TASKS = 3;
     public static final int THREAD_POOL_SIZE = 2;
 
-    private record WorkerRecordRunnableWithLatch(CountDownLatch latch) implements Runnable {
-        @Override
-        public void run() {
-            performLongTaskAndReturnRandomInt();
-            latch.countDown();
-        }
-    }
-
-    public static Thread getWorkerThreadWithLatch(CountDownLatch latch) {
-        return new Thread(new WorkerRecordRunnableWithLatch(latch));
-    }
-
     public static Thread getWorkerThread() {
         return new Thread(ConcurrencyUtil::performLongTaskAndReturnRandomInt);
     }
@@ -37,11 +25,22 @@ public class ConcurrencyUtil {
         return ConcurrencyUtil::performLongTaskAndReturnRandomInt;
     }
 
+    public static Callable<Integer> getWorkerCallable(CountDownLatch countDownLatch) {
+        return new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception {
+                int randomInt = performLongTaskAndReturnRandomInt();
+                countDownLatch.countDown();
+                return randomInt;
+            }
+        };
+    }
+
     /**
      * For threading purposes, this is practically a Callable<Integer> task.
-     * It stays busy (sleeping ;) for a random time between 1000 and 5000 ms, and returns that number divided by 100.
+     * It stays busy (sleeping ;) for a random time between 1000 and 5000 ms.
      *
-     * @return a number between 10 and 50.
+     * @return a random number between 0 (inclusive) and 30 (exclusive).
      */
     public static int performLongTaskAndReturnRandomInt() {
         int msToSleep = ThreadLocalRandom.current().nextInt(1000, 5000);
@@ -52,18 +51,19 @@ public class ConcurrencyUtil {
         } catch (InterruptedException e) {
             log.error("FAILED to work for {} ms.", msToSleep);
         }
-        log.info("{} FINISHED working for {} ms.", Thread.currentThread().getName(), msToSleep);
+        int randomInt = ThreadLocalRandom.current().nextInt(0, 30);
+        log.info("{} FINISHED working for {} ms. and returning {}", Thread.currentThread().getName(), msToSleep, randomInt);
 
-        return msToSleep / 100;
+        return randomInt;
     }
 
-    public static int productOf(List<Future<Integer>> futureTasks) throws ExecutionException, InterruptedException {
+    public static int sumOf(List<Future<Integer>> futureTasks) throws ExecutionException, InterruptedException {
         List<Integer> integerList = new ArrayList<>();
         for (Future<Integer> futureTask : futureTasks) {
-            integerList.add(futureTask.get());
+            integerList.add(futureTask.get()); // get() blocks until task is completed
         }
 
-        return integerList.stream().reduce(1, (a, b) -> a * b);
+        return integerList.stream().reduce(0, Integer::sum);
     }
 
 }

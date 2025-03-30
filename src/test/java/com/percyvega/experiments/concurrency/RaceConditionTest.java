@@ -20,7 +20,8 @@ public class RaceConditionTest {
     private long synchronizedCounter = 0;
     private final AtomicLong atomicCounter = new AtomicLong(0);
 
-    public void processThis() throws InterruptedException {
+    @Test
+    void test() throws InterruptedException {
         Runnable myRunnable = () -> {
             for (int i = 0; i < 1_000_000; i++) {
                 volatileCounter++;
@@ -44,11 +45,6 @@ public class RaceConditionTest {
         log.info("volatileCounter: {}", volatileCounter);
         log.info("synchronizedCounter: {}", synchronizedCounter);
         log.info("atomicCounter: {}", atomicCounter);
-    }
-
-    @Test
-    void test() throws InterruptedException {
-        new RaceConditionTest().processThis();
     }
 
 }

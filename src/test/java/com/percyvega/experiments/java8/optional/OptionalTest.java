@@ -1,15 +1,15 @@
 package com.percyvega.experiments.java8.optional;
 
-import com.percyvega.experiments.java8.model.Student;
-import com.percyvega.experiments.java8.model.suppliers.OptionalStudentSupplier;
-import lombok.extern.log4j.Log4j2;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
+
+import com.percyvega.experiments.java8.model.Student;
+import com.percyvega.experiments.java8.model.suppliers.OptionalStudentSupplier;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
+import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.Test;
 
 @Log4j2
 public class OptionalTest {
@@ -35,6 +35,29 @@ public class OptionalTest {
 //        assertThat(optional4.get()).isNull(); java.util.NoSuchElementException: No value present
         assertThat(optional4.orElse("fallback")).isEqualTo("fallback");
         optional4.ifPresent(s -> fail("Not reached"));
+
+        Optional<Integer> favoriteNumber1 = Optional.of("7")
+                .map(Integer::parseInt);
+        assertThat(favoriteNumber1.get()).isEqualTo(7);
+
+        Integer favoriteNumber2 = Optional.of("5")
+                .map(Integer::parseInt)
+                .orElse(-1);
+        assertThat(favoriteNumber2).isEqualTo(5);
+
+        Integer favoriteNumber3 = Optional.ofNullable((String) null)
+                .map(Integer::parseInt)
+                .orElseGet(() -> 10);
+        assertThat(favoriteNumber3).isEqualTo(10);
+
+        AtomicReference<String> greeting = new AtomicReference<>("");
+        Optional.of("hello")
+                .ifPresent(s -> greeting.set(s));
+        assertThat(greeting.get()).isEqualTo("hello");
+
+        Optional.ofNullable(null)
+                .ifPresentOrElse(s -> greeting.set("hola"), () -> greeting.set("chao"));
+        assertThat(greeting.get()).isEqualTo("chao");
     }
 
     @Test
